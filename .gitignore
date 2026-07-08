@@ -1,0 +1,28 @@
+# Data
+ILD_DB/
+ILD_DB_antiguo/
+ILD_DB_npy/
+ILD_DB_npy_augmented/
+
+# Model outputs / checkpoints / experiment artifacts
+diffusion_model/*.pt
+diffusion_model/*.pth
+diffusion_model/checkpoints/
+diffusion_model/generated_samples/
+experiments/
+logs/
+plots/
+
+# Results that regenerate from code, not source-of-truth
+ddpm_quality_results.csv
+ddpm_quality_results.json
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Diffusion model artifacts
+diffusion_model/outputs/
+diffusion_model/logs/
+diffusion_model/__pycache__/
