@@ -1,5 +1,5 @@
 """
-classification_entry.py
+classification_lopo.py
 -----------------------
 Leave-One-Patient-Out (LOPO) Cross-Validation for ILD patch classification.
 
@@ -15,7 +15,6 @@ Final summary written to experiments/lopo_<timestamp>/lopo_summary.txt
 import os
 import sys
 import argparse
-import copy
 import numpy as np
 import torch
 import torch.nn as nn
@@ -108,9 +107,6 @@ def run_fold(fold_idx, n_folds, patient_id, all_images, all_labels, all_pids,
     scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.1)
 
     epochs = 1 if dry_run else NUM_EPOCHS
-    best_test_acc = 0.0
-    best_epoch = 1
-    best_state_dict = copy.deepcopy(net.state_dict())
 
     for epoch in range(epochs):
         train_loss, train_tracker = train_one_epoch(net, train_loader, criterion, optimizer, DEVICE)
@@ -123,26 +119,26 @@ def run_fold(fold_idx, n_folds, patient_id, all_images, all_labels, all_pids,
         logger.log(f"  Epoch {epoch+1:02d}/{epochs}"
                    f"  train_loss={train_loss:.4f}  test_loss={test_loss:.4f}"
                    f"  train_acc={train_acc:.1f}%  test_acc={test_acc:.1f}%")
+        # test_acc is logged for visibility only -- NOT used to pick which
+        # epoch's weights get reported. Selecting on test performance would
+        # be checkpoint-selection leakage. We always report the fixed final
+        # epoch, decided in advance, regardless of which epoch scored best.
 
-        if test_acc > best_test_acc:
-            best_test_acc = test_acc
-            best_epoch = epoch + 1
-            best_state_dict = copy.deepcopy(net.state_dict())
-
-    # Save and reload best model for final test metrics
-    best_ckpt_path = os.path.join(logger.ckpt_dir, f"fold_{fold_idx:03d}_pid_{patient_id}_best.pth")
+    # Report metrics from the fixed final epoch -- no test-set-based selection.
+    final_epoch = epochs
+    final_test_acc = test_acc          # from the last loop iteration
+    final_ckpt_path = os.path.join(logger.ckpt_dir, f"fold_{fold_idx:03d}_pid_{patient_id}_final.pth")
     torch.save(
         {
             "fold_idx": fold_idx,
             "patient_id": patient_id,
-            "best_epoch": best_epoch,
-            "best_test_acc": best_test_acc,
-            "state_dict": best_state_dict,
+            "final_epoch": final_epoch,
+            "final_test_acc": final_test_acc,
+            "state_dict": net.state_dict(),
         },
-        best_ckpt_path,
+        final_ckpt_path,
     )
-    net.load_state_dict(best_state_dict)
-    _, best_tracker = evaluate(net, test_loader, criterion, DEVICE)
+    best_tracker = test_tracker        # tracker from the final epoch's evaluate() call
 
     # Final per-class F1 on the test set (5 classes fixed)
     f1_per_class = f1_score(best_tracker.y_true, best_tracker.y_pred,
@@ -160,8 +156,8 @@ def run_fold(fold_idx, n_folds, patient_id, all_images, all_labels, all_pids,
         zero_division=0,
     )
 
-    logger.log(f"  Best test acc: {best_test_acc:.2f}%")
-    logger.log(f"  Best epoch: {best_epoch:02d}  |  best ckpt: {best_ckpt_path}")
+    logger.log(f"  Final-epoch test acc: {final_test_acc:.2f}%")
+    logger.log(f"  Final epoch: {final_epoch:02d}  |  ckpt: {final_ckpt_path}")
     logger.log(f"  Per-class F1: " +
                " | ".join(f"{CLASS_NAMES[i]}={f1_per_class[i]:.3f}" for i in range(NUM_CLASSES)))
     logger.log(f"  Macro-F1 (5 fixed classes): {macro_f1_all_classes:.3f}")
@@ -173,9 +169,9 @@ def run_fold(fold_idx, n_folds, patient_id, all_images, all_labels, all_pids,
         "macro_f1_all_classes": macro_f1_all_classes,
         "macro_f1_present_classes": macro_f1_present_classes,
         "present_classes": present_classes,
-        "best_epoch": best_epoch,
-        "best_test_acc": best_test_acc,
-        "best_ckpt_path": best_ckpt_path,
+        "final_epoch": final_epoch,
+        "final_test_acc": final_test_acc,
+        "final_ckpt_path": final_ckpt_path,
     }
 
 
