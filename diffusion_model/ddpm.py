@@ -134,5 +134,7 @@ class DDPM(nn.Module):
                 x - (beta / (1 - alpha_bar).sqrt()) * pred_noise
             )
             if t > 0:
-                x = x + beta.sqrt() * torch.randn_like(x)
+                alpha_bar_prev = self.alphas_cumprod[t - 1]
+                posterior_var = (1 - alpha_bar_prev) / (1 - alpha_bar) * beta
+                x = x + posterior_var.sqrt() * torch.randn_like(x)
         return x

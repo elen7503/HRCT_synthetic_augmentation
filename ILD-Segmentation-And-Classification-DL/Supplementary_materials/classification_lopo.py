@@ -199,7 +199,7 @@ if __name__ == "__main__":
         print("  [DRY RUN] Running only fold 1 with 1 epoch.\n")
 
     # ── Logger ───────────────────────────────────────────────────────────────
-    logger = Logger("lopo_classification")
+    logger = Logger("lopo_baseline")
     logger.log(f"LOPO CV | device={DEVICE} | epochs={1 if args.dry_run else NUM_EPOCHS}"
                f" | lr={LR} | batch={BATCH_SIZE}")
     logger.log(f"Total folds: {n_folds}  |  classes: {CLASS_NAMES}")
