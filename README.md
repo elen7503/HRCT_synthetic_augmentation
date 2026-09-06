@@ -69,6 +69,10 @@ tar -xzf ~/for_onedrive_upload/nnunet_raw_images.tar.gz -C "$PROJECT_ROOT/wholec
 
 # 6. Generated synthetic samples + validation previews
 tar -xzf ~/for_onedrive_upload/generated_and_previews.tar.gz -C "$PROJECT_ROOT"
+
+# 7. Attention U-Net checkpoints (Branch A)
+mkdir -p "$PROJECT_ROOT/diffusion_model/outputs_attention"
+tar -xzf ~/for_onedrive_upload/attention_checkpoints.tar.gz -C "$PROJECT_ROOT/diffusion_model/outputs_attention"
 ```
 
 **Extract all 6, in any order.** Steps 3 and 6 both contribute files to
@@ -141,6 +145,6 @@ classification — use `classification_wholect_uint8_lopo.py`.
 
 `ILD_DB/` (raw HRCT data) originates from the University Hospitals of
 Geneva's public ILD database and requires a signed end-user copyright
-agreement for access — see `ILD_DB/README` after restoring. The
+agreement for access. The
 external diffusion model in `wholect/lung_ddpm_model/` was provided by
 a project collaborator and is not original to this repo.
