@@ -3,7 +3,7 @@
 MSc thesis project (Imperial College London): does diffusion-model
 synthetic data augmentation improve multi-class classification of ILD
 (interstitial lung disease) tissue patterns in HRCT? Two independent
-branches investigate this — patch-level classification with a
+branches investigate this: patch-level classification with a
 self-trained DDPM, and whole-CT classification with an externally
 provided semantic-layout-guided diffusion model.
 
@@ -91,21 +91,20 @@ sweep (recall/FID in classifier feature space) rather than trusting the
 lowest-training-loss checkpoint.
 
 Key scripts (`patches/scripts/`):
-- `create_classification_data.py` — extracts real patches from
+- `create_classification_data.py`: extracts real patches from
   `ILD_DB/ILD_DB_talismanTestSuite/` into `patches/ILD_DB_npy/`
-- `classification_lopo.py` — baseline (real-only) LOPO classification
-- `classification_lopo_augmented_v3_5k.py` — final reference augmented
+- `classification_lopo.py`: baseline (real-only) LOPO classification
+- `classification_lopo_augmented_v3_5k.py`: final reference augmented
   comparison (5000 synthetic patches/class, quality-selected checkpoints)
-- `classification_lopo_augmented_attention.py` — same, using the
+- `classification_lopo_augmented_attention.py`: same, using the
   self-attention U-Net variant
-- `sweep_evaluate*.py` — checkpoint-quality sweep (FID/precision/recall)
+- `sweep_evaluate*.py`: checkpoint-quality sweep (FID/precision/recall)
 
 PBS launchers: `scripts/job_lopo_*.sh`, `job_ema_finetune_*.sh`,
 `job_train_attention_*.sh`.
 
 See the numeric results and full experimental history in the
-dissertation writeup for details across all dataset versions (v1-v5,
-attention).
+dissertation writeup for details across all dataset versions.
 
 ## Branch B — whole-CT classification (`wholect/`)
 
@@ -116,22 +115,22 @@ reference-conditioned/inpainting-based sampling, not unconditional
 generation) for augmentation.
 
 Key scripts (`wholect/scripts/`):
-- `build_wholect_dataset.py` — extracts whole-slice dataset from
+- `build_wholect_dataset.py`: extracts whole-slice dataset from
   `ILD_DB/ILD_DB_volumeROIs/` (applies `RescaleSlope`/`RescaleIntercept`
-  correctly via `apply_modality_lut` — raw `pydicom` pixel values are
+  correctly via `apply_modality_lut`, raw `pydicom` pixel values are
   NOT Hounsfield Units without this)
-- `build_wholect_augmented.py` — merges real + external-model synthetic
+- `build_wholect_augmented.py`: merges real + external-model synthetic
   samples, tagging synthetic samples by their real source-patient ID to
   prevent leakage in patient-level cross-validation
-- `build_wholect_fixed_split.py` — stratified 80/20 train/test split,
+- `build_wholect_fixed_split.py`: stratified 80/20 train/test split,
   restricted so the test set was never seen by the external model's own
   training
-- `classification_wholect_uint8_lopo.py` — slice-level LOPO
-- `classification_wholect_patientagg_lopo.py` — patient-level, majority
+- `classification_wholect_uint8_lopo.py`: slice-level LOPO
+- `classification_wholect_patientagg_lopo.py`: patient-level, majority
   vote across slice predictions (the branch's strongest result)
-- `classification_wholect_pool.py` — patient-level, mean/max feature
+- `classification_wholect_pool.py`: patient-level, mean/max feature
   pooling on the fixed split
-- `evaluate_wholect_synthetic_quality.py` — classifier-feature-space
+- `evaluate_wholect_synthetic_quality.py`: classifier-feature-space
   FID/precision/recall for synthetic sample quality
 
 PBS launchers: `scripts/job_wholect_*.sh`.
@@ -139,7 +138,7 @@ PBS launchers: `scripts/job_wholect_*.sh`.
 **Note:** `classification_wholect_lopo.py` (no `_uint8` suffix) is a
 deprecated, pre-HU-fix version kept only because several other scripts
 still import `WholeCTClassifier` from it. Do not use it directly for
-classification — use `classification_wholect_uint8_lopo.py`.
+classification, use `classification_wholect_uint8_lopo.py`.
 
 ## License / data provenance
 
