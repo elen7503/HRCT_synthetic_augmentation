@@ -8,7 +8,7 @@ import tensorflow as tf
 from matplotlib import pyplot as plt
 import cv2
 
-#Function to read dicom files and return a list of the names of the dicom files
+#Function to read dicom files
 def get_names(path):
     names = []
     for _, _, filenames in os.walk(path):
@@ -28,17 +28,3 @@ def convert_dcm_jpg(cdir, name):
 
     final_image = Image.fromarray(final_image)
     return final_image
-
-"""
-Ideal workflow:
-Step 1: Define input directory and output directory
-Step 2: Utilize the function get_names to get the names of the dicom files, as a list
-Step 3: Utilize the function convert_dcm_jpg to convert the dicom files to jpg
-Example of Step 3:
-
- for name in names:
-     final_image = convert_dcm_jpg(cdir, name)
-     final_image.save(out_dir + '/' + name + '.jpg')
-
-     
-"""     

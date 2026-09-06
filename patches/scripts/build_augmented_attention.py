@@ -1,19 +1,8 @@
 """
-build_augmented_v3_5k.py
-------------------------
 Builds the v3 augmented dataset: ALL real patches (no trimming) for every
 class, plus a FIXED number of synthetic patches per class (from the
 quality-selected checkpoints), regardless of how large that makes each
 class relative to the others.
-
-This intentionally produces class-size imbalance (e.g. micronodules ends
-up much larger than emphysema) -- that's expected and NOT corrected by
-subsampling here. It should be corrected downstream via per-fold
-class-weighted loss (a separate, controlled follow-up step -- see notes
-at the bottom of this file), not by discarding real data.
-
-Usage:
-  python build_augmented_v3_5k.py
 """
 
 import os
@@ -26,7 +15,7 @@ SYNTH_DIR = os.path.join(PROJECT_ROOT, "diffusion_model/outputs_attention/synthe
 OUT_DIR = os.path.join(PROJECT_ROOT, "ILD_DB_npy_augmented_attention")
 
 CLASS_NAMES = ["healthy", "emphysema", "ground_glass", "fibrosis", "micronodules"]
-FIXED_DOSE = 5000  # expected synthetic count per class -- checked against actual file sizes below
+FIXED_DOSE = 5000 
 SYNTHETIC_PATIENT_ID = -2
 
 

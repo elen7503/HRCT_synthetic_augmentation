@@ -1,14 +1,8 @@
 """
-sweep_evaluate.py
---------------------
 Computes classifier-space FID and precision/recall for every checkpoint's
 samples produced by sweep_sample.py, and ranks them -- to check whether
 best.pt (chosen by lowest training loss) is actually the best-looking
 checkpoint.
-
-Usage:
-  Edit CONFIG below (class name, checkpoint classifier path), then:
-  python sweep_evaluate.py
 """
 
 import os
@@ -28,7 +22,6 @@ import torch
 sys.path.append(os.path.join(PROJECT_ROOT, "classifier_lib/Lung_Classification"))
 from models import Classifier
 
-# ============================================================
 CLASS_NAME = "fibrosis"
 CLASS_IDX = 3
 
@@ -46,7 +39,6 @@ RANDOM_SEED = 0
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 rng = np.random.default_rng(RANDOM_SEED)
 OUT_CSV = f"checkpoint_sweep_{CLASS_NAME}_results.csv"
-# ============================================================
 
 _activation = {}
 

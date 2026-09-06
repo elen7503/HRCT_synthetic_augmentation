@@ -1,12 +1,6 @@
 """
-sweep_evaluate_all_classes.py
---------------------------------
 Same as sweep_evaluate.py, but loops over all 5 classes automatically
 and writes one combined CSV, instead of editing/rerunning per class.
-
-Usage:
-  1. Edit CLASSIFIER_CHECKPOINT below.
-  2. python sweep_evaluate_all_classes.py
 """
 
 import os
@@ -25,7 +19,6 @@ import torch
 sys.path.append(os.path.join(PROJECT_ROOT, "classifier_lib/Lung_Classification"))
 from models import Classifier
 
-# ============================================================
 CLASS_NAMES = {0: "healthy", 1: "emphysema", 2: "ground_glass", 3: "fibrosis", 4: "micronodules"}
 
 REAL_IMGS_PATH = os.path.join(PROJECT_ROOT, "ILD_DB_npy/all_images.npy")
@@ -33,7 +26,6 @@ REAL_LBLS_PATH = os.path.join(PROJECT_ROOT, "ILD_DB_npy/all_labels.npy")
 
 SWEEP_BASE_DIR = os.path.join(PROJECT_ROOT, "diffusion_model/outputs_attention/checkpoint_sweep")
 
-# EDIT: point at any real fold checkpoint
 CLASSIFIER_CHECKPOINT = os.path.join(PROJECT_ROOT, "patches/checkpoints/feature_extractor_reference.pth")
 CLASSIFIER_FEATURE_LAYER = "fc1"
 
@@ -43,7 +35,6 @@ RANDOM_SEED = 0
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 rng = np.random.default_rng(RANDOM_SEED)
 OUT_CSV = "checkpoint_sweep_attention_results.csv"
-# ============================================================
 
 _activation = {}
 
@@ -145,7 +136,6 @@ def evaluate_class(class_idx, class_name, model, real_images, real_labels):
     results = []
 
     for entry in manifest:
-        # entry['dir'] may be relative (bug in sweep_sample.py) -- try both
         synth_path = os.path.join(entry['dir'], 'synthetic_images.npy')
         if not os.path.exists(synth_path):
             synth_path = os.path.join(sweep_dir, entry['checkpoint'], 'synthetic_images.npy')

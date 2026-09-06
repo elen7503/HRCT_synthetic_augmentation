@@ -1,13 +1,7 @@
 """
-classification_wholect_lopo.py
-----------------------------------
 LOPO classification on whole 512x512 CT slices (dominant-class labeled),
 built from ILD_DB_wholect_npy. Real data only, no synthetic augmentation
-yet -- this establishes whether the task is viable at all before any
-DDPM work.
-
-Includes classic augmentation (rotation + flips) applied only to
-training data, not test data.
+yet.
 """
 
 import os
@@ -26,7 +20,7 @@ from sklearn.metrics import f1_score
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 CLASS_NAMES = ["Healthy", "Emphysema", "Ground Glass", "Fibrosis", "Micronodules"]
 NUM_CLASSES = 5
-BATCH_SIZE = 8   # smaller than patch classifier, since images are much larger
+BATCH_SIZE = 8
 NUM_EPOCHS = 15
 LR = 1e-3
 
@@ -34,8 +28,6 @@ DATA_DIR = os.path.join(PROJECT_ROOT, "wholect/ILD_DB_wholect_npy")
 
 
 class WholeCTClassifier(nn.Module):
-    """Deeper than the 32x32 patch classifier, since input is 512x512 --
-    needs more downsampling stages to reach a manageable feature map size."""
     def __init__(self, num_classes=5):
         super().__init__()
         def block(in_ch, out_ch):
@@ -45,7 +37,6 @@ class WholeCTClassifier(nn.Module):
                 nn.ReLU(inplace=True),
                 nn.MaxPool2d(2, 2),
             )
-        # 512 -> 256 -> 128 -> 64 -> 32 -> 16 -> 8
         self.features = nn.Sequential(
             block(1, 16),
             block(16, 32),
@@ -66,7 +57,6 @@ class WholeCTClassifier(nn.Module):
 
 
 def augment_batch(x):
-    """Random rotation (0/90/180/270) + random flips, applied per-sample."""
     B = x.shape[0]
     out = []
     for i in range(B):

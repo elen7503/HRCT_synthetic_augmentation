@@ -1,20 +1,14 @@
 """
-visualize_posterior_var_all_classes.py
------------------------------------------
 Generates one PNG per class comparing real patches against the NEW
 synthetic samples (produced with the corrected posterior-variance
 sampling formula), saved separately from the original augmented dataset
 so this is a clean before/after check.
-
-Usage:
-  python visualize_posterior_var_all_classes.py
 """
 
 import os
 import numpy as np
 import matplotlib.pyplot as plt
 
-# ============================================================
 REAL_IMGS_PATH = "/rds/general/user/eh1121/home/Final_Project/ILD_DB_npy/all_images.npy"
 REAL_LBLS_PATH = "/rds/general/user/eh1121/home/Final_Project/ILD_DB_npy/all_labels.npy"
 
@@ -24,7 +18,6 @@ OUTPUT_DIR = SYNTH_DIR  # save grids alongside the samples
 CLASS_NAMES = ["healthy", "emphysema", "ground_glass", "fibrosis", "micronodules"]
 N_SHOW = 10
 SEED = 0
-# ============================================================
 
 
 def main():

@@ -1,10 +1,5 @@
 """
-train.py
---------
 Trains a separate DDPM for each tissue class (or a single specified class).
-
-Usage:
-  python train.py --class_idx 3 --epochs 500 --batch_size 64
 """
 
 import os
@@ -25,26 +20,21 @@ def train(class_idx, npy_dir, output_dir, epochs, batch_size, lr, timesteps, sav
     print(f"\nDevice: {device}")
     print(f"Training class: {CLASS_NAMES[class_idx]} (idx={class_idx})")
 
-    # ── Data ─────────────────────────────────────────────────────────────────
     loader = get_dataloader(npy_dir, class_idx, batch_size=batch_size)
 
-    # ── Model ─────────────────────────────────────────────────────────────────
     unet = UNet(channels=64, time_dim=256).to(device)
     ddpm = DDPM(unet, timesteps=timesteps).to(device)
 
     n_params = sum(p.numel() for p in unet.parameters())
     print(f"U-Net parameters: {n_params:,}")
 
-    # ── Optimiser ─────────────────────────────────────────────────────────────
     opt = Adam(ddpm.parameters(), lr=lr)
     scheduler = CosineAnnealingLR(opt, T_max=epochs, eta_min=1e-6)
 
-    # ── Output dir ────────────────────────────────────────────────────────────
     class_name = CLASS_NAMES[class_idx]
     ckpt_dir = os.path.join(output_dir, class_name)
     os.makedirs(ckpt_dir, exist_ok=True)
 
-    # ── Training loop ─────────────────────────────────────────────────────────
     best_loss = float('inf')
 
     for epoch in range(1, epochs + 1):

@@ -1,6 +1,4 @@
 """
-classification_wholect_pool.py
------------------------------------
 Patient-level classification via mean OR max pooling of per-slice CNN
 features, on the FIXED stratified train/test split. Supports three
 conditions: real-only, real+classic augmentation, real+synthetic.

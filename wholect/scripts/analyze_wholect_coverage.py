@@ -1,17 +1,7 @@
 """
-analyze_wholect_coverage.py
-------------------------------
 Measures, per patient, how much of ILD_DB_volumeROIs' 17-class ROI
 annotation actually falls within the 5 classes used by the patch
-classifier (healthy=1, emphysema=2, ground_glass=3, fibrosis=4,
-micronodules=5 in the README's 1-indexed scheme).
-
-This determines whether whole-CT classification restricted to these 5
-classes has adequate data coverage, BEFORE any architecture or training
-work starts.
-
-Usage:
-  python analyze_wholect_coverage.py
+classifier.
 """
 
 import os
@@ -24,8 +14,7 @@ from collections import defaultdict
 
 VOLUMEROIS_DIR = os.path.join(PROJECT_ROOT, "ILD_DB/ILD_DB_volumeROIs")
 
-# README 1-indexed label -> your 5-class scheme (0-indexed), matching
-# healthy=0, emphysema=1, ground_glass=2, fibrosis=3, micronodules=4
+
 TARGET_LABEL_MAP = {1: "healthy", 2: "emphysema", 3: "ground_glass", 4: "fibrosis", 5: "micronodules"}
 ALL_LABEL_NAMES = {
     1: "healthy", 2: "emphysema", 3: "ground_glass", 4: "fibrosis", 5: "micronodules",
@@ -37,7 +26,6 @@ ALL_LABEL_NAMES = {
 
 
 def analyze_patient(patient_dir):
-    """Returns per-label pixel counts for one patient, across all slices."""
     roi_dir = os.path.join(patient_dir, "roi_mask")
     if not os.path.isdir(roi_dir):
         return None
@@ -94,7 +82,6 @@ def main():
             "other_labels_present": other_labels_present,
         })
 
-    # ── Summary stats ────────────────────────────────────────────────────────
     n_total = len(per_patient_summary)
     n_with_any_target = sum(1 for p in per_patient_summary if p["n_target_classes_present"] >= 1)
     n_with_2plus_target = sum(1 for p in per_patient_summary if p["n_target_classes_present"] >= 2)

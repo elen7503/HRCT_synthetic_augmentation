@@ -1,17 +1,7 @@
 """
-evaluate_wholect_synthetic_quality.py
-------------------------------------------
 Same FID (classifier feature space) + precision/recall approach used for
 the patch-level DDPMs, adapted for whole-CT slices. Compares real
 ILD_DB_wholect_npy patches against Lung-DDPM-generated samples, per class.
-
-EDIT GENERATED_DIR and the loading function once you've actually run
-sample_ild_2d_balanced.py and can see its real output format (likely
-.npy or .nii.gz per case -- the loader below assumes .npy for now,
-adjust once confirmed).
-
-Usage:
-  python evaluate_wholect_synthetic_quality.py
 """
 
 import os
@@ -29,12 +19,6 @@ from classification_wholect_lopo import WholeCTClassifier, NUM_CLASSES, CLASS_NA
 REAL_DATA_DIR = os.path.join(PROJECT_ROOT, "wholect/ILD_DB_wholect_npy")  # only used for feature extractor path now
 FEATURE_EXTRACTOR_PATH = os.path.join(PROJECT_ROOT, "wholect/ILD_DB_wholect_npy/feature_extractor_lungddpm_domain.pth")
 
-# Liwei's own dataset package + validation split -- use HIS real images,
-# in the exact format his DDPM was trained/validated on, instead of our
-# own independently-built ILD_DB_wholect_npy. This avoids any pipeline
-# mismatch (framing, preprocessing, etc.) between "our real data" and
-# "his synthetic data", and uses held-out validation patients so there's
-# no leakage from patients the DDPM was trained on.
 ILD_DATASET_DIR = os.path.join(PROJECT_ROOT, "wholect/lung_ddpm_model/ILD_dataset")
 VALIDATION_MANIFEST_PATH = os.path.join(PROJECT_ROOT, "wholect/lung_ddpm_model/Lung-DDPM/checkpoints/ILD-DDPM-2D-V3/validation_manifest.json")
 
@@ -66,9 +50,6 @@ def load_classifier():
 
 
 def normalize_pair(real, synth):
-    # Both real (from ILD_dataset, Liwei's package) and synthetic are
-    # ALREADY uint8 lung-window images (same domain, same preprocessing
-    # pipeline) -- no HU conversion needed here, just scale to [0,1].
     real_norm = real.astype(np.float32) / 255.0
     synth_norm = synth.astype(np.float32) / 255.0
     return real_norm, synth_norm
@@ -136,19 +117,10 @@ def precision_recall(feat_real, feat_synth, k=KNN_K):
 
 import json
 
-# README label (1-indexed, matches training_config.json's condition_channels
-# order) -> your 5-class scheme (0-indexed). Class 6 (consolidation) has no
-# equivalent and is intentionally excluded.
 LUNGDDPM_LABEL_TO_YOUR_CLASS = {1: 0, 2: 1, 3: 2, 4: 3, 5: 4}
 
 
 def load_real_class(class_idx):
-    """Loads REAL images from Liwei's own ILD_dataset package, filtered to
-    the validation_manifest.json split (patients the DDPM was NOT trained
-    on) and to slices whose `labels` include the target class. This is the
-    real-data source that matches the synthetic data's own preprocessing
-    pipeline, avoiding the framing/preprocessing mismatch that caused
-    precision/recall=0.000 when comparing against our own ILD_DB_wholect_npy."""
     lungddpm_label = None
     for l, c in LUNGDDPM_LABEL_TO_YOUR_CLASS.items():
         if c == class_idx:
@@ -173,13 +145,6 @@ def load_real_class(class_idx):
 
 
 def load_generated_class(class_idx, class_name):
-    """Reads generation_report.json to find which case folders belong to
-    this class (via `target_class`), then loads each case's
-    images/slice_1.npy. Real, confirmed output structure:
-      GENERATED_DIR/<case>/images/slice_1.npy
-      GENERATED_DIR/<case>/roi_masks/slice_1.npy
-      GENERATED_DIR/<case>/lung_masks/slice_1.npy
-    """
     report_path = os.path.join(GENERATED_DIR, "generation_report.json")
     if not os.path.exists(report_path):
         return None

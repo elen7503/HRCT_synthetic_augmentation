@@ -1,14 +1,6 @@
 """
-build_augmented_v2.py
-------------------------
 Merges real patches (ILD_DB_npy) with the newly resampled synthetic
-patches (outputs/synthetic_v2, from quality-selected checkpoints) into
-a new augmented dataset: ILD_DB_npy_augmented_v2/
-
-Synthetic patches are flagged patient_id = -2, same convention as before.
-
-Usage:
-  python build_augmented_v2.py
+patches into a new augmented dataset: ILD_DB_npy_augmented_v2/
 """
 
 import os

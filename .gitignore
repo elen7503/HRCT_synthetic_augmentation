@@ -9,6 +9,7 @@
 #   checkpoints.tar.gz               <- all *.pth (nnU-Net + Lung-DDPM 2D/3D)
 #   nnunet_raw_images.tar.gz         <- wholect/lung_ddpm_model/nnUNet_raw/Dataset502_ILD/
 #   generated_and_previews.tar.gz    <- Lung-DDPM/generated/ + Lung-DDPM/checkpoints/*/previews/
+#   attention_checkpoints.tar.gz     <- diffusion_model/outputs_attention/
 ILD_DB/
 ILD_DB_antiguo/
 *.pth
@@ -50,5 +51,16 @@ __pycache__/
 
 # Diffusion model artifacts
 diffusion_model/outputs/
+diffusion_model/outputs_attention/
 diffusion_model/logs/
 diffusion_model/__pycache__/
+
+# Recurring run artifacts / logs / one-off result exports -- regenerate from
+# code, not source-of-truth.
+checkpoint_sweep_*.csv
+wholect_coverage_analysis.json
+wholect_synthetic_quality_results.csv
+logs_explore_volumerois.*
+logs_extract_volumerois.*
+*.pbs.e*
+*.pbs.o*

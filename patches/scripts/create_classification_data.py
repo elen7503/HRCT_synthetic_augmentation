@@ -1,17 +1,6 @@
 """
-create_classification_data.py
-------------------------------
 Reads all .tif patches from ILD_DB_talismanTestSuite and saves unified
 numpy arrays that preserve patient ID, enabling LOPO cross-validation.
-
-Output (in ILD_DB_npy/):
-  all_images.npy       -- (N, 32, 32) int16  HU values
-  all_labels.npy       -- (N,)         int64  class index
-  all_patient_ids.npy  -- (N,)         int64  patient number;
-                           -1 for 'patient-1_*' (permanent train patches)
-
-Class mapping (5 classes):
-  healthy=0, emphysema=1, ground_glass=2, fibrosis=3, micronodules=4
 """
 
 import os
@@ -34,23 +23,10 @@ CLASS_MAPPING = {
 
 
 def parse_filename(filename):
-    """
-    Extract (class_name, patient_id) from a talisman patch filename.
+    base = os.path.splitext(filename)[0]
 
-    Filename formats:
-      fibrosis_patch1771_patient64.tif          → class='fibrosis',      patient_id=64
-      ground_glass_patch22_patient12.tif        → class='ground_glass',  patient_id=12
-      emphysema_patch1177_patient-1_11.tif      → class='emphysema',     patient_id=-1
-      ground_glass_patch5_patient-1_3.tif       → class='ground_glass',  patient_id=-1
-
-    Returns (class_name: str | None, patient_id: int | None)
-    """
-    base = os.path.splitext(filename)[0]  # remove .tif
-
-    # Detect permanent-train patches (patient-1_*)
     is_perm_train = 'patient-1_' in base
 
-    # Extract class name: everything before the first '_patch'
     match_class = re.match(r'^(.+?)_patch\d+_', base)
     if not match_class:
         return None, None
@@ -63,7 +39,6 @@ def parse_filename(filename):
     patient_id = -1 if is_perm_train else None
 
     if not is_perm_train:
-        # Extract patient number from 'patientXX'
         match_pid = re.search(r'_patient(\d+)', base)
         if match_pid:
             patient_id = int(match_pid.group(1))
@@ -74,9 +49,6 @@ def parse_filename(filename):
 
 
 def prepare_lopo_dataset(data_dir, output_dir):
-    """
-    Parse all .tif patches and save unified arrays for LOPO CV.
-    """
     image_paths = sorted(glob.glob(os.path.join(data_dir, '*.tif')))
     if not image_paths:
         print(f"No .tif files found in {data_dir}.")
@@ -109,12 +81,10 @@ def prepare_lopo_dataset(data_dir, output_dir):
         labels.append(CLASS_MAPPING[class_name])
         patient_ids.append(patient_id)
 
-    # Convert to numpy
     imgs_np = np.array(images,      dtype=np.int16)
     lbls_np = np.array(labels,      dtype=np.int64)
     pids_np = np.array(patient_ids, dtype=np.int64)
 
-    # ── Summary ──────────────────────────────────────────────────────────────
     print(f"\nTotal loaded : {len(imgs_np)}  |  Skipped: {skipped}")
     print("\n--- Permanent train patches (patient_id == -1) ---")
     perm_mask = pids_np == -1
@@ -130,7 +100,6 @@ def prepare_lopo_dataset(data_dir, output_dir):
     for name, idx in CLASS_MAPPING.items():
         print(f"  {name}: {int((lopo_lbls == idx).sum())}")
 
-    # ── Save ─────────────────────────────────────────────────────────────────
     os.makedirs(output_dir, exist_ok=True)
     np.save(os.path.join(output_dir, 'all_images.npy'),      imgs_np)
     np.save(os.path.join(output_dir, 'all_labels.npy'),      lbls_np)

@@ -1,17 +1,6 @@
 """
-visualize_real_vs_synthetic.py
---------------------------------
 Generates one PNG per class: a grid of real patches on top, synthetic
 patches (from the corresponding DDPM) below, for direct visual comparison.
-
-Purpose: answer "do the generated samples look visually reasonable" with
-actual evidence, not just a claim -- useful for supervisor communication
-and as a thesis figure.
-
-Usage:
-  python visualize_real_vs_synthetic.py
-Output:
-  comparison_healthy.png, comparison_emphysema.png, ... in OUTPUT_DIR
 """
 
 import os
@@ -20,9 +9,6 @@ PROJECT_ROOT = os.environ["PROJECT_ROOT"]
 import numpy as np
 import matplotlib.pyplot as plt
 
-# ============================================================
-# CONFIG -- edit if your paths differ
-# ============================================================
 REAL_IMGS_PATH = os.path.join(PROJECT_ROOT, "patches/ILD_DB_npy/all_images.npy")
 REAL_LBLS_PATH = os.path.join(PROJECT_ROOT, "patches/ILD_DB_npy/all_labels.npy")
 
@@ -35,8 +21,6 @@ N_SAMPLES_PER_ROW = 10   # how many example patches to show per row
 SEED = 0
 
 OUTPUT_DIR = os.path.join(PROJECT_ROOT, "diffusion_model/outputs/real_vs_synth_grids")
-
-# ============================================================
 
 def main():
     os.makedirs(OUTPUT_DIR, exist_ok=True)

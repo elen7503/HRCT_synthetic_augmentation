@@ -1,21 +1,8 @@
 """
-build_confusion_matrix_from_checkpoints.py
---------------------------------------------
+
 Reconstructs a pooled confusion matrix across all LOPO folds using the
 best-checkpoint .pth files your classification_lopo.py run already saved,
 WITHOUT retraining anything.
-
-For each fold checkpoint:
-  1. Parse patient_id from the filename.
-  2. Rebuild that fold's test_loader (via the same get_lopo_loaders you
-     already use).
-  3. Load the saved best state_dict into a fresh Classifier.
-  4. Run one evaluation pass, collect y_true/y_pred.
-
-At the end: pools everything into one confusion matrix + per-class
-present-fold counts (how many folds actually contained each class in
-their test set), which is the piece of information your current
-lopo_summary.txt does not give you.
 """
 
 import os
@@ -33,24 +20,16 @@ sys.path.append("/rds/general/user/eh1121/home/Final_Project/classifier_lib/Lung
 from models import Classifier
 from data_helpers import get_lopo_loaders
 
-# ============================================================
-# CONFIG -- edit these two paths
-# ============================================================
-
 ALL_IMGS_PATH = "/rds/general/user/eh1121/home/Final_Project/patches/ILD_DB_npy/all_images.npy"
 ALL_LBLS_PATH = "/rds/general/user/eh1121/home/Final_Project/patches/ILD_DB_npy/all_labels.npy"
 ALL_PIDS_PATH = "/rds/general/user/eh1121/home/Final_Project/patches/ILD_DB_npy/all_patient_ids.npy"
 
-# Point this at the experiment directory your LOPO run created, e.g.
-# "experiments/lopo_classification_20260706_143000"
 EXPERIMENT_DIR = "/rds/general/user/eh1121/home/Final_Project/patches/experiments/lopo_classification_20260629_192500/"
 
 NUM_CLASSES = 5
 BATCH_SIZE = 16
 CLASS_NAMES = ["Healthy", "Emphysema", "Ground Glass", "Fibrosis", "Micronodules"]
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
-# ============================================================
 
 def main():
     ckpt_dir = os.path.join(EXPERIMENT_DIR, "checkpoints")
@@ -66,9 +45,7 @@ def main():
     all_pids = np.load(ALL_PIDS_PATH).astype(np.int64)
 
     all_y_true, all_y_pred = [], []
-    # how many folds actually had each class present in the test set at all
     class_present_fold_count = np.zeros(NUM_CLASSES, dtype=int)
-    # per-class F1 computed ONLY over folds where that class was present
     per_class_f1_when_present = {c: [] for c in range(NUM_CLASSES)}
 
     pattern = re.compile(r"fold_(\d+)_pid_(-?\d+)_best\.pth")

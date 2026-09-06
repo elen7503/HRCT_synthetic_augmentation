@@ -1,10 +1,5 @@
 """
-sample.py
----------
 Generates synthetic patches from a trained DDPM checkpoint.
-
-Usage:
-  python sample.py --class_idx 3 --n_samples 500 --weightfile outputs/fibrosis/best.pt
 """
 
 import os
@@ -20,8 +15,8 @@ from dataset import CLASS_NAMES, HU_MIN, HU_MAX
 
 def denormalise(x):
     """Convert [-1, 1] back to HU values."""
-    x = (x + 1.0) / 2.0                        # [0, 1]
-    x = x * (HU_MAX - HU_MIN) + HU_MIN         # HU range
+    x = (x + 1.0) / 2.0 
+    x = x * (HU_MAX - HU_MIN) + HU_MIN 
     return x
 
 
@@ -32,7 +27,6 @@ def sample(class_idx, weightfile, output_dir, n_samples, batch_size, timesteps):
     print(f"Sampling class: {CLASS_NAMES[class_idx]} (idx={class_idx})")
     print(f"Checkpoint: {weightfile}")
 
-    # ── Load model ────────────────────────────────────────────────────────────
     unet = UNet(channels=64, time_dim=256).to(device)
     ddpm = DDPM(unet, timesteps=timesteps).to(device)
 
@@ -41,23 +35,21 @@ def sample(class_idx, weightfile, output_dir, n_samples, batch_size, timesteps):
     ddpm.eval()
     print(f"Loaded checkpoint from epoch {ckpt['epoch']} (loss={ckpt['loss']:.4f})")
 
-    # ── Generate ──────────────────────────────────────────────────────────────
     all_samples = []
     generated = 0
 
     while generated < n_samples:
         n = min(batch_size, n_samples - generated)
-        samples = ddpm.sample(n, device, img_size=32)        # (n, 1, 32, 32)
-        samples = samples.squeeze(1).cpu().numpy()            # (n, 32, 32)
+        samples = ddpm.sample(n, device, img_size=32)
+        samples = samples.squeeze(1).cpu().numpy()
         samples = denormalise(samples).astype(np.int16)
         all_samples.append(samples)
         generated += n
         print(f"  Generated {generated}/{n_samples}")
 
-    all_samples = np.concatenate(all_samples, axis=0)        # (n_samples, 32, 32)
+    all_samples = np.concatenate(all_samples, axis=0)
     all_labels  = np.full(n_samples, class_idx, dtype=np.int64)
 
-    # ── Save ──────────────────────────────────────────────────────────────────
     class_name = CLASS_NAMES[class_idx]
     os.makedirs(output_dir, exist_ok=True)
     out_images = os.path.join(output_dir, f"synthetic_{class_name}_images.npy")

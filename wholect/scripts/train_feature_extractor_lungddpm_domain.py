@@ -1,14 +1,6 @@
 """
-train_feature_extractor_lungddpm_domain.py
-------------------------------------------------
 Trains the feature extractor on Liwei's own training images
 (train_manifest.json), not our independently-built ILD_DB_wholect_npy.
-This closes the domain-consistency loop: extractor training data, real
-evaluation data, and synthetic evaluation data all come from the exact
-same preprocessing pipeline.
-
-Usage:
-  python train_feature_extractor_lungddpm_domain.py
 """
 
 import os

@@ -1,22 +1,8 @@
 """
-build_wholect_dataset.py
-----------------------------
 Builds a whole-slice-level classification dataset from ILD_DB_volumeROIs:
 for every CT slice that has at least one of your 5 target classes
 annotated, assigns that slice a single dominant-class label (by pixel
 count) and saves it alongside the matching CT slice image.
-
-CT intensities are converted to true HU via apply_modality_lut (reads
-RescaleSlope/RescaleIntercept per-file) -- raw pixel_array values are
-NOT Hounsfield Units on their own.
-
-Output (mirrors your patch dataset's structure):
-  all_images.npy      -- (N, 512, 512) int16, true HU CT slices
-  all_labels.npy      -- (N,) int64, dominant target class (0-4)
-  all_patient_ids.npy -- (N,) int64, patient ID for LOPO grouping
-
-Usage:
-  python build_wholect_dataset.py
 """
 
 import os

@@ -1,13 +1,7 @@
 """
-build_augmented_v5.py
-------------------------
 Same structure as build_augmented_v3.py / v3_5k, but sources synthetic
 patches from the QUALITY-FILTERED set (filter_by_quality_v5.py output)
-instead of raw unfiltered sampling. Dose is fixed at 5000/class, matching
-v3_5k, so this comparison isolates the effect of quality filtering alone.
-
-Usage:
-  python build_augmented_v5.py
+instead of raw unfiltered sampling.
 """
 
 import os

@@ -1,21 +1,5 @@
 """
-filter_by_quality_v5.py  (with diversity-aware selection)
---------------------------------------------------------------
-Filters synthetic patches per class using TWO criteria, not just one:
-
-1. CONFIDENCE: classifier's softmax probability for the correct class
-   -- proxy for "does this patch look realistically like this class".
-
-2. DIVERSITY: greedy selection that skips candidates too similar (in
-   classifier feature space) to patches already selected -- proxy for
-   "is this patch adding new information, or just a near-duplicate of
-   something we already kept". Pure confidence-based filtering risks
-   selecting the generator's "safest", most average-looking samples,
-   which could reduce diversity rather than improve it.
-
-Usage:
-  Edit CLASSIFIER_CHECKPOINT below, then:
-  python filter_by_quality_v5.py
+Filters synthetic patches per class using two criteria
 """
 
 import os
@@ -30,7 +14,6 @@ from scipy.spatial.distance import pdist, cdist
 sys.path.append(os.path.join(PROJECT_ROOT, "classifier_lib/Lung_Classification"))
 from models import Classifier
 
-# ============================================================
 CLASS_NAMES = ["healthy", "emphysema", "ground_glass", "fibrosis", "micronodules"]
 
 POOL_DIR = os.path.join(PROJECT_ROOT, "diffusion_model/outputs/synthetic_v5_pool")
@@ -44,7 +27,6 @@ MIN_DIST_PERCENTILE = 10
 RANDOM_SEED = 0
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 rng = np.random.default_rng(RANDOM_SEED)
-# ============================================================
 
 _activation = {}
 

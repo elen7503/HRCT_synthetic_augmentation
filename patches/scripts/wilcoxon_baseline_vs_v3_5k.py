@@ -1,24 +1,8 @@
 """
-wilcoxon_baseline_vs_v3_5k.py
-
 One-sided Wilcoxon signed-rank test (alternative='greater') comparing
 per-fold macro F1 between the baseline (no synthetic augmentation) and
 the fixed-dose v3_5k (5000 synthetic patches/class) LOPO conditions,
-patch-level classification pipeline (Branch A).
-
-Pairing: fold i of condition X is the same held-out patient as fold i
-of condition Y, for a given seed (LOPO folds are generated in a fixed,
-deterministic patient order, verified below before pairing).
-
-Data source: per-fold "Macro-F1 (5 fixed classes)" lines in the LOPO
-training logs (see PROJECT_STATUS.md, Branch A key file locations).
-The v3_5k logs used here are the CORRECTED/"FIXED" reruns (10 Aug 2026)
-that include synthetic patches with patient_id=-2 in the training mask
-(see commit 887c23c) -- these supersede the earlier v3_5k run referenced
-as "not in experiments/" in PROJECT_STATUS.md.
-
-Usage:
-  python wilcoxon_baseline_vs_v3_5k.py
+patch-level classification pipeline.
 """
 
 import re
@@ -34,7 +18,6 @@ from scipy.stats import wilcoxon
 REPO_ROOT = Path(PROJECT_ROOT)
 PATCHES = REPO_ROOT / "patches"
 
-# (seed, baseline_log, augmented_v3_5k_log)
 CONDITIONS = [
     (0, PATCHES / "logs" / "lopo_baseline.out",
         PATCHES / "experiments" / "lopo_augmented_v3_5k_seed0_20260810_082317" / "train.log"),
@@ -117,13 +100,9 @@ def main():
     print(f"  Wilcoxon W = {stat_pooled:.4f}   p-value = {p_pooled:.6g}")
     print("=" * 70)
 
-    # Average F1 per fold across the 3 seeds first (noise reduction), then a
-    # single Wilcoxon test over the resulting 85 fold-averaged pairs. Folds
-    # are in the same patient_id order across seeds (verified above via the
-    # per-seed alignment check), so averaging along axis=0 is safe.
-    baseline_stack = np.stack(all_baseline, axis=0)   # (3 seeds, 85 folds)
+    baseline_stack = np.stack(all_baseline, axis=0)
     augmented_stack = np.stack(all_augmented, axis=0)
-    baseline_avg = baseline_stack.mean(axis=0)        # (85,)
+    baseline_avg = baseline_stack.mean(axis=0)
     augmented_avg = augmented_stack.mean(axis=0)
     stat_avg, p_avg = wilcoxon(augmented_avg, baseline_avg, alternative="greater")
 

@@ -2,9 +2,8 @@ import torch.nn as nn
 
 class Classifier(nn.Module):
     """
-    CNN Classifier for 32x32 CT patches.
-    
-    Architecture:
+    CNN Classifier for 32x32 CT patches:
+
         Input: (batch, 1, 32, 32)
         Conv1 → BN → ReLU → MaxPool → (batch, 32,  16, 16)
         Conv2 → BN → ReLU → MaxPool → (batch, 64,   8,  8)
@@ -18,22 +17,21 @@ class Classifier(nn.Module):
             nn.Conv2d(1, 32, kernel_size=3, padding=1),
             nn.BatchNorm2d(32),
             nn.ReLU(inplace=True),
-            nn.MaxPool2d(kernel_size=2, stride=2)   # 32 -> 16
+            nn.MaxPool2d(kernel_size=2, stride=2)
         )
         self.block2 = nn.Sequential(
             nn.Conv2d(32, 64, kernel_size=3, padding=1),
             nn.BatchNorm2d(64),
             nn.ReLU(inplace=True),
-            nn.MaxPool2d(kernel_size=2, stride=2)   # 16 -> 8
+            nn.MaxPool2d(kernel_size=2, stride=2)
         )
         self.block3 = nn.Sequential(
             nn.Conv2d(64, 128, kernel_size=3, padding=1),
             nn.BatchNorm2d(128),
             nn.ReLU(inplace=True),
-            nn.MaxPool2d(kernel_size=2, stride=2)   # 8 -> 4
+            nn.MaxPool2d(kernel_size=2, stride=2)
         )
 
-        # After 3 MaxPool: 32 → 16 → 8 → 4   =>  128 * 4 * 4 = 2048
         self.fc1  = nn.Linear(128 * 4 * 4, 512)
         self.drop = nn.Dropout(p=0.5)
         self.fc2  = nn.Linear(512, num_classes)
@@ -42,14 +40,11 @@ class Classifier(nn.Module):
         x = self.block1(x)
         x = self.block2(x)
         x = self.block3(x)
-        x = x.view(x.size(0), -1)   # safe flatten: (batch, 128*4*4)
+        x = x.view(x.size(0), -1)
         x = self.drop(self.fc1(x))
         x = self.fc2(x)
         return x
 
-
-# AutoEncoder Model For Feature Extraction (**CODE UNDER DEVELOPMENT*)
-# Todo: Add a Variational Autoencoder implementation
 
 class Autoencoder(nn.Module):
     def __init__(self):

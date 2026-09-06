@@ -1,20 +1,6 @@
 """
-build_wholect_augmented.py
-------------------------------
 Builds two datasets for a fair baseline-vs-augmented comparison, both
-using the SAME lung-window uint8 preprocessing:
-
-  1. ILD_DB_wholect_uint8/          -- real only, lung-windowed
-  2. ILD_DB_wholect_augmented/      -- real + Lung-DDPM synthetic
-
-LEAKAGE SAFEGUARD: each synthetic sample is tagged with its SOURCE
-patient's real ID (from generation_report.json's "source_patient"),
-not a generic synthetic marker. This means the existing LOPO exclusion
-logic (train_mask = all_pids != test_patient_id) automatically drops
-any synthetic sample derived from the held-out test patient.
-
-Usage:
-  python build_wholect_augmented.py
+using the SAME lung-window uint8 preprocessing
 """
 
 import os

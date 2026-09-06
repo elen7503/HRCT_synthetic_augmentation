@@ -1,14 +1,6 @@
 """
-build_wholect_fixed_split.py
---------------------------------
 Creates a fixed, stratified 80/20 patient-level train/test split for the
 mean/max-pooling patient-level classification experiment.
-
-Also cross-checks the test patients against Liwei's train_manifest.json
-(the patients his V3 DDPM checkpoint was trained on).
-
-Usage:
-  python build_wholect_fixed_split.py --seed 0
 """
 
 import os

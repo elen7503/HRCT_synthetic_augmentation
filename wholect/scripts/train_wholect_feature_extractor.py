@@ -1,14 +1,6 @@
 """
-train_wholect_feature_extractor.py
---------------------------------------
 Trains ONE WholeCTClassifier on ALL real whole-CT data (no LOPO held-out
-split -- this isn't for reporting classification performance, it's
-purely to get a trained feature extractor for quality metrics, same
-role your patch-classifier checkpoints played for FID/precision-recall
-on the patch DDPMs).
-
-Usage:
-  python train_wholect_feature_extractor.py
+split.
 """
 
 import os
@@ -29,10 +21,6 @@ LR = 1e-3
 
 
 def apply_lung_window(hu_image, center=-600, width=1600):
-    """Same transform used in evaluate_wholect_synthetic_quality.py, so the
-    feature extractor is trained on the SAME intensity scale it will see
-    during quality evaluation. Also avoids the -3024 padding outlier
-    wrecking a plain global min-max (as it did before this fix)."""
     lo = center - width / 2
     hi = center + width / 2
     clipped = np.clip(hu_image, lo, hi).astype(np.float32)

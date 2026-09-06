@@ -1,13 +1,6 @@
 """
-classification_wholect_patientagg_lopo.py
------------------------------------------------
 Same LOPO training as classification_wholect_uint8_lopo.py, but
-evaluation aggregates predictions to PATIENT level: majority vote
-across all of a held-out patient's test slices -> one prediction per
-patient, compared against that patient's majority-vote true label.
-
-Usage:
-  python classification_wholect_patientagg_lopo.py --data-dir /path --seed 0
+evaluation aggregates predictions to PATIENT level:.
 """
 
 import os

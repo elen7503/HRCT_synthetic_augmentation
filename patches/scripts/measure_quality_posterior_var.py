@@ -1,18 +1,8 @@
 """
-measure_quality_posterior_var.py
------------------------------------
 Computes FID (classifier feature space) and precision/recall comparing
 real patches vs. the NEW posterior-variance-corrected synthetic samples,
 per class. Separate from the original measure_ddpm_quality.py, which
-compares against the OLD (noisy) synthetic dataset -- this one targets
-the freshly generated test samples specifically.
-
-Usage:
-  1. Edit CLASSIFIER_CHECKPOINT below to point at any one of your saved
-     LOPO fold checkpoints (e.g. experiments/lopo_classification_.../
-     checkpoints/fold_001_pid_X_final.pth) -- any fold's classifier
-     works fine as a feature extractor.
-  2. python measure_quality_posterior_var.py
+compares against the OLD (noisy) synthetic dataset
 """
 
 import os
@@ -32,7 +22,6 @@ import torch
 sys.path.append(os.path.join(PROJECT_ROOT, "classifier_lib/Lung_Classification"))
 from models import Classifier
 
-# ============================================================
 CLASS_NAMES = ["healthy", "emphysema", "ground_glass", "fibrosis", "micronodules"]
 
 REAL_IMGS_PATH = os.path.join(PROJECT_ROOT, "ILD_DB_npy/all_images.npy")
@@ -40,20 +29,16 @@ REAL_LBLS_PATH = os.path.join(PROJECT_ROOT, "ILD_DB_npy/all_labels.npy")
 
 SYNTH_DIR = os.path.join(PROJECT_ROOT, "diffusion_model/outputs/synthetic_test_posterior_var")
 
-# EDIT: point at any one saved fold checkpoint from your LOPO runs
 CLASSIFIER_CHECKPOINT = os.path.join(PROJECT_ROOT, "patches/experiments/lopo_classification_20260708_101444/checkpoints/fold_001_pid_1_final.pth")
-CLASSIFIER_FEATURE_LAYER = "fc1"  # EDIT if your Classifier's penultimate layer has a different name
+CLASSIFIER_FEATURE_LAYER = "fc1"
 
-# HU range used for rescaling -- must match what the classifier was trained on
-PATCH_VALUE_RANGE = None  # set to (min, max) if patches aren't already comparable; None = use raw values, z-scored per-batch below
-
+PATCH_VALUE_RANGE = None
 KNN_K = 5
 N_BOOTSTRAP = 30
 RANDOM_SEED = 0
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 rng = np.random.default_rng(RANDOM_SEED)
 OUT_CSV = "quality_posterior_var_results.csv"
-# ============================================================
 
 _activation = {}
 
@@ -160,8 +145,6 @@ def main():
         real_patches = real_images[real_labels == class_idx]
         synth_patches = np.load(synth_path).astype(np.float32)
 
-        # simple per-array z-score normalization so both sets are on comparable scale
-        # going into the classifier (adjust if your classifier expects a specific range)
         real_norm, synth_norm = classifier_normalize(real_patches, synth_patches)
 
         feat_real = extract_features(real_norm, model, CLASSIFIER_FEATURE_LAYER)
@@ -189,10 +172,6 @@ def main():
     df.to_csv(OUT_CSV, index=False)
     print(f"\nSaved to {OUT_CSV}")
     print(df.to_string(index=False))
-    print("\nInterpretation:")
-    print("  High precision + low recall -> samples look plausible but lack diversity (mode collapse / blur).")
-    print("  Low precision + low recall  -> samples are neither realistic nor diverse (generator failing broadly).")
-    print("  Both reasonably high        -> generator is working well for this class.")
 
 
 if __name__ == "__main__":

@@ -18,7 +18,7 @@ CLASS_NAMES = {
     4: 'micronodules',
 }
 
-# HU clip range — covers relevant lung tissue values
+
 HU_MIN = -1000
 HU_MAX =  500
 
@@ -26,8 +26,8 @@ HU_MAX =  500
 def normalise(x):
     """Clip HU values and normalise to [-1, 1]."""
     x = np.clip(x, HU_MIN, HU_MAX).astype(np.float32)
-    x = (x - HU_MIN) / (HU_MAX - HU_MIN)  # [0, 1]
-    x = x * 2.0 - 1.0                       # [-1, 1]
+    x = (x - HU_MIN) / (HU_MAX - HU_MIN)
+    x = x * 2.0 - 1.0
     return x
 
 
@@ -52,8 +52,8 @@ class PatchDataset(Dataset):
         return len(self.patches)
 
     def __getitem__(self, idx):
-        x = self.patches[idx]                        # (32, 32)
-        x = torch.tensor(x).unsqueeze(0)            # (1, 32, 32)
+        x = self.patches[idx]
+        x = torch.tensor(x).unsqueeze(0)
         return x
 
 

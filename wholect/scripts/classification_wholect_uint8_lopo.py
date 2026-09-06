@@ -1,13 +1,8 @@
 """
-classification_wholect_uint8_lopo.py
-----------------------------------------
 Same LOPO classification protocol as classification_wholect_lopo.py, but
 for uint8 lung-window images (0-255) instead of raw HU -- used for both
 the real-only and real+synthetic augmented whole-CT comparisons, so both
 runs use IDENTICAL preprocessing and only differ in what's in DATA_DIR.
-
-Usage:
-  python classification_wholect_uint8_lopo.py --data-dir /path/to/dataset --seed 0
 """
 
 import os
