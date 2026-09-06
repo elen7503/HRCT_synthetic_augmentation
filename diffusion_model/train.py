@@ -16,6 +16,8 @@ from torch.optim.lr_scheduler import CosineAnnealingLR
 from ddpm import UNet, DDPM
 from dataset import get_dataloader, CLASS_NAMES
 
+PROJECT_ROOT = os.environ["PROJECT_ROOT"]
+
 
 def train(class_idx, npy_dir, output_dir, epochs, batch_size, lr, timesteps, save_every):
 
@@ -95,8 +97,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--class_idx',  type=int,   default=3,
                         help='Class index to train (0=healthy,1=emphysema,2=ground_glass,3=fibrosis,4=micronodules)')
-    parser.add_argument('--npy_dir',    type=str,   default='/rds/general/user/eh1121/home/Final_Project/ILD_DB_npy')
-    parser.add_argument('--output_dir', type=str,   default='/rds/general/user/eh1121/home/Final_Project/diffusion_model/outputs')
+    parser.add_argument('--npy_dir',    type=str,   default=os.path.join(PROJECT_ROOT, "ILD_DB_npy"))
+    parser.add_argument('--output_dir', type=str,   default=os.path.join(PROJECT_ROOT, "diffusion_model/outputs"))
     parser.add_argument('--epochs',     type=int,   default=500)
     parser.add_argument('--batch_size', type=int,   default=64)
     parser.add_argument('--lr',         type=float, default=2e-4)

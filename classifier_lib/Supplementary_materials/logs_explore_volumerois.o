@@ -1,0 +1,633 @@
+=== Diagnostic run: mode=full ===
+
+=== A. Existing patient IDs in ILD_DB_npy/all_patient_ids.npy ===
+dtype: int64
+n_unique_patient_ids (includes any sentinel values): 86
+min=-1, max=136
+first 15: [-1, 1, 8, 11, 14, 16, 18, 19, 21, 24, 25, 26, 27, 28, 30]
+last 15: [117, 118, 119, 120, 121, 122, 123, 124, 125, 128, 129, 130, 134, 135, 136]
+negative (sentinel) IDs present: 1 (expected: -1=real holdout, -2=synthetic per prior convention)
+
+=== B. Patient folders in ILD_DB_volumeROIs ===
+n_patient_folders: 103
+first 15 folder names: ['101', '105', '107', '108', '109', '112', '116', '118', '119', '12', '120', '121', '122', '123', '124']
+last 15 folder names: ['74', '76', '77', '78', '8', '80', '81', '82', '83', '84', '89', '90', '92', '94', 'HRCT_pilot']
+
+=== B2. Naive overlap attempt (folder name as int vs existing IDs) ===
+folder names parseable as int: 102
+  -> naive-matched to existing IDs: 39
+  -> naive-unmatched (candidate 'new' patients): 63
+folder names NOT parseable as plain int: 1 (sample: ['HRCT_pilot'])
+NOTE: if 'unparseable' is large or 'matched' is 0, the ID schemes likely differ and need a real mapping — do not proceed to extraction until this is resolved.
+
+=== F. Existing all_images.npy intensity stats (for comparison) ===
+shape: (18793, 32, 32), dtype: int16
+sample stats (first 500 patches): {'min': -1024.0, 'max': 1836.0, 'mean': -837.9631328125, 'std': 262.74035018887554}
+
+=== G. ILD_DB_talismanTestSuite raw structure (independent ID cross-check) ===
+n_top_level_entries: 18793
+sample entries: ['emphysema_patch1000_patient-1_7.tif', 'emphysema_patch1001_patient-1_7.tif', 'emphysema_patch1002_patient-1_7.tif', 'emphysema_patch1003_patient-1_7.tif', 'emphysema_patch1004_patient-1_7.tif', 'emphysema_patch1005_patient-1_7.tif', 'emphysema_patch1006_patient-1_7.tif', 'emphysema_patch1007_patient-1_7.tif', 'emphysema_patch1008_patient-1_7.tif', 'emphysema_patch1009_patient-1_7.tif', 'emphysema_patch100_patient50.tif', 'emphysema_patch1010_patient-1_7.tif', 'emphysema_patch1011_patient-1_7.tif', 'emphysema_patch1012_patient-1_7.tif', 'emphysema_patch1013_patient-1_7.tif', 'emphysema_patch1014_patient-1_7.tif', 'emphysema_patch1015_patient-1_7.tif', 'emphysema_patch1016_patient-1_7.tif', 'emphysema_patch1017_patient-1_7.tif', 'emphysema_patch1018_patient-1_7.tif']
+n_subdirectories: 0  n_files_at_top_level: 18793
+Looks like flat file listing. Sample filenames: ['emphysema_patch1000_patient-1_7.tif', 'emphysema_patch1001_patient-1_7.tif', 'emphysema_patch1002_patient-1_7.tif', 'emphysema_patch1003_patient-1_7.tif', 'emphysema_patch1004_patient-1_7.tif', 'emphysema_patch1005_patient-1_7.tif', 'emphysema_patch1006_patient-1_7.tif', 'emphysema_patch1007_patient-1_7.tif', 'emphysema_patch1008_patient-1_7.tif', 'emphysema_patch1009_patient-1_7.tif', 'emphysema_patch100_patient50.tif', 'emphysema_patch1010_patient-1_7.tif', 'emphysema_patch1011_patient-1_7.tif', 'emphysema_patch1012_patient-1_7.tif', 'emphysema_patch1013_patient-1_7.tif']
+If patient IDs are embedded in filenames, note the exact pattern here so we can regex-extract and cross-check against volumeROIs folder names.
+
+=== H. Cross-check: patient IDs parsed directly from Talisman filenames ===
+n_files: 18793, n_filenames_without_parseable_patient_id: 0
+n_unique_patient_ids_parsed_from_filenames: 86
+sample: [-1, 1, 8, 11, 14, 16, 18, 19, 21, 24, 25, 26, 27, 28, 30] ... [117, 118, 119, 120, 121, 122, 123, 124, 125, 128, 129, 130, 134, 135, 136]
+IDs in all_patient_ids.npy but NOT found in Talisman filenames: 0 (sample: [])
+IDs found in Talisman filenames but NOT in all_patient_ids.npy: 0 (sample: [])
+
+*** CRITICAL CHECK ***
+volumeROIs folder-IDs also appearing in Talisman FILENAMES directly: 39
+volumeROIs folder-IDs also appearing in all_patient_ids.npy: 39
+These two counts should match (or be very close) if the ID scheme is consistent end-to-end. If they differ a lot, DO NOT trust the 'new candidate patient' list until we understand why.
+
+=== FULL MODE: scanning all 102 patient folders ===
+[0/102] scanning 101 ...
+
+--- Patient folder: 101 ---
+  n_ct_files: 24  sample: ['CT-0002-0001.dcm', 'CT-0002-0002.dcm', 'CT-0002-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 24  sample: ['roi_mask_2_1.dcm', 'roi_mask_2_10.dcm', 'roi_mask_2_11.dcm']
+  DICOM PatientID tag (from CT-0002-0001.dcm): 'Anonymous-ID' (folder name: '101')
+
+--- Patient folder: 112 ---
+  n_ct_files: 25  sample: ['CT-0916-0001.dcm', 'CT-0916-0002.dcm', 'CT-0916-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 25  sample: ['roi_mask_916_1.dcm', 'roi_mask_916_10.dcm', 'roi_mask_916_11.dcm']
+  DICOM PatientID tag (from CT-0916-0001.dcm): 'Anonymous-ID' (folder name: '112')
+
+--- Patient folder: 116 ---
+  n_ct_files: 24  sample: ['CT-2148-0001.dcm', 'CT-2148-0002.dcm', 'CT-2148-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 24  sample: ['roi_mask_2148_1.dcm', 'roi_mask_2148_10.dcm', 'roi_mask_2148_11.dcm']
+  DICOM PatientID tag (from CT-2148-0001.dcm): 'Anonymous-ID' (folder name: '116')
+
+--- Patient folder: 12 ---
+  n_ct_files: 27  sample: ['CT-0921-0001.dcm', 'CT-0921-0002.dcm', 'CT-0921-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 27  sample: ['roi_mask_921_1.dcm', 'roi_mask_921_10.dcm', 'roi_mask_921_11.dcm']
+  DICOM PatientID tag (from CT-0921-0001.dcm): 'Anonymous-ID' (folder name: '12')
+
+--- Patient folder: 126 ---
+  n_ct_files: 25  sample: ['CT-8852-0001.dcm', 'CT-8852-0002.dcm', 'CT-8852-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 25  sample: ['roi_mask_8852_1.dcm', 'roi_mask_8852_10.dcm', 'roi_mask_8852_11.dcm']
+  DICOM PatientID tag (from CT-8852-0001.dcm): 'Anonymous-ID' (folder name: '126')
+
+--- Patient folder: 127 ---
+  n_ct_files: 26  sample: ['CT-0002-0001.dcm', 'CT-0002-0002.dcm', 'CT-0002-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 26  sample: ['roi_mask_2_1.dcm', 'roi_mask_2_10.dcm', 'roi_mask_2_11.dcm']
+  DICOM PatientID tag (from CT-0002-0001.dcm): 'Anonymous-ID' (folder name: '127')
+
+--- Patient folder: 131 ---
+  n_ct_files: 24  sample: ['CT-0002-0001.dcm', 'CT-0002-0002.dcm', 'CT-0002-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 24  sample: ['roi_mask_2_1.dcm', 'roi_mask_2_10.dcm', 'roi_mask_2_11.dcm']
+  DICOM PatientID tag (from CT-0002-0001.dcm): 'Anonymous-ID' (folder name: '131')
+
+--- Patient folder: 132 ---
+  n_ct_files: 24  sample: ['CT-6097-0001.dcm', 'CT-6097-0002.dcm', 'CT-6097-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 24  sample: ['roi_mask_6097_1.dcm', 'roi_mask_6097_10.dcm', 'roi_mask_6097_11.dcm']
+  DICOM PatientID tag (from CT-6097-0001.dcm): 'Anonymous-ID' (folder name: '132')
+
+--- Patient folder: 137 ---
+  n_ct_files: 28  sample: ['CT-0724-0001.dcm', 'CT-0724-0002.dcm', 'CT-0724-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 28  sample: ['roi_mask_724_1.dcm', 'roi_mask_724_10.dcm', 'roi_mask_724_11.dcm']
+  DICOM PatientID tag (from CT-0724-0001.dcm): 'Anonymous-ID' (folder name: '137')
+
+--- Patient folder: 138 ---
+  n_ct_files: 29  sample: ['CT-2170-0001.dcm', 'CT-2170-0002.dcm', 'CT-2170-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 29  sample: ['roi_mask_2170_1.dcm', 'roi_mask_2170_10.dcm', 'roi_mask_2170_11.dcm']
+  DICOM PatientID tag (from CT-2170-0001.dcm): 'Anonymous-ID' (folder name: '138')
+[10/102] scanning 140 ...
+
+--- Patient folder: 140 ---
+  n_ct_files: 27  sample: ['CT-0003-0001.dcm', 'CT-0003-0002.dcm', 'CT-0003-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 27  sample: ['roi_mask_3_1.dcm', 'roi_mask_3_10.dcm', 'roi_mask_3_11.dcm']
+  DICOM PatientID tag (from CT-0003-0001.dcm): 'Anonymous-ID' (folder name: '140')
+
+--- Patient folder: 142 ---
+  n_ct_files: 0  sample: []
+  roi_mask/ exists: False  n_roi_files: 0  sample: []
+
+--- Patient folder: 143 ---
+  n_ct_files: 21  sample: ['CT-3402-0001.dcm', 'CT-3402-0002.dcm', 'CT-3402-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 21  sample: ['roi_mask_3402_1.dcm', 'roi_mask_3402_10.dcm', 'roi_mask_3402_11.dcm']
+  DICOM PatientID tag (from CT-3402-0001.dcm): 'Anonymous-ID' (folder name: '143')
+
+--- Patient folder: 144 ---
+  n_ct_files: 25  sample: ['CT-4000-0001.dcm', 'CT-4000-0002.dcm', 'CT-4000-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 25  sample: ['roi_mask_4000_1.dcm', 'roi_mask_4000_10.dcm', 'roi_mask_4000_11.dcm']
+  DICOM PatientID tag (from CT-4000-0001.dcm): 'Anonymous-ID' (folder name: '144')
+
+--- Patient folder: 147 ---
+  n_ct_files: 26  sample: ['CT-2809-0001.dcm', 'CT-2809-0002.dcm', 'CT-2809-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 26  sample: ['roi_mask_2809_1.dcm', 'roi_mask_2809_10.dcm', 'roi_mask_2809_11.dcm']
+  DICOM PatientID tag (from CT-2809-0001.dcm): 'Anonymous-ID' (folder name: '147')
+
+--- Patient folder: 149 ---
+  n_ct_files: 24  sample: ['CT-9197-0001.dcm', 'CT-9197-0002.dcm', 'CT-9197-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 24  sample: ['roi_mask_9197_1.dcm', 'roi_mask_9197_10.dcm', 'roi_mask_9197_11.dcm']
+  DICOM PatientID tag (from CT-9197-0001.dcm): 'Anonymous-ID' (folder name: '149')
+
+--- Patient folder: 150 ---
+  n_ct_files: 22  sample: ['CT-8157-0001.dcm', 'CT-8157-0002.dcm', 'CT-8157-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 22  sample: ['roi_mask_8157_1.dcm', 'roi_mask_8157_10.dcm', 'roi_mask_8157_11.dcm']
+  DICOM PatientID tag (from CT-8157-0001.dcm): 'Anonymous-ID' (folder name: '150')
+
+--- Patient folder: 152 ---
+  n_ct_files: 26  sample: ['CT-1845-0001.dcm', 'CT-1845-0002.dcm', 'CT-1845-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 26  sample: ['roi_mask_1845_1.dcm', 'roi_mask_1845_10.dcm', 'roi_mask_1845_11.dcm']
+  DICOM PatientID tag (from CT-1845-0001.dcm): 'Anonymous-ID' (folder name: '152')
+
+--- Patient folder: 153 ---
+  n_ct_files: 29  sample: ['CT-2681-0001.dcm', 'CT-2681-0002.dcm', 'CT-2681-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 29  sample: ['roi_mask_2681_1.dcm', 'roi_mask_2681_10.dcm', 'roi_mask_2681_11.dcm']
+  DICOM PatientID tag (from CT-2681-0001.dcm): 'Anonymous-ID' (folder name: '153')
+
+--- Patient folder: 154 ---
+  n_ct_files: 0  sample: []
+  roi_mask/ exists: False  n_roi_files: 0  sample: []
+[20/102] scanning 155 ...
+
+--- Patient folder: 155 ---
+  n_ct_files: 50  sample: ['CT-0002-0001.dcm', 'CT-0002-0002.dcm', 'CT-0002-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 50  sample: ['roi_mask_2_1.dcm', 'roi_mask_2_10.dcm', 'roi_mask_2_11.dcm']
+  DICOM PatientID tag (from CT-0002-0001.dcm): 'Anonymous-ID' (folder name: '155')
+
+--- Patient folder: 157 ---
+  n_ct_files: 22  sample: ['CT-4834-0001.dcm', 'CT-4834-0002.dcm', 'CT-4834-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 22  sample: ['roi_mask_4834_1.dcm', 'roi_mask_4834_10.dcm', 'roi_mask_4834_11.dcm']
+  DICOM PatientID tag (from CT-4834-0001.dcm): 'Anonymous-ID' (folder name: '157')
+
+--- Patient folder: 158 ---
+  n_ct_files: 27  sample: ['CT-0002-0001.dcm', 'CT-0002-0002.dcm', 'CT-0002-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 27  sample: ['roi_mask_2_1.dcm', 'roi_mask_2_10.dcm', 'roi_mask_2_11.dcm']
+  DICOM PatientID tag (from CT-0002-0001.dcm): 'Anonymous-ID' (folder name: '158')
+
+--- Patient folder: 159 ---
+  n_ct_files: 33  sample: ['CT-5391-0001.dcm', 'CT-5391-0002.dcm', 'CT-5391-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 33  sample: ['roi_mask_5391_1.dcm', 'roi_mask_5391_10.dcm', 'roi_mask_5391_11.dcm']
+  DICOM PatientID tag (from CT-5391-0001.dcm): 'Anonymous-ID' (folder name: '159')
+
+--- Patient folder: 160 ---
+  n_ct_files: 28  sample: ['CT-1070-0001.dcm', 'CT-1070-0002.dcm', 'CT-1070-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 28  sample: ['roi_mask_1070_1.dcm', 'roi_mask_1070_10.dcm', 'roi_mask_1070_11.dcm']
+  DICOM PatientID tag (from CT-1070-0001.dcm): 'Anonymous-ID' (folder name: '160')
+
+--- Patient folder: 162 ---
+  n_ct_files: 24  sample: ['CT-0002-0001.dcm', 'CT-0002-0002.dcm', 'CT-0002-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 24  sample: ['roi_mask_2_1.dcm', 'roi_mask_2_10.dcm', 'roi_mask_2_11.dcm']
+  DICOM PatientID tag (from CT-0002-0001.dcm): 'Anonymous-ID' (folder name: '162')
+
+--- Patient folder: 163 ---
+  n_ct_files: 27  sample: ['CT-4728-0001.dcm', 'CT-4728-0002.dcm', 'CT-4728-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 27  sample: ['roi_mask_4728_1.dcm', 'roi_mask_4728_10.dcm', 'roi_mask_4728_11.dcm']
+  DICOM PatientID tag (from CT-4728-0001.dcm): 'Anonymous-ID' (folder name: '163')
+
+--- Patient folder: 164 ---
+  n_ct_files: 24  sample: ['CT-0002-0001.dcm', 'CT-0002-0002.dcm', 'CT-0002-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 24  sample: ['roi_mask_2_1.dcm', 'roi_mask_2_10.dcm', 'roi_mask_2_11.dcm']
+  DICOM PatientID tag (from CT-0002-0001.dcm): 'Anonymous-ID' (folder name: '164')
+
+--- Patient folder: 165 ---
+  n_ct_files: 26  sample: ['CT-4341-0001.dcm', 'CT-4341-0002.dcm', 'CT-4341-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 26  sample: ['roi_mask_4341_1.dcm', 'roi_mask_4341_10.dcm', 'roi_mask_4341_11.dcm']
+  DICOM PatientID tag (from CT-4341-0001.dcm): 'Anonymous-ID' (folder name: '165')
+
+--- Patient folder: 166 ---
+  n_ct_files: 21  sample: ['CT-0002-0001.dcm', 'CT-0002-0002.dcm', 'CT-0002-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 21  sample: ['roi_mask_2_1.dcm', 'roi_mask_2_10.dcm', 'roi_mask_2_11.dcm']
+  DICOM PatientID tag (from CT-0002-0001.dcm): 'Anonymous-ID' (folder name: '166')
+[30/102] scanning 167 ...
+
+--- Patient folder: 167 ---
+  n_ct_files: 23  sample: ['CT-2968-0001.dcm', 'CT-2968-0002.dcm', 'CT-2968-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 23  sample: ['roi_mask_2968_1.dcm', 'roi_mask_2968_10.dcm', 'roi_mask_2968_11.dcm']
+  DICOM PatientID tag (from CT-2968-0001.dcm): 'Anonymous-ID' (folder name: '167')
+
+--- Patient folder: 168 ---
+  n_ct_files: 29  sample: ['CT-0002-0001.dcm', 'CT-0002-0002.dcm', 'CT-0002-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 29  sample: ['roi_mask_2_1.dcm', 'roi_mask_2_10.dcm', 'roi_mask_2_11.dcm']
+  DICOM PatientID tag (from CT-0002-0001.dcm): 'Anonymous-ID' (folder name: '168')
+
+--- Patient folder: 169 ---
+  n_ct_files: 23  sample: ['CT-0933-0001.dcm', 'CT-0933-0002.dcm', 'CT-0933-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 23  sample: ['roi_mask_933_1.dcm', 'roi_mask_933_10.dcm', 'roi_mask_933_11.dcm']
+  DICOM PatientID tag (from CT-0933-0001.dcm): 'Anonymous-ID' (folder name: '169')
+
+--- Patient folder: 17 ---
+  n_ct_files: 28  sample: ['CT-1376-0001.dcm', 'CT-1376-0002.dcm', 'CT-1376-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 28  sample: ['roi_mask_1376_1.dcm', 'roi_mask_1376_10.dcm', 'roi_mask_1376_11.dcm']
+  DICOM PatientID tag (from CT-1376-0001.dcm): 'Anonymous-ID' (folder name: '17')
+
+--- Patient folder: 171 ---
+  n_ct_files: 23  sample: ['CT.1.2.840.113704.1.111.2892.1171507405.dcm', 'CT.1.2.840.113704.1.111.2892.1171507407.dcm', 'CT.1.2.840.113704.1.111.2892.1171507409.dcm']
+  roi_mask/ exists: True  n_roi_files: 23  sample: ['roi_mask_3651_1.dcm', 'roi_mask_3651_10.dcm', 'roi_mask_3651_11.dcm']
+  DICOM PatientID tag (from CT.1.2.840.113704.1.111.2892.1171507405.dcm): 'Anonymous-ID' (folder name: '171')
+
+--- Patient folder: 172 ---
+  n_ct_files: 60  sample: ['CT.1.3.12.2.1107.5.1.4.58006.30000007020507000578100001047.dcm', 'CT.1.3.12.2.1107.5.1.4.58006.30000007020507000578100001048.dcm', 'CT.1.3.12.2.1107.5.1.4.58006.30000007020507000578100001049.dcm']
+  roi_mask/ exists: True  n_roi_files: 60  sample: ['roi_mask_2_1.dcm', 'roi_mask_2_10.dcm', 'roi_mask_2_11.dcm']
+  DICOM PatientID tag (from CT.1.3.12.2.1107.5.1.4.58006.30000007020507000578100001047.dcm): 'Anonymous-ID' (folder name: '172')
+
+--- Patient folder: 173 ---
+  n_ct_files: 22  sample: ['CT.1.2.840.113704.1.111.5768.1138011709.dcm', 'CT.1.2.840.113704.1.111.5768.1138011711.dcm', 'CT.1.2.840.113704.1.111.5768.1138011713.dcm']
+  roi_mask/ exists: True  n_roi_files: 22  sample: ['roi_mask_3915_1.dcm', 'roi_mask_3915_10.dcm', 'roi_mask_3915_11.dcm']
+  DICOM PatientID tag (from CT.1.2.840.113704.1.111.5768.1138011709.dcm): 'Anonymous-ID' (folder name: '173')
+
+--- Patient folder: 174 ---
+  n_ct_files: 30  sample: ['CT.1.2.840.113704.1.111.3056.1158834631.dcm', 'CT.1.2.840.113704.1.111.3056.1158834633.dcm', 'CT.1.2.840.113704.1.111.3056.1158834634.dcm']
+  roi_mask/ exists: True  n_roi_files: 30  sample: ['roi_mask_4394_1.dcm', 'roi_mask_4394_10.dcm', 'roi_mask_4394_11.dcm']
+  DICOM PatientID tag (from CT.1.2.840.113704.1.111.3056.1158834631.dcm): 'Anonymous-ID' (folder name: '174')
+
+--- Patient folder: 175 ---
+  n_ct_files: 44  sample: ['CT.1.3.12.2.1107.5.1.4.54693.30000006091506333673400000071.dcm', 'CT.1.3.12.2.1107.5.1.4.54693.30000006091506333673400000072.dcm', 'CT.1.3.12.2.1107.5.1.4.54693.30000006091506333673400000073.dcm']
+  roi_mask/ exists: True  n_roi_files: 44  sample: ['roi_mask_7_1.dcm', 'roi_mask_7_10.dcm', 'roi_mask_7_11.dcm']
+  DICOM PatientID tag (from CT.1.3.12.2.1107.5.1.4.54693.30000006091506333673400000071.dcm): 'Anonymous-ID' (folder name: '175')
+
+--- Patient folder: 177 ---
+  n_ct_files: 21  sample: ['CT.1.2.840.113704.1.111.3068.1138694383.dcm', 'CT.1.2.840.113704.1.111.3068.1138694385.dcm', 'CT.1.2.840.113704.1.111.3068.1138694386.dcm']
+  roi_mask/ exists: True  n_roi_files: 21  sample: ['roi_mask_3538_1.dcm', 'roi_mask_3538_10.dcm', 'roi_mask_3538_11.dcm']
+  DICOM PatientID tag (from CT.1.2.840.113704.1.111.3068.1138694383.dcm): 'Anonymous-ID' (folder name: '177')
+[40/102] scanning 179 ...
+
+--- Patient folder: 179 ---
+  n_ct_files: 48  sample: ['CT.1.3.12.2.1107.5.1.4.58006.30000007072306132995300001893.dcm', 'CT.1.3.12.2.1107.5.1.4.58006.30000007072306132995300001894.dcm', 'CT.1.3.12.2.1107.5.1.4.58006.30000007072306132995300001895.dcm']
+  roi_mask/ exists: True  n_roi_files: 48  sample: ['roi_mask_2_1.dcm', 'roi_mask_2_10.dcm', 'roi_mask_2_11.dcm']
+  DICOM PatientID tag (from CT.1.3.12.2.1107.5.1.4.58006.30000007072306132995300001893.dcm): 'Anonymous-ID' (folder name: '179')
+
+--- Patient folder: 180 ---
+  n_ct_files: 26  sample: ['CT-0002-0001.dcm', 'CT-0002-0002.dcm', 'CT-0002-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 26  sample: ['roi_mask_2_1.dcm', 'roi_mask_2_10.dcm', 'roi_mask_2_11.dcm']
+  DICOM PatientID tag (from CT-0002-0001.dcm): 'Anonymous-ID' (folder name: '180')
+
+--- Patient folder: 181 ---
+  n_ct_files: 31  sample: ['CT-3207-0001.dcm', 'CT-3207-0002.dcm', 'CT-3207-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 31  sample: ['roi_mask_3207_1.dcm', 'roi_mask_3207_10.dcm', 'roi_mask_3207_11.dcm']
+  DICOM PatientID tag (from CT-3207-0001.dcm): 'Anonymous-ID' (folder name: '181')
+
+--- Patient folder: 182 ---
+  n_ct_files: 52  sample: ['CT.1.3.12.2.1107.5.1.4.54693.30000007071105241303100000440.dcm', 'CT.1.3.12.2.1107.5.1.4.54693.30000007071105241303100000441.dcm', 'CT.1.3.12.2.1107.5.1.4.54693.30000007071105241303100000442.dcm']
+  roi_mask/ exists: True  n_roi_files: 52  sample: ['roi_mask_2_1.dcm', 'roi_mask_2_10.dcm', 'roi_mask_2_11.dcm']
+  DICOM PatientID tag (from CT.1.3.12.2.1107.5.1.4.54693.30000007071105241303100000440.dcm): 'Anonymous-ID' (folder name: '182')
+
+--- Patient folder: 183 ---
+  n_ct_files: 19  sample: ['CT.1.2.840.113704.1.111.3716.1196753831.dcm', 'CT.1.2.840.113704.1.111.3716.1196753833.dcm', 'CT.1.2.840.113704.1.111.3716.1196753835.dcm']
+  roi_mask/ exists: True  n_roi_files: 19  sample: ['roi_mask_8094_1.dcm', 'roi_mask_8094_10.dcm', 'roi_mask_8094_11.dcm']
+  DICOM PatientID tag (from CT.1.2.840.113704.1.111.3716.1196753831.dcm): 'Anonymous-ID' (folder name: '183')
+
+--- Patient folder: 184 ---
+  n_ct_files: 0  sample: []
+  roi_mask/ exists: False  n_roi_files: 0  sample: []
+
+--- Patient folder: 185 ---
+  n_ct_files: 22  sample: ['CT.1.2.840.113704.1.111.656.1177167280.dcm', 'CT.1.2.840.113704.1.111.656.1177167282.dcm', 'CT.1.2.840.113704.1.111.656.1177167284.dcm']
+  roi_mask/ exists: True  n_roi_files: 22  sample: ['roi_mask_2916_1.dcm', 'roi_mask_2916_10.dcm', 'roi_mask_2916_11.dcm']
+  DICOM PatientID tag (from CT.1.2.840.113704.1.111.656.1177167280.dcm): 'Anonymous-ID' (folder name: '185')
+
+--- Patient folder: 23 ---
+  n_ct_files: 22  sample: ['CT-2321-0001.dcm', 'CT-2321-0002.dcm', 'CT-2321-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 22  sample: ['roi_mask_2321_1.dcm', 'roi_mask_2321_10.dcm', 'roi_mask_2321_11.dcm']
+  DICOM PatientID tag (from CT-2321-0001.dcm): 'Anonymous-ID' (folder name: '23')
+
+--- Patient folder: 3 ---
+  n_ct_files: 28  sample: ['CT-7358-0001.dcm', 'CT-7358-0002.dcm', 'CT-7358-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 28  sample: ['roi_mask_7358_1.dcm', 'roi_mask_7358_10.dcm', 'roi_mask_7358_11.dcm']
+  DICOM PatientID tag (from CT-7358-0001.dcm): 'Anonymous-ID' (folder name: '3')
+
+--- Patient folder: 34 ---
+  n_ct_files: 23  sample: ['CT-0002-0001.dcm', 'CT-0002-0002.dcm', 'CT-0002-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 23  sample: ['roi_mask_2_1.dcm', 'roi_mask_2_10.dcm', 'roi_mask_2_11.dcm']
+  DICOM PatientID tag (from CT-0002-0001.dcm): 'Anonymous-ID' (folder name: '34')
+[50/102] scanning 35 ...
+
+--- Patient folder: 35 ---
+  n_ct_files: 27  sample: ['CT-1186-0001.dcm', 'CT-1186-0002.dcm', 'CT-1186-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 27  sample: ['roi_mask_1186_1.dcm', 'roi_mask_1186_10.dcm', 'roi_mask_1186_11.dcm']
+  DICOM PatientID tag (from CT-1186-0001.dcm): 'Anonymous-ID' (folder name: '35')
+
+--- Patient folder: 36 ---
+  n_ct_files: 25  sample: ['CT-0505-0001.dcm', 'CT-0505-0002.dcm', 'CT-0505-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 25  sample: ['roi_mask_505_1.dcm', 'roi_mask_505_10.dcm', 'roi_mask_505_11.dcm']
+  DICOM PatientID tag (from CT-0505-0001.dcm): 'Anonymous-ID' (folder name: '36')
+
+--- Patient folder: 38 ---
+  n_ct_files: 24  sample: ['CT-0002-0001.dcm', 'CT-0002-0002.dcm', 'CT-0002-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 24  sample: ['roi_mask_2_1.dcm', 'roi_mask_2_10.dcm', 'roi_mask_2_11.dcm']
+  DICOM PatientID tag (from CT-0002-0001.dcm): 'Anonymous-ID' (folder name: '38')
+
+--- Patient folder: 41 ---
+  n_ct_files: 25  sample: ['CT-0002-0001.dcm', 'CT-0002-0002.dcm', 'CT-0002-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 25  sample: ['roi_mask_2_1.dcm', 'roi_mask_2_10.dcm', 'roi_mask_2_11.dcm']
+  DICOM PatientID tag (from CT-0002-0001.dcm): 'Anonymous-ID' (folder name: '41')
+
+--- Patient folder: 56 ---
+  n_ct_files: 25  sample: ['CT-6817-0001.dcm', 'CT-6817-0002.dcm', 'CT-6817-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 25  sample: ['roi_mask_6817_1.dcm', 'roi_mask_6817_10.dcm', 'roi_mask_6817_11.dcm']
+  DICOM PatientID tag (from CT-6817-0001.dcm): 'Anonymous-ID' (folder name: '56')
+
+--- Patient folder: 7 ---
+  n_ct_files: 35  sample: ['CT-7771-0001.dcm', 'CT-7771-0002.dcm', 'CT-7771-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 35  sample: ['roi_mask_7771_1.dcm', 'roi_mask_7771_10.dcm', 'roi_mask_7771_11.dcm']
+  DICOM PatientID tag (from CT-7771-0001.dcm): 'Anonymous-ID' (folder name: '7')
+
+--- Patient folder: 70 ---
+  n_ct_files: 25  sample: ['CT-5917-0001.dcm', 'CT-5917-0002.dcm', 'CT-5917-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 25  sample: ['roi_mask_5917_1.dcm', 'roi_mask_5917_10.dcm', 'roi_mask_5917_11.dcm']
+  DICOM PatientID tag (from CT-5917-0001.dcm): 'Anonymous-ID' (folder name: '70')
+
+--- Patient folder: 74 ---
+  n_ct_files: 20  sample: ['CT-6269-0001.dcm', 'CT-6269-0002.dcm', 'CT-6269-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 20  sample: ['roi_mask_6269_1.dcm', 'roi_mask_6269_10.dcm', 'roi_mask_6269_11.dcm']
+  DICOM PatientID tag (from CT-6269-0001.dcm): 'Anonymous-ID' (folder name: '74')
+
+--- Patient folder: 76 ---
+  n_ct_files: 24  sample: ['CT-0002-0001.dcm', 'CT-0002-0002.dcm', 'CT-0002-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 24  sample: ['roi_mask_2_1.dcm', 'roi_mask_2_10.dcm', 'roi_mask_2_11.dcm']
+  DICOM PatientID tag (from CT-0002-0001.dcm): 'Anonymous-ID' (folder name: '76')
+
+--- Patient folder: 83 ---
+  n_ct_files: 19  sample: ['CT-3792-0001.dcm', 'CT-3792-0002.dcm', 'CT-3792-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 19  sample: ['roi_mask_3792_1.dcm', 'roi_mask_3792_10.dcm', 'roi_mask_3792_11.dcm']
+  DICOM PatientID tag (from CT-3792-0001.dcm): 'Anonymous-ID' (folder name: '83')
+[60/102] scanning 90 ...
+
+--- Patient folder: 90 ---
+  n_ct_files: 23  sample: ['CT-3391-0001.dcm', 'CT-3391-0002.dcm', 'CT-3391-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 23  sample: ['roi_mask_3391_1.dcm', 'roi_mask_3391_10.dcm', 'roi_mask_3391_11.dcm']
+  DICOM PatientID tag (from CT-3391-0001.dcm): 'Anonymous-ID' (folder name: '90')
+
+--- Patient folder: 92 ---
+  n_ct_files: 32  sample: ['CT-1298-0001.dcm', 'CT-1298-0002.dcm', 'CT-1298-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 32  sample: ['roi_mask_1298_1.dcm', 'roi_mask_1298_10.dcm', 'roi_mask_1298_11.dcm']
+  DICOM PatientID tag (from CT-1298-0001.dcm): 'Anonymous-ID' (folder name: '92')
+
+--- Patient folder: 94 ---
+  n_ct_files: 25  sample: ['CT-7370-0001.dcm', 'CT-7370-0002.dcm', 'CT-7370-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 25  sample: ['roi_mask_7370_1.dcm', 'roi_mask_7370_10.dcm', 'roi_mask_7370_11.dcm']
+  DICOM PatientID tag (from CT-7370-0001.dcm): 'Anonymous-ID' (folder name: '94')
+
+--- Patient folder: 105 ---
+  n_ct_files: 23  sample: ['CT-5662-0001.dcm', 'CT-5662-0002.dcm', 'CT-5662-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 23  sample: ['roi_mask_5662_1.dcm', 'roi_mask_5662_10.dcm', 'roi_mask_5662_11.dcm']
+  DICOM PatientID tag (from CT-5662-0001.dcm): 'Anonymous-ID' (folder name: '105')
+
+--- Patient folder: 107 ---
+  n_ct_files: 31  sample: ['CT-3684-0001.dcm', 'CT-3684-0002.dcm', 'CT-3684-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 31  sample: ['roi_mask_3684_1.dcm', 'roi_mask_3684_10.dcm', 'roi_mask_3684_11.dcm']
+  DICOM PatientID tag (from CT-3684-0001.dcm): 'Anonymous-ID' (folder name: '107')
+
+--- Patient folder: 108 ---
+  n_ct_files: 24  sample: ['CT-6415-0001.dcm', 'CT-6415-0002.dcm', 'CT-6415-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 24  sample: ['roi_mask_6415_1.dcm', 'roi_mask_6415_10.dcm', 'roi_mask_6415_11.dcm']
+  DICOM PatientID tag (from CT-6415-0001.dcm): 'Anonymous-ID' (folder name: '108')
+
+--- Patient folder: 109 ---
+  n_ct_files: 20  sample: ['CT-6216-0001.dcm', 'CT-6216-0002.dcm', 'CT-6216-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 20  sample: ['roi_mask_6216_1.dcm', 'roi_mask_6216_10.dcm', 'roi_mask_6216_11.dcm']
+  DICOM PatientID tag (from CT-6216-0001.dcm): 'Anonymous-ID' (folder name: '109')
+
+--- Patient folder: 118 ---
+  n_ct_files: 24  sample: ['CT-0002-0001.dcm', 'CT-0002-0002.dcm', 'CT-0002-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 24  sample: ['roi_mask_2_1.dcm', 'roi_mask_2_10.dcm', 'roi_mask_2_11.dcm']
+  DICOM PatientID tag (from CT-0002-0001.dcm): 'Anonymous-ID' (folder name: '118')
+
+--- Patient folder: 119 ---
+  n_ct_files: 26  sample: ['CT-6238-0001.dcm', 'CT-6238-0002.dcm', 'CT-6238-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 26  sample: ['roi_mask_6238_1.dcm', 'roi_mask_6238_10.dcm', 'roi_mask_6238_11.dcm']
+  DICOM PatientID tag (from CT-6238-0001.dcm): 'Anonymous-ID' (folder name: '119')
+
+--- Patient folder: 120 ---
+  n_ct_files: 22  sample: ['CT-0002-0001.dcm', 'CT-0002-0002.dcm', 'CT-0002-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 22  sample: ['roi_mask_2_1.dcm', 'roi_mask_2_10.dcm', 'roi_mask_2_11.dcm']
+  DICOM PatientID tag (from CT-0002-0001.dcm): 'Anonymous-ID' (folder name: '120')
+[70/102] scanning 121 ...
+
+--- Patient folder: 121 ---
+  n_ct_files: 26  sample: ['CT-0844-0001.dcm', 'CT-0844-0002.dcm', 'CT-0844-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 26  sample: ['roi_mask_844_1.dcm', 'roi_mask_844_10.dcm', 'roi_mask_844_11.dcm']
+  DICOM PatientID tag (from CT-0844-0001.dcm): 'Anonymous-ID' (folder name: '121')
+
+--- Patient folder: 122 ---
+  n_ct_files: 27  sample: ['CT-0002-0001.dcm', 'CT-0002-0002.dcm', 'CT-0002-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 27  sample: ['roi_mask_2_1.dcm', 'roi_mask_2_10.dcm', 'roi_mask_2_11.dcm']
+  DICOM PatientID tag (from CT-0002-0001.dcm): 'Anonymous-ID' (folder name: '122')
+
+--- Patient folder: 123 ---
+  n_ct_files: 27  sample: ['CT-0002-0001.dcm', 'CT-0002-0002.dcm', 'CT-0002-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 27  sample: ['roi_mask_2_1.dcm', 'roi_mask_2_10.dcm', 'roi_mask_2_11.dcm']
+  DICOM PatientID tag (from CT-0002-0001.dcm): 'Anonymous-ID' (folder name: '123')
+
+--- Patient folder: 124 ---
+  n_ct_files: 25  sample: ['CT-2051-0001.dcm', 'CT-2051-0002.dcm', 'CT-2051-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 25  sample: ['roi_mask_2051_1.dcm', 'roi_mask_2051_10.dcm', 'roi_mask_2051_11.dcm']
+  DICOM PatientID tag (from CT-2051-0001.dcm): 'Anonymous-ID' (folder name: '124')
+
+--- Patient folder: 128 ---
+  n_ct_files: 52  sample: ['CT-0007-0001.dcm', 'CT-0007-0002.dcm', 'CT-0007-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 52  sample: ['roi_mask_7_1.dcm', 'roi_mask_7_10.dcm', 'roi_mask_7_11.dcm']
+  DICOM PatientID tag (from CT-0007-0001.dcm): 'Anonymous-ID' (folder name: '128')
+
+--- Patient folder: 129 ---
+  n_ct_files: 23  sample: ['CT-0002-0001.dcm', 'CT-0002-0002.dcm', 'CT-0002-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 23  sample: ['roi_mask_2_1.dcm', 'roi_mask_2_10.dcm', 'roi_mask_2_11.dcm']
+  DICOM PatientID tag (from CT-0002-0001.dcm): 'Anonymous-ID' (folder name: '129')
+
+--- Patient folder: 130 ---
+  n_ct_files: 23  sample: ['CT-6898-0001.dcm', 'CT-6898-0002.dcm', 'CT-6898-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 23  sample: ['roi_mask_6898_1.dcm', 'roi_mask_6898_10.dcm', 'roi_mask_6898_11.dcm']
+  DICOM PatientID tag (from CT-6898-0001.dcm): 'Anonymous-ID' (folder name: '130')
+
+--- Patient folder: 134 ---
+  n_ct_files: 28  sample: ['CT-1515-0001.dcm', 'CT-1515-0002.dcm', 'CT-1515-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 28  sample: ['roi_mask_1515_1.dcm', 'roi_mask_1515_10.dcm', 'roi_mask_1515_11.dcm']
+  DICOM PatientID tag (from CT-1515-0001.dcm): 'Anonymous-ID' (folder name: '134')
+
+--- Patient folder: 135 ---
+  n_ct_files: 26  sample: ['CT-7669-0001.dcm', 'CT-7669-0002.dcm', 'CT-7669-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 26  sample: ['roi_mask_7669_1.dcm', 'roi_mask_7669_10.dcm', 'roi_mask_7669_11.dcm']
+  DICOM PatientID tag (from CT-7669-0001.dcm): 'Anonymous-ID' (folder name: '135')
+
+--- Patient folder: 136 ---
+  n_ct_files: 28  sample: ['CT-3870-0001.dcm', 'CT-3870-0002.dcm', 'CT-3870-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 28  sample: ['roi_mask_3870_1.dcm', 'roi_mask_3870_10.dcm', 'roi_mask_3870_11.dcm']
+  DICOM PatientID tag (from CT-3870-0001.dcm): 'Anonymous-ID' (folder name: '136')
+[80/102] scanning 19 ...
+
+--- Patient folder: 19 ---
+  n_ct_files: 21  sample: ['CT-0002-0001.dcm', 'CT-0002-0002.dcm', 'CT-0002-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 21  sample: ['roi_mask_2_1.dcm', 'roi_mask_2_10.dcm', 'roi_mask_2_11.dcm']
+  DICOM PatientID tag (from CT-0002-0001.dcm): 'Anonymous-ID' (folder name: '19')
+
+--- Patient folder: 21 ---
+  n_ct_files: 22  sample: ['CT-2336-0001.dcm', 'CT-2336-0002.dcm', 'CT-2336-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 22  sample: ['roi_mask_2336_1.dcm', 'roi_mask_2336_10.dcm', 'roi_mask_2336_11.dcm']
+  DICOM PatientID tag (from CT-2336-0001.dcm): 'Anonymous-ID' (folder name: '21')
+
+--- Patient folder: 37 ---
+  n_ct_files: 25  sample: ['CT-0002-0001.dcm', 'CT-0002-0002.dcm', 'CT-0002-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 25  sample: ['roi_mask_2_1.dcm', 'roi_mask_2_10.dcm', 'roi_mask_2_11.dcm']
+  DICOM PatientID tag (from CT-0002-0001.dcm): 'Anonymous-ID' (folder name: '37')
+
+--- Patient folder: 39 ---
+  n_ct_files: 24  sample: ['CT-0002-0001.dcm', 'CT-0002-0002.dcm', 'CT-0002-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 24  sample: ['roi_mask_2_1.dcm', 'roi_mask_2_10.dcm', 'roi_mask_2_11.dcm']
+  DICOM PatientID tag (from CT-0002-0001.dcm): 'Anonymous-ID' (folder name: '39')
+
+--- Patient folder: 45 ---
+  n_ct_files: 28  sample: ['CT-8929-0001.dcm', 'CT-8929-0002.dcm', 'CT-8929-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 28  sample: ['roi_mask_8929_1.dcm', 'roi_mask_8929_10.dcm', 'roi_mask_8929_11.dcm']
+  DICOM PatientID tag (from CT-8929-0001.dcm): 'Anonymous-ID' (folder name: '45')
+
+--- Patient folder: 46 ---
+  n_ct_files: 20  sample: ['CT-0002-0001.dcm', 'CT-0002-0002.dcm', 'CT-0002-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 20  sample: ['roi_mask_2_1.dcm', 'roi_mask_2_10.dcm', 'roi_mask_2_11.dcm']
+  DICOM PatientID tag (from CT-0002-0001.dcm): 'Anonymous-ID' (folder name: '46')
+
+--- Patient folder: 47 ---
+  n_ct_files: 27  sample: ['CT-9465-0001.dcm', 'CT-9465-0002.dcm', 'CT-9465-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 27  sample: ['roi_mask_9465_1.dcm', 'roi_mask_9465_10.dcm', 'roi_mask_9465_11.dcm']
+  DICOM PatientID tag (from CT-9465-0001.dcm): 'Anonymous-ID' (folder name: '47')
+
+--- Patient folder: 48 ---
+  n_ct_files: 30  sample: ['CT-9013-0001.dcm', 'CT-9013-0002.dcm', 'CT-9013-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 30  sample: ['roi_mask_9013_1.dcm', 'roi_mask_9013_10.dcm', 'roi_mask_9013_11.dcm']
+  DICOM PatientID tag (from CT-9013-0001.dcm): 'Anonymous-ID' (folder name: '48')
+
+--- Patient folder: 51 ---
+  n_ct_files: 25  sample: ['CT-0003-0001.dcm', 'CT-0003-0002.dcm', 'CT-0003-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 25  sample: ['roi_mask_3_1.dcm', 'roi_mask_3_10.dcm', 'roi_mask_3_11.dcm']
+  DICOM PatientID tag (from CT-0003-0001.dcm): 'Anonymous-ID' (folder name: '51')
+
+--- Patient folder: 53 ---
+  n_ct_files: 0  sample: []
+  roi_mask/ exists: False  n_roi_files: 0  sample: []
+[90/102] scanning 57 ...
+
+--- Patient folder: 57 ---
+  n_ct_files: 0  sample: []
+  roi_mask/ exists: False  n_roi_files: 0  sample: []
+
+--- Patient folder: 62 ---
+  n_ct_files: 28  sample: ['CT-0002-0001.dcm', 'CT-0002-0002.dcm', 'CT-0002-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 28  sample: ['roi_mask_2_1.dcm', 'roi_mask_2_10.dcm', 'roi_mask_2_11.dcm']
+  DICOM PatientID tag (from CT-0002-0001.dcm): 'Anonymous-ID' (folder name: '62')
+
+--- Patient folder: 65 ---
+  n_ct_files: 28  sample: ['CT-7444-0001.dcm', 'CT-7444-0002.dcm', 'CT-7444-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 28  sample: ['roi_mask_7444_1.dcm', 'roi_mask_7444_10.dcm', 'roi_mask_7444_11.dcm']
+  DICOM PatientID tag (from CT-7444-0001.dcm): 'Anonymous-ID' (folder name: '65')
+
+--- Patient folder: 66 ---
+  n_ct_files: 14  sample: ['CT-9620-0001.dcm', 'CT-9620-0002.dcm', 'CT-9620-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 14  sample: ['roi_mask_9620_1.dcm', 'roi_mask_9620_10.dcm', 'roi_mask_9620_11.dcm']
+  DICOM PatientID tag (from CT-9620-0001.dcm): 'Anonymous-ID' (folder name: '66')
+
+--- Patient folder: 77 ---
+  n_ct_files: 19  sample: ['CT-0002-0001.dcm', 'CT-0002-0002.dcm', 'CT-0002-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 19  sample: ['roi_mask_2_1.dcm', 'roi_mask_2_10.dcm', 'roi_mask_2_11.dcm']
+  DICOM PatientID tag (from CT-0002-0001.dcm): 'Anonymous-ID' (folder name: '77')
+
+--- Patient folder: 78 ---
+  n_ct_files: 24  sample: ['CT-9830-0001.dcm', 'CT-9830-0002.dcm', 'CT-9830-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 24  sample: ['roi_mask_9830_1.dcm', 'roi_mask_9830_10.dcm', 'roi_mask_9830_11.dcm']
+  DICOM PatientID tag (from CT-9830-0001.dcm): 'Anonymous-ID' (folder name: '78')
+
+--- Patient folder: 8 ---
+  n_ct_files: 0  sample: []
+  roi_mask/ exists: False  n_roi_files: 0  sample: []
+
+--- Patient folder: 80 ---
+  n_ct_files: 24  sample: ['CT-8088-0001.dcm', 'CT-8088-0002.dcm', 'CT-8088-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 24  sample: ['roi_mask_8088_1.dcm', 'roi_mask_8088_10.dcm', 'roi_mask_8088_11.dcm']
+  DICOM PatientID tag (from CT-8088-0001.dcm): 'Anonymous-ID' (folder name: '80')
+
+--- Patient folder: 81 ---
+  n_ct_files: 24  sample: ['CT-0002-0001.dcm', 'CT-0002-0002.dcm', 'CT-0002-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 24  sample: ['roi_mask_2_1.dcm', 'roi_mask_2_10.dcm', 'roi_mask_2_11.dcm']
+  DICOM PatientID tag (from CT-0002-0001.dcm): 'Anonymous-ID' (folder name: '81')
+
+--- Patient folder: 82 ---
+  n_ct_files: 27  sample: ['CT-6135-0001.dcm', 'CT-6135-0002.dcm', 'CT-6135-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 27  sample: ['roi_mask_6135_1.dcm', 'roi_mask_6135_10.dcm', 'roi_mask_6135_11.dcm']
+  DICOM PatientID tag (from CT-6135-0001.dcm): 'Anonymous-ID' (folder name: '82')
+[100/102] scanning 84 ...
+
+--- Patient folder: 84 ---
+  n_ct_files: 23  sample: ['CT-0002-0001.dcm', 'CT-0002-0002.dcm', 'CT-0002-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 23  sample: ['roi_mask_2_1.dcm', 'roi_mask_2_10.dcm', 'roi_mask_2_11.dcm']
+  DICOM PatientID tag (from CT-0002-0001.dcm): 'Anonymous-ID' (folder name: '84')
+
+--- Patient folder: 89 ---
+  n_ct_files: 21  sample: ['CT-0265-0001.dcm', 'CT-0265-0002.dcm', 'CT-0265-0003.dcm']
+  roi_mask/ exists: True  n_roi_files: 21  sample: ['roi_mask_265_1.dcm', 'roi_mask_265_10.dcm', 'roi_mask_265_11.dcm']
+  DICOM PatientID tag (from CT-0265-0001.dcm): 'Anonymous-ID' (folder name: '89')
+
+=== SUMMARY ===
+Total pixel counts per class (of interest), across scanned patients:
+  healthy      (val=1):    1249227 px  -> rough non-overlap patch capacity: 1219
+  emphysema    (val=2):     198389 px  -> rough non-overlap patch capacity: 193
+  ground_glass (val=3):    1040471 px  -> rough non-overlap patch capacity: 1016
+  fibrosis     (val=4):    1171880 px  -> rough non-overlap patch capacity: 1144
+  micronodules (val=5):    2178969 px  -> rough non-overlap patch capacity: 2127
+
+*** BREAKDOWN: pixel counts from NEW candidate patients only (not already in Talisman) — this is the number that matters ***
+  healthy     : NEW patients:    1084249 px (~1058 patches)  |  already-in-Talisman patients:     164978 px (~161 patches)
+  emphysema   : NEW patients:     198389 px (~193 patches)  |  already-in-Talisman patients:          0 px (~0 patches)
+  ground_glass: NEW patients:     673781 px (~657 patches)  |  already-in-Talisman patients:     366690 px (~358 patches)
+  fibrosis    : NEW patients:     593891 px (~579 patches)  |  already-in-Talisman patients:     577989 px (~564 patches)
+  micronodules: NEW patients:    1834165 px (~1791 patches)  |  already-in-Talisman patients:     344804 px (~336 patches)
+
+HU stats per class (sampled pixels within labeled regions):
+  healthy     : n=10000 min=-1024.0 max=521.0 mean=-876.8 std=143.0
+  emphysema   : n= 6600 min=-1024.0 max=325.0 mean=-909.8 std=184.4
+  ground_glass: n=40000 min=-1024.0 max=548.0 mean=-647.3 std=228.9
+  fibrosis    : n=39600 min=-1024.0 max=1854.0 mean=-509.8 std=323.2
+  micronodules: n=24093 min=-1024.0 max=551.0 mean=-749.2 std=222.1
+
+Global mask value histogram (top 20) — check for unexpected values:
+  value=   0 (OTHER/UNKNOWN): 684263214
+  value=   5 (micronodules): 2178969
+  value=   1 (healthy     ): 1249227
+  value=   4 (fibrosis    ): 1171880
+  value=   3 (ground_glass): 1040471
+  value=   8 (OTHER/UNKNOWN): 490829
+  value=  17 (OTHER/UNKNOWN): 444410
+  value=   2 (emphysema   ): 198389
+  value=   6 (OTHER/UNKNOWN): 161260
+  value=  11 (OTHER/UNKNOWN): 63239
+  value=  16 (OTHER/UNKNOWN): 45814
+  value=   9 (OTHER/UNKNOWN): 35478
+  value=  10 (OTHER/UNKNOWN): 30279
+  value=  13 (OTHER/UNKNOWN): 11833
+  value=  15 (OTHER/UNKNOWN): 7643
+  value=  14 (OTHER/UNKNOWN): 4795
+  value=  12 (OTHER/UNKNOWN): 4002
+  value=   7 (OTHER/UNKNOWN): 3068
+
+Errors / warnings encountered (16 total, showing first 30):
+  - 142: no roi_mask files found
+  - 154: no roi_mask files found
+  - 171: used InstanceNumber fallback for 23 CT files (non-standard filenames)
+  - 172: used InstanceNumber fallback for 60 CT files (non-standard filenames)
+  - 173: used InstanceNumber fallback for 22 CT files (non-standard filenames)
+  - 174: used InstanceNumber fallback for 30 CT files (non-standard filenames)
+  - 175: used InstanceNumber fallback for 44 CT files (non-standard filenames)
+  - 177: used InstanceNumber fallback for 21 CT files (non-standard filenames)
+  - 179: used InstanceNumber fallback for 48 CT files (non-standard filenames)
+  - 182: used InstanceNumber fallback for 52 CT files (non-standard filenames)
+  - 183: used InstanceNumber fallback for 19 CT files (non-standard filenames)
+  - 184: no roi_mask files found
+  - 185: used InstanceNumber fallback for 22 CT files (non-standard filenames)
+  - 53: no roi_mask files found
+  - 57: no roi_mask files found
+  - 8: no roi_mask files found
+
+Summary JSON written to: /rds/general/user/eh1121/home/Final_Project/diagnostics_volumeROIs/summary.json
+Full log written to: /rds/general/user/eh1121/home/Final_Project/diagnostics_volumeROIs/log.txt
+
+====================================
+CPU Time used: 00:00:16
+CPU Percent: 15%
+Memory usage: 64976kb
+Approx Power usage: 0.0
+Walltime usage: 00:03:20
+
+====================================

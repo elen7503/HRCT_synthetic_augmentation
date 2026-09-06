@@ -1,0 +1,2093 @@
+{
+  "schema_version": 1,
+  "num_records": 99,
+  "sha256": "df8a047edd77744e83695d060dde50f411199586e9bcd6e9e61ad976d7c96705",
+  "records": [
+    {
+      "patient_id": "149",
+      "slice_id": "slice_11",
+      "labels": [
+        5
+      ],
+      "files": {
+        "image": {
+          "path": "patient_149/images/slice_11.npy",
+          "sha256": "6a1f6797e65c04c2285c34cf41affd047a8d9793780f8c0bccc84140235a8e96"
+        },
+        "lung": {
+          "path": "patient_149/lung_masks/slice_11.npy",
+          "sha256": "e4c9720c9c82bd4f28edb3008cf7b0a17a1f1ecd523fd19491ea59873c8f6d72"
+        },
+        "roi": {
+          "path": "patient_149/roi_masks/slice_11.npy",
+          "sha256": "683b2333b4f9fe6144197e85d7bfdb0ba65364a124c9c32e143a6815431dc481"
+        }
+      }
+    },
+    {
+      "patient_id": "149",
+      "slice_id": "slice_13",
+      "labels": [
+        5
+      ],
+      "files": {
+        "image": {
+          "path": "patient_149/images/slice_13.npy",
+          "sha256": "40e4067f0df0db48f118b368fd43075d92498bdf0b761ea3621a521f9441e90f"
+        },
+        "lung": {
+          "path": "patient_149/lung_masks/slice_13.npy",
+          "sha256": "b3a8ba245bf6343845b55ac8d7d59774ca5a7d10ea34bcfd476b1e95c7e3f78e"
+        },
+        "roi": {
+          "path": "patient_149/roi_masks/slice_13.npy",
+          "sha256": "99b1cae7b249dd258288c2a9a2e2dff7d3472682920c0cc7d2a02ad2d685f45f"
+        }
+      }
+    },
+    {
+      "patient_id": "149",
+      "slice_id": "slice_14",
+      "labels": [
+        5
+      ],
+      "files": {
+        "image": {
+          "path": "patient_149/images/slice_14.npy",
+          "sha256": "3a942c072afc19dbd5901e1518ed801dfbf2c1a282d347dc8e649a0f523bb960"
+        },
+        "lung": {
+          "path": "patient_149/lung_masks/slice_14.npy",
+          "sha256": "11866459d4d318089e74ebaeef8a0e354ca1fdacbe06b7e5d00cf29936202457"
+        },
+        "roi": {
+          "path": "patient_149/roi_masks/slice_14.npy",
+          "sha256": "167a89a911b89b0129fe33d7d61dd24c59a0d416ca791cd06023d3d56ef5831e"
+        }
+      }
+    },
+    {
+      "patient_id": "149",
+      "slice_id": "slice_7",
+      "labels": [
+        5
+      ],
+      "files": {
+        "image": {
+          "path": "patient_149/images/slice_7.npy",
+          "sha256": "07e203d096a758d5f48eba852b048cfc21c2669dfdae031062d7f2321bbb1a7a"
+        },
+        "lung": {
+          "path": "patient_149/lung_masks/slice_7.npy",
+          "sha256": "9e45ebc04a2537662e4ed7c16a11b45e2447af85a0bc6553ce19aa2bba727b34"
+        },
+        "roi": {
+          "path": "patient_149/roi_masks/slice_7.npy",
+          "sha256": "653a8b058676081fcf9a8f178525ca3c22c7e8a01b5d22059f7ba7862a45e4b2"
+        }
+      }
+    },
+    {
+      "patient_id": "149",
+      "slice_id": "slice_8",
+      "labels": [
+        5
+      ],
+      "files": {
+        "image": {
+          "path": "patient_149/images/slice_8.npy",
+          "sha256": "d582f23d53cf13eb8933db3f742bc426d9a8c3d61ca16395c2841f8c1195ea55"
+        },
+        "lung": {
+          "path": "patient_149/lung_masks/slice_8.npy",
+          "sha256": "c294f6ba7ee011ec950daa101753dfcbeb034baab1286f45b6fa9db21c836492"
+        },
+        "roi": {
+          "path": "patient_149/roi_masks/slice_8.npy",
+          "sha256": "90cebb79854954f1bde8cebca15f4c9e43b6915213476d4fa029405e6f74311b"
+        }
+      }
+    },
+    {
+      "patient_id": "149",
+      "slice_id": "slice_9",
+      "labels": [
+        5
+      ],
+      "files": {
+        "image": {
+          "path": "patient_149/images/slice_9.npy",
+          "sha256": "0e9229812e17466b6eabbb80c01136b5e3ad11b405226864dc9a9eded9861671"
+        },
+        "lung": {
+          "path": "patient_149/lung_masks/slice_9.npy",
+          "sha256": "751a19e1b63871c47ee25a581999ba0d9c2a8017a0397f3002202bc4016a1531"
+        },
+        "roi": {
+          "path": "patient_149/roi_masks/slice_9.npy",
+          "sha256": "ec4b0220fa98a71cd61fcea79ae2a8825586e2c362667dd2c8d7b9f82f0101f1"
+        }
+      }
+    },
+    {
+      "patient_id": "157",
+      "slice_id": "slice_12",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_157/images/slice_12.npy",
+          "sha256": "78e3b997467f056cf9b69fa77090096fcaf05dc276e1e70c1aacb53b9deb0014"
+        },
+        "lung": {
+          "path": "patient_157/lung_masks/slice_12.npy",
+          "sha256": "9916876293e85bc57dbe56c834cdb0f814b0dbecac78189abafaa27433b116b2"
+        },
+        "roi": {
+          "path": "patient_157/roi_masks/slice_12.npy",
+          "sha256": "18a16e92c45245b69104e0cbddf98ff83ca004240385ef9e474df30ff8afecc1"
+        }
+      }
+    },
+    {
+      "patient_id": "157",
+      "slice_id": "slice_13",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_157/images/slice_13.npy",
+          "sha256": "c6c0faabd3a6812b78adf57ecb37665f73d81a82ca88b71715eb8fda9edb6653"
+        },
+        "lung": {
+          "path": "patient_157/lung_masks/slice_13.npy",
+          "sha256": "543e995085007690843657b539dbb87498f2eb5d02ab8756e9de240a985c3112"
+        },
+        "roi": {
+          "path": "patient_157/roi_masks/slice_13.npy",
+          "sha256": "134e2be0e62327f6e87f394dcf37af3ef29b3390998f7ec3092cb224b9563ba5"
+        }
+      }
+    },
+    {
+      "patient_id": "157",
+      "slice_id": "slice_3",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_157/images/slice_3.npy",
+          "sha256": "26db0b284a87583dd37218da55de675105c949e3f9e101c549f292a7b4969875"
+        },
+        "lung": {
+          "path": "patient_157/lung_masks/slice_3.npy",
+          "sha256": "5435c0343f61592effcd58d6a61c27563b713619aec0758bc46cba8d39a63f63"
+        },
+        "roi": {
+          "path": "patient_157/roi_masks/slice_3.npy",
+          "sha256": "b05aa372a83f935c5ea4991d96761ea4ae4c7549013a3f39a7fd212b26456e12"
+        }
+      }
+    },
+    {
+      "patient_id": "157",
+      "slice_id": "slice_4",
+      "labels": [
+        3,
+        6
+      ],
+      "files": {
+        "image": {
+          "path": "patient_157/images/slice_4.npy",
+          "sha256": "bbdaee982aaf541e3b0dda0de32730c25339da1be70c9935d38e8fddf065ae50"
+        },
+        "lung": {
+          "path": "patient_157/lung_masks/slice_4.npy",
+          "sha256": "e1028c2d0f758f122e7f202eada903fe507f2d1e67b63cf0ab8868c9d136751d"
+        },
+        "roi": {
+          "path": "patient_157/roi_masks/slice_4.npy",
+          "sha256": "41af3dfab78ef193687cb43ed4f674a819425efcba45d7e3085384693dcf4a58"
+        }
+      }
+    },
+    {
+      "patient_id": "157",
+      "slice_id": "slice_5",
+      "labels": [
+        3,
+        6
+      ],
+      "files": {
+        "image": {
+          "path": "patient_157/images/slice_5.npy",
+          "sha256": "90fc4da5f1e0e5911bee5bc5bfb8b422cf979c06e4c7287cc4da9c751ecde32e"
+        },
+        "lung": {
+          "path": "patient_157/lung_masks/slice_5.npy",
+          "sha256": "41cfacca938b950d5bedca714dd901793a88dd070510e8316b0a72466bcb6804"
+        },
+        "roi": {
+          "path": "patient_157/roi_masks/slice_5.npy",
+          "sha256": "06400b59e387adfbf2ce48cd26c0bb85fe1df67a694dea5340d7df637b235cf2"
+        }
+      }
+    },
+    {
+      "patient_id": "157",
+      "slice_id": "slice_7",
+      "labels": [
+        6
+      ],
+      "files": {
+        "image": {
+          "path": "patient_157/images/slice_7.npy",
+          "sha256": "bfcb02146ab06d29cfed8f368591cb7d804009357c55845013e8d0787e25763d"
+        },
+        "lung": {
+          "path": "patient_157/lung_masks/slice_7.npy",
+          "sha256": "3ceeca7a067e21c25114f7a7adede80b15e87d12afed1f091c2a2c61351222be"
+        },
+        "roi": {
+          "path": "patient_157/roi_masks/slice_7.npy",
+          "sha256": "d5c37c8ce37eb0aada7ac501502a3b603a7d5004ee1f100ed506914529202b62"
+        }
+      }
+    },
+    {
+      "patient_id": "157",
+      "slice_id": "slice_9",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_157/images/slice_9.npy",
+          "sha256": "8c3851686d739440ae5b97be305123127f220f64f97f0ba95230fb1974f44491"
+        },
+        "lung": {
+          "path": "patient_157/lung_masks/slice_9.npy",
+          "sha256": "ecab7a2b843f5197eab7df99429ba936771131e7cbb01baa065173ab7d972093"
+        },
+        "roi": {
+          "path": "patient_157/roi_masks/slice_9.npy",
+          "sha256": "3a0822b36a9b2c372d041f1d12952bf085aa346084c78fed99dc9e99ba89e338"
+        }
+      }
+    },
+    {
+      "patient_id": "166",
+      "slice_id": "slice_13",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_166/images/slice_13.npy",
+          "sha256": "8620cedacc7209cf1d4c58125f8e43e5132ac607e0cb1f66922597623defa8b0"
+        },
+        "lung": {
+          "path": "patient_166/lung_masks/slice_13.npy",
+          "sha256": "a314b45c2210234d0943ab6654209debdc039c5faa1e6f12538a2cd55510b0a8"
+        },
+        "roi": {
+          "path": "patient_166/roi_masks/slice_13.npy",
+          "sha256": "821aeeadd447f6f7a31757a0546491b0d3257e58d991e1d71d11763430440a9e"
+        }
+      }
+    },
+    {
+      "patient_id": "166",
+      "slice_id": "slice_16",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_166/images/slice_16.npy",
+          "sha256": "d93639f2b005c18cf39b6ad2d702f41eb2afbfbd7f87539b48926d792410fd75"
+        },
+        "lung": {
+          "path": "patient_166/lung_masks/slice_16.npy",
+          "sha256": "ab8df441cd68dd7e3360af42feeabb7783df590528a1d894cf34919043f22d9f"
+        },
+        "roi": {
+          "path": "patient_166/roi_masks/slice_16.npy",
+          "sha256": "8a76e0a6949a3aa19a14d842a8d9821066b90b67be0e27c261cd338b5e6292e4"
+        }
+      }
+    },
+    {
+      "patient_id": "166",
+      "slice_id": "slice_17",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_166/images/slice_17.npy",
+          "sha256": "c830cfa5fba1b53ff9ba26b211df7af3d055293c59262695e6c7eac1ddb105cf"
+        },
+        "lung": {
+          "path": "patient_166/lung_masks/slice_17.npy",
+          "sha256": "e34d87c2282003160138643abe137efb28a4710501f8598e68f1d012cede3d34"
+        },
+        "roi": {
+          "path": "patient_166/roi_masks/slice_17.npy",
+          "sha256": "27dcf3db1ac984a3ec344e7338550a03ab514416f1fc7c738889f1224cd0b682"
+        }
+      }
+    },
+    {
+      "patient_id": "166",
+      "slice_id": "slice_19",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_166/images/slice_19.npy",
+          "sha256": "43bb0a1304695991bdfb1049cf8c28e61567dcf808e18f0e4723938e6994ff91"
+        },
+        "lung": {
+          "path": "patient_166/lung_masks/slice_19.npy",
+          "sha256": "a87a34885b5668c1484f0cbd09ea4d68da94d0a8789e00fdc26ce9d54dbddbd4"
+        },
+        "roi": {
+          "path": "patient_166/roi_masks/slice_19.npy",
+          "sha256": "377c37c2e28f0d9da1d12d701db59faa6d8df30a711ab5b505becc411fcd896d"
+        }
+      }
+    },
+    {
+      "patient_id": "166",
+      "slice_id": "slice_9",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_166/images/slice_9.npy",
+          "sha256": "a650153415c40bb8c545942b5ef2040c4f25988db909fda17e7ac80f6b9e58c5"
+        },
+        "lung": {
+          "path": "patient_166/lung_masks/slice_9.npy",
+          "sha256": "42b36725fd583c31368cac4acf788130d55fe3bfb9570fad515f32e67c6aaf0c"
+        },
+        "roi": {
+          "path": "patient_166/roi_masks/slice_9.npy",
+          "sha256": "d8bf234308207bbd8a4a1c371d296d6feb215f5d990e88705d4246b4f406d095"
+        }
+      }
+    },
+    {
+      "patient_id": "17",
+      "slice_id": "slice_10",
+      "labels": [
+        2,
+        4
+      ],
+      "files": {
+        "image": {
+          "path": "patient_17/images/slice_10.npy",
+          "sha256": "a86c3db4c8510dd4796206ea39c6281983a1a63bb82528ab806487889690fe9e"
+        },
+        "lung": {
+          "path": "patient_17/lung_masks/slice_10.npy",
+          "sha256": "0f624be3951b5a8349ecbd26cf2a65c85f8fa19d6e439f500c27b45726fe9257"
+        },
+        "roi": {
+          "path": "patient_17/roi_masks/slice_10.npy",
+          "sha256": "d2311397be995e88ad860bb4cae61982b203dd4763f93ac660c0abacf785a441"
+        }
+      }
+    },
+    {
+      "patient_id": "17",
+      "slice_id": "slice_11",
+      "labels": [
+        2,
+        4
+      ],
+      "files": {
+        "image": {
+          "path": "patient_17/images/slice_11.npy",
+          "sha256": "ae0fdd15f1f80160d2f365144cc1517be4ccdce2701e8e1fb21f9b0135315f68"
+        },
+        "lung": {
+          "path": "patient_17/lung_masks/slice_11.npy",
+          "sha256": "1d65d6ac7c883b1a4e10a91b141f245f096032c45b3c6cc2cfdf3f545a060ac5"
+        },
+        "roi": {
+          "path": "patient_17/roi_masks/slice_11.npy",
+          "sha256": "6cabbe2c1250dbcb48e67eeffb97c5b861cc5b45805b8b2b5fe5a144b96eaeea"
+        }
+      }
+    },
+    {
+      "patient_id": "17",
+      "slice_id": "slice_12",
+      "labels": [
+        2
+      ],
+      "files": {
+        "image": {
+          "path": "patient_17/images/slice_12.npy",
+          "sha256": "852252100cdc39a8793d024a8a79953cf736d077fa7131404729df5d33402a24"
+        },
+        "lung": {
+          "path": "patient_17/lung_masks/slice_12.npy",
+          "sha256": "4d399f2f7955c3138019918f000907757a6867b6716c93347f20189d5d192306"
+        },
+        "roi": {
+          "path": "patient_17/roi_masks/slice_12.npy",
+          "sha256": "dc5d11bdd9d0159e489c535ffe7ec86bc8f557165b5323a251eb56d44b825dfd"
+        }
+      }
+    },
+    {
+      "patient_id": "17",
+      "slice_id": "slice_13",
+      "labels": [
+        2
+      ],
+      "files": {
+        "image": {
+          "path": "patient_17/images/slice_13.npy",
+          "sha256": "ce44bbca5dc48b99c8aca01d22c8773323c6c0450ca3ae6789c9e4200d01c842"
+        },
+        "lung": {
+          "path": "patient_17/lung_masks/slice_13.npy",
+          "sha256": "1541aa0a14db2016f7a9cf460a3a815518d71a0491d61053700493f9c7022d21"
+        },
+        "roi": {
+          "path": "patient_17/roi_masks/slice_13.npy",
+          "sha256": "c7ab5986808c2034b14e656460ba8ebcede84033b594085bbcc1102324ac05b0"
+        }
+      }
+    },
+    {
+      "patient_id": "17",
+      "slice_id": "slice_14",
+      "labels": [
+        2
+      ],
+      "files": {
+        "image": {
+          "path": "patient_17/images/slice_14.npy",
+          "sha256": "49892236eb8e3da987650919a70985b1322afb40ca9483384c61c1505c400e35"
+        },
+        "lung": {
+          "path": "patient_17/lung_masks/slice_14.npy",
+          "sha256": "856ae711ef7a56299c9d83dbc0a1267d9baf00dfaa5bf3725e7db51ddeabe01b"
+        },
+        "roi": {
+          "path": "patient_17/roi_masks/slice_14.npy",
+          "sha256": "f83920c811e44dbb1ef6f53cb3c9dcbf70e7f8b318351976d763f9ad5e8197e4"
+        }
+      }
+    },
+    {
+      "patient_id": "17",
+      "slice_id": "slice_15",
+      "labels": [
+        2
+      ],
+      "files": {
+        "image": {
+          "path": "patient_17/images/slice_15.npy",
+          "sha256": "7b6b455a416f578b75aee8e2d2c1b1f77877b11893f269a26f5e0b06731e7eeb"
+        },
+        "lung": {
+          "path": "patient_17/lung_masks/slice_15.npy",
+          "sha256": "cb947f37ea078bc0e60248a1800b1bfdc1a11a8ad80e7830f0f141617b1c2aa2"
+        },
+        "roi": {
+          "path": "patient_17/roi_masks/slice_15.npy",
+          "sha256": "a07b6edb9e89b6ea37b49f0cab618a2536a84c870273b3a66b918c5c4503d5b3"
+        }
+      }
+    },
+    {
+      "patient_id": "17",
+      "slice_id": "slice_16",
+      "labels": [
+        2
+      ],
+      "files": {
+        "image": {
+          "path": "patient_17/images/slice_16.npy",
+          "sha256": "57b9527e9c6f33b31b426172683fcc201a55e62c28a39b36465dc91f6a848509"
+        },
+        "lung": {
+          "path": "patient_17/lung_masks/slice_16.npy",
+          "sha256": "05da0be20bf93c5fdd08c9ba8846f77c000f16e222c1c207173518c7322c31bc"
+        },
+        "roi": {
+          "path": "patient_17/roi_masks/slice_16.npy",
+          "sha256": "9e2d37eebbb97013222334724ac90a1ae2ac2a02a5914f8da9e463ddf73c0c19"
+        }
+      }
+    },
+    {
+      "patient_id": "17",
+      "slice_id": "slice_17",
+      "labels": [
+        2
+      ],
+      "files": {
+        "image": {
+          "path": "patient_17/images/slice_17.npy",
+          "sha256": "9846c1eb2c8c2b65d60767b7ee40d98d37b84f996b7819bf06b3aba511eba6dc"
+        },
+        "lung": {
+          "path": "patient_17/lung_masks/slice_17.npy",
+          "sha256": "c2487d621a6f266c477ab89557f67f1b76d57b1acc4f3b30e9024ff4fe8f9f6f"
+        },
+        "roi": {
+          "path": "patient_17/roi_masks/slice_17.npy",
+          "sha256": "62077825c3ea0a4485a9def5cd79eb30f17f18878af4fcf0ce39bc4d90319c6c"
+        }
+      }
+    },
+    {
+      "patient_id": "17",
+      "slice_id": "slice_18",
+      "labels": [
+        2
+      ],
+      "files": {
+        "image": {
+          "path": "patient_17/images/slice_18.npy",
+          "sha256": "1f4bc602bc0b847afaab1bc26ede6be80f3be6e9e816e1d923f19deea8817e66"
+        },
+        "lung": {
+          "path": "patient_17/lung_masks/slice_18.npy",
+          "sha256": "07f6b06f20548832268240ec513268af3cac53e0b1963048b5700a10afaa2027"
+        },
+        "roi": {
+          "path": "patient_17/roi_masks/slice_18.npy",
+          "sha256": "0e4aac0c8ca0b275b7dd85a515ed5794069388f19f70b0a8767f67059910002f"
+        }
+      }
+    },
+    {
+      "patient_id": "17",
+      "slice_id": "slice_19",
+      "labels": [
+        2
+      ],
+      "files": {
+        "image": {
+          "path": "patient_17/images/slice_19.npy",
+          "sha256": "bb19a5d218ebba7b3b3646d9f443705eff80eae738ac6430d908cb7786ae2a4d"
+        },
+        "lung": {
+          "path": "patient_17/lung_masks/slice_19.npy",
+          "sha256": "01bb6df645b92655a6577900891f1cee387cd5baf8d9363ec821b48da3cdd325"
+        },
+        "roi": {
+          "path": "patient_17/roi_masks/slice_19.npy",
+          "sha256": "080b7109ed822951b97ef7076c37db84751ec46a658c2e27d09807d8d7d17017"
+        }
+      }
+    },
+    {
+      "patient_id": "17",
+      "slice_id": "slice_20",
+      "labels": [
+        2
+      ],
+      "files": {
+        "image": {
+          "path": "patient_17/images/slice_20.npy",
+          "sha256": "618ab6d832bbc668a2cb41e037fcfefa29f14746cb59eff4f1ab8f121fa2913a"
+        },
+        "lung": {
+          "path": "patient_17/lung_masks/slice_20.npy",
+          "sha256": "8eb398ad936aa5a86c11e458fc32f8da72b2521e7babbf5462c2e2de5c7ad02b"
+        },
+        "roi": {
+          "path": "patient_17/roi_masks/slice_20.npy",
+          "sha256": "37949df5f3bc55a5514ae6989fd7ae0783962bf49b8d3a36c0e253f08a46a0e3"
+        }
+      }
+    },
+    {
+      "patient_id": "17",
+      "slice_id": "slice_21",
+      "labels": [
+        2
+      ],
+      "files": {
+        "image": {
+          "path": "patient_17/images/slice_21.npy",
+          "sha256": "08fe9b40b133831aebc97feb194465d59cfbc4ee64d9f0679de4a7bfcd53db4d"
+        },
+        "lung": {
+          "path": "patient_17/lung_masks/slice_21.npy",
+          "sha256": "ebbcc88d75a76aa848605dd9ce4e00d199404bb021664ef01b88d9260d19534a"
+        },
+        "roi": {
+          "path": "patient_17/roi_masks/slice_21.npy",
+          "sha256": "5be8304fdd70efb481ea36aabfcb12b8e71bfd34fcb8146198330ea3b5e86de6"
+        }
+      }
+    },
+    {
+      "patient_id": "17",
+      "slice_id": "slice_22",
+      "labels": [
+        2
+      ],
+      "files": {
+        "image": {
+          "path": "patient_17/images/slice_22.npy",
+          "sha256": "40c17b63c9cbb874758ff88ade560e9d506733864b0e5520930d99baf1668049"
+        },
+        "lung": {
+          "path": "patient_17/lung_masks/slice_22.npy",
+          "sha256": "70164de7dc3a505c1beab229a762d5ccc42dfda760e3923f1deb090fc38782cf"
+        },
+        "roi": {
+          "path": "patient_17/roi_masks/slice_22.npy",
+          "sha256": "99ff77974a5468f41eb2f9043929d257666c06892f944cd3e3dd90a10b204ecf"
+        }
+      }
+    },
+    {
+      "patient_id": "17",
+      "slice_id": "slice_23",
+      "labels": [
+        2
+      ],
+      "files": {
+        "image": {
+          "path": "patient_17/images/slice_23.npy",
+          "sha256": "ba346114e9f4032aff90ad59ccb7d1b235b526d5e45a0a4c314fd3f1f4bf98bc"
+        },
+        "lung": {
+          "path": "patient_17/lung_masks/slice_23.npy",
+          "sha256": "0895f564d50593888ece449bc08cc3a0014978b84a722332dfa62fb9201ba6f3"
+        },
+        "roi": {
+          "path": "patient_17/roi_masks/slice_23.npy",
+          "sha256": "1fdf9dbd56135d5cc60a1118378666a5f1e38d4195f06604b524788a0db781bf"
+        }
+      }
+    },
+    {
+      "patient_id": "17",
+      "slice_id": "slice_6",
+      "labels": [
+        2
+      ],
+      "files": {
+        "image": {
+          "path": "patient_17/images/slice_6.npy",
+          "sha256": "772e14b6b495b5264ba4f9b8d7c227c72fa624721d2db7947405f496c4cd2446"
+        },
+        "lung": {
+          "path": "patient_17/lung_masks/slice_6.npy",
+          "sha256": "18ca8b4d840223746d3e039943818fc5b245cff391c571af30c61d5b2d520ef6"
+        },
+        "roi": {
+          "path": "patient_17/roi_masks/slice_6.npy",
+          "sha256": "ecdba1559c2596a20ec7d2e992b9523fc7d38e89a2c6b1fc0b252315a3e79784"
+        }
+      }
+    },
+    {
+      "patient_id": "17",
+      "slice_id": "slice_7",
+      "labels": [
+        2
+      ],
+      "files": {
+        "image": {
+          "path": "patient_17/images/slice_7.npy",
+          "sha256": "8c1cba379f61c690f3930228b5142ea96dfbbe7073d9f1ac06f2e80da4884173"
+        },
+        "lung": {
+          "path": "patient_17/lung_masks/slice_7.npy",
+          "sha256": "2bdc1fa6e530d3944eb651700e2e7eb456fa7739bc5d46e4dfc58d5425b20f8b"
+        },
+        "roi": {
+          "path": "patient_17/roi_masks/slice_7.npy",
+          "sha256": "d1251b074f023b5977dd32d68d3567e70d7464075b38cd38b9eaaff49bf292fb"
+        }
+      }
+    },
+    {
+      "patient_id": "17",
+      "slice_id": "slice_8",
+      "labels": [
+        2
+      ],
+      "files": {
+        "image": {
+          "path": "patient_17/images/slice_8.npy",
+          "sha256": "3b504d919861af84b20b53f4d61b52473a954cec71263e307c0597e25d55ca51"
+        },
+        "lung": {
+          "path": "patient_17/lung_masks/slice_8.npy",
+          "sha256": "adc7004077c7eca68bdbbed08c2c8443a7e78f50fdb4c8e87dac884e054be33a"
+        },
+        "roi": {
+          "path": "patient_17/roi_masks/slice_8.npy",
+          "sha256": "47429654f7a2db1275d54b8a383503f0e345b99067e5ef23d48ae5bd8276fb61"
+        }
+      }
+    },
+    {
+      "patient_id": "17",
+      "slice_id": "slice_9",
+      "labels": [
+        2
+      ],
+      "files": {
+        "image": {
+          "path": "patient_17/images/slice_9.npy",
+          "sha256": "4482278e3a319343cf96198faa8867f99390e1864e6e6eebf2d7e445760ee6af"
+        },
+        "lung": {
+          "path": "patient_17/lung_masks/slice_9.npy",
+          "sha256": "e09eebfdf23c44b64c0ff0de89584634e26009d0e989944558cb58061f5b124f"
+        },
+        "roi": {
+          "path": "patient_17/roi_masks/slice_9.npy",
+          "sha256": "8cf9e87e99be28a1d1a7476ba7a22ed3c43d227171891f1024bdf422b603f13c"
+        }
+      }
+    },
+    {
+      "patient_id": "171",
+      "slice_id": "slice_10",
+      "labels": [
+        3,
+        6
+      ],
+      "files": {
+        "image": {
+          "path": "patient_171/images/slice_10.npy",
+          "sha256": "af65828236fbc952109d9743ca8a1bbab803ea05fc4ebfb11a5f2c4c5691b84a"
+        },
+        "lung": {
+          "path": "patient_171/lung_masks/slice_10.npy",
+          "sha256": "672d60da1a053a91812887fbe51c32890aa7bab24fba5e9be2acbfd2c0c1ff61"
+        },
+        "roi": {
+          "path": "patient_171/roi_masks/slice_10.npy",
+          "sha256": "b95cece792fa68e294b991c425c888931d9b0bf36ce2c1c6d31c7fc0039d7d1a"
+        }
+      }
+    },
+    {
+      "patient_id": "171",
+      "slice_id": "slice_11",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_171/images/slice_11.npy",
+          "sha256": "02d478dddbd259d62f19c67b8c2859bd20c143fa5655e00753e4e5ba90c05c5d"
+        },
+        "lung": {
+          "path": "patient_171/lung_masks/slice_11.npy",
+          "sha256": "3d8e9e6fb1a1c09f789a5668149957634dd26f52d2045f19737811686d61a7c5"
+        },
+        "roi": {
+          "path": "patient_171/roi_masks/slice_11.npy",
+          "sha256": "9268d36089d7991e7a32f4871b097800452cb6edda1c9ac86ae07730a7fae31e"
+        }
+      }
+    },
+    {
+      "patient_id": "171",
+      "slice_id": "slice_12",
+      "labels": [
+        3,
+        6
+      ],
+      "files": {
+        "image": {
+          "path": "patient_171/images/slice_12.npy",
+          "sha256": "7026a67ef26c6ec6e5d6cb2657db3ef0c67a5ed92a703036c5eac5e9129b438b"
+        },
+        "lung": {
+          "path": "patient_171/lung_masks/slice_12.npy",
+          "sha256": "bdfaa48637e4bbe366be6fca0f37cdac761aa9707030adee31b10a92bb947c77"
+        },
+        "roi": {
+          "path": "patient_171/roi_masks/slice_12.npy",
+          "sha256": "f1bfbd984c0e08a0f3924c063a7ee133ee77f05b4662e7546348ccbb7dd48ca3"
+        }
+      }
+    },
+    {
+      "patient_id": "171",
+      "slice_id": "slice_13",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_171/images/slice_13.npy",
+          "sha256": "7916d8e4618d4846869aa8f821a3e38e0694674973462c7920b1b612f32853b8"
+        },
+        "lung": {
+          "path": "patient_171/lung_masks/slice_13.npy",
+          "sha256": "63c573e5d6f2343403f99a59fbf770779f5caf836c839a0dbb0e350b3fe2992b"
+        },
+        "roi": {
+          "path": "patient_171/roi_masks/slice_13.npy",
+          "sha256": "a777784d92cfa146ed76eba1319e5d62045238cefe570b1debd696add958e356"
+        }
+      }
+    },
+    {
+      "patient_id": "171",
+      "slice_id": "slice_14",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_171/images/slice_14.npy",
+          "sha256": "a02b0c987752652591d9dca043d8ec633c19e132845865e6a53865d9d7af035c"
+        },
+        "lung": {
+          "path": "patient_171/lung_masks/slice_14.npy",
+          "sha256": "b4c819d9181595e04f7bb9b1f502d16af4fa3eb921eff3e1411d14fa61322dfb"
+        },
+        "roi": {
+          "path": "patient_171/roi_masks/slice_14.npy",
+          "sha256": "718b4b77359c3792dac3cc5fd73575ecb00c1d06538f1d1523fd60620e4cbf09"
+        }
+      }
+    },
+    {
+      "patient_id": "171",
+      "slice_id": "slice_15",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_171/images/slice_15.npy",
+          "sha256": "85dc5844599d9a429fdf04453a9e67def744573a847ee02c4b6d00ebfa40a950"
+        },
+        "lung": {
+          "path": "patient_171/lung_masks/slice_15.npy",
+          "sha256": "d279ebf2427d0b5509f3184ba389e0ee05c93a0591778e531aefdde5b59138f9"
+        },
+        "roi": {
+          "path": "patient_171/roi_masks/slice_15.npy",
+          "sha256": "90aae71695c30832aa740aa31ffc83731900b652f53b77afcfb73e11cd98f03f"
+        }
+      }
+    },
+    {
+      "patient_id": "171",
+      "slice_id": "slice_16",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_171/images/slice_16.npy",
+          "sha256": "3433a6c0ed11793b966e437f6d4ad2d73e8bed8507575e48045e7c4735fd81d1"
+        },
+        "lung": {
+          "path": "patient_171/lung_masks/slice_16.npy",
+          "sha256": "f69407ac0eb07c202c8663ebaad3203e6f21e1b3b2afc093aa53c2043195b4b1"
+        },
+        "roi": {
+          "path": "patient_171/roi_masks/slice_16.npy",
+          "sha256": "a27d915bf3c1fa4b1962166f11ee9ecdca42ae7e8dd0c6cc9c071b097ef82280"
+        }
+      }
+    },
+    {
+      "patient_id": "171",
+      "slice_id": "slice_17",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_171/images/slice_17.npy",
+          "sha256": "bd728ecb420144cb91ce88032f92773d6ab1a87048b3d9fdd9d506665e18a486"
+        },
+        "lung": {
+          "path": "patient_171/lung_masks/slice_17.npy",
+          "sha256": "4199a274a8bfc58a75a62fe1229c0a6bf8ad12b16b845450952d807ecfd32b50"
+        },
+        "roi": {
+          "path": "patient_171/roi_masks/slice_17.npy",
+          "sha256": "d934bf53572c518f5f8cea4b73eca488a127f76e1beac05cbb3a5b83368612bd"
+        }
+      }
+    },
+    {
+      "patient_id": "171",
+      "slice_id": "slice_6",
+      "labels": [
+        6
+      ],
+      "files": {
+        "image": {
+          "path": "patient_171/images/slice_6.npy",
+          "sha256": "ea93492a4e335f998ae7c2d3a8be582654b8d21a8723d619331ae6f8df306a93"
+        },
+        "lung": {
+          "path": "patient_171/lung_masks/slice_6.npy",
+          "sha256": "2332bc48b34bf442f1e2ddd4fb2e0cb1053bca9e56d81883b8c157e8892aff71"
+        },
+        "roi": {
+          "path": "patient_171/roi_masks/slice_6.npy",
+          "sha256": "f231b11c4e0bcfb6494ff8408afbe039b37e86bd5ecb116bb18af3abe6e37815"
+        }
+      }
+    },
+    {
+      "patient_id": "171",
+      "slice_id": "slice_7",
+      "labels": [
+        6
+      ],
+      "files": {
+        "image": {
+          "path": "patient_171/images/slice_7.npy",
+          "sha256": "a99a5d524132db6ad6762dd3a6390871ec5d77da3d67c93a4ac35ea51d559970"
+        },
+        "lung": {
+          "path": "patient_171/lung_masks/slice_7.npy",
+          "sha256": "38602afd6e9dd50bb17d35447ed587a3ddb67c139cce35465b2fb6d69419705e"
+        },
+        "roi": {
+          "path": "patient_171/roi_masks/slice_7.npy",
+          "sha256": "ddef15e37ab6a69480e35644527d772c07a783320c0eddd3a37ae67f9b8eaf52"
+        }
+      }
+    },
+    {
+      "patient_id": "171",
+      "slice_id": "slice_8",
+      "labels": [
+        6
+      ],
+      "files": {
+        "image": {
+          "path": "patient_171/images/slice_8.npy",
+          "sha256": "e20729856f5bc8b11a19adfd9b8558f311e37ddbfe1d73b94b08373a42744c59"
+        },
+        "lung": {
+          "path": "patient_171/lung_masks/slice_8.npy",
+          "sha256": "f09e74128c5843938bdc1054b49fe01ddc651a839b780fbaab65f2ff6b626f5f"
+        },
+        "roi": {
+          "path": "patient_171/roi_masks/slice_8.npy",
+          "sha256": "92aa2f600530fe684e23266e915a02dd56bc5235e56bd673d244d52fe53b4545"
+        }
+      }
+    },
+    {
+      "patient_id": "171",
+      "slice_id": "slice_9",
+      "labels": [
+        6
+      ],
+      "files": {
+        "image": {
+          "path": "patient_171/images/slice_9.npy",
+          "sha256": "9393a01232018b700f94bdcc65a29e0523222fb4d8fb26161d488c631363c85f"
+        },
+        "lung": {
+          "path": "patient_171/lung_masks/slice_9.npy",
+          "sha256": "ee664715b916ed13a9798f16d9528dfe7a8e02107bc7f2bbbf145759216f41c5"
+        },
+        "roi": {
+          "path": "patient_171/roi_masks/slice_9.npy",
+          "sha256": "3d420ae21f18e9a9d13f4704b2daaade91743c9b6fb47d1dcfb0c6529f5464e9"
+        }
+      }
+    },
+    {
+      "patient_id": "175",
+      "slice_id": "slice_14",
+      "labels": [
+        4
+      ],
+      "files": {
+        "image": {
+          "path": "patient_175/images/slice_14.npy",
+          "sha256": "bee24485483dfdd2b3aa1415a3ad49aaf6e99693b4d821bd56d474009f273a6d"
+        },
+        "lung": {
+          "path": "patient_175/lung_masks/slice_14.npy",
+          "sha256": "fe0486fa4f6fc04398751d40b4cb72517a3d93d89cbcad37f61b2b681f265aa5"
+        },
+        "roi": {
+          "path": "patient_175/roi_masks/slice_14.npy",
+          "sha256": "f628f20691803127c810cdc7d7f737ff192ddc7cab808405017401e1da261f21"
+        }
+      }
+    },
+    {
+      "patient_id": "175",
+      "slice_id": "slice_20",
+      "labels": [
+        4
+      ],
+      "files": {
+        "image": {
+          "path": "patient_175/images/slice_20.npy",
+          "sha256": "9c452c4f967465a54a9e5ac9ebcc34b8d8542fd59522e50316dbde06777ce795"
+        },
+        "lung": {
+          "path": "patient_175/lung_masks/slice_20.npy",
+          "sha256": "8191d40854b12f715bf1dd324a68494c6877d964383088537f358bb52ff0a10c"
+        },
+        "roi": {
+          "path": "patient_175/roi_masks/slice_20.npy",
+          "sha256": "6d31b1581ba6a74cadbc59e6582d14f2a4aca2561d67a4080095450d2008c8ef"
+        }
+      }
+    },
+    {
+      "patient_id": "175",
+      "slice_id": "slice_21",
+      "labels": [
+        4
+      ],
+      "files": {
+        "image": {
+          "path": "patient_175/images/slice_21.npy",
+          "sha256": "a82b2e7e56d301b636d2eda491b901b2f79530b0d22d9932706e2450e4dc89af"
+        },
+        "lung": {
+          "path": "patient_175/lung_masks/slice_21.npy",
+          "sha256": "4c3c17ebd30bdf71f961d06e0f850b7ad8328198f8b0cdaae3e0a40ce7883436"
+        },
+        "roi": {
+          "path": "patient_175/roi_masks/slice_21.npy",
+          "sha256": "761b9a450eae11cf3407fad34d8ca726fc5a95875a83aa6e83a5025533e55bc3"
+        }
+      }
+    },
+    {
+      "patient_id": "175",
+      "slice_id": "slice_33",
+      "labels": [
+        4
+      ],
+      "files": {
+        "image": {
+          "path": "patient_175/images/slice_33.npy",
+          "sha256": "fd217e62981feac690e6afbf0c9147dd080406cb119fe3e0fc9641c5804b2c3c"
+        },
+        "lung": {
+          "path": "patient_175/lung_masks/slice_33.npy",
+          "sha256": "c403bad456fba5f27f511dde266afc45769f4624290465a7c8536d3e539d4b83"
+        },
+        "roi": {
+          "path": "patient_175/roi_masks/slice_33.npy",
+          "sha256": "cc3c4d1139b522380dd9903882775aacd6a274a3bcf2b4cc4a30123c60b9b088"
+        }
+      }
+    },
+    {
+      "patient_id": "175",
+      "slice_id": "slice_34",
+      "labels": [
+        4
+      ],
+      "files": {
+        "image": {
+          "path": "patient_175/images/slice_34.npy",
+          "sha256": "2712f6b4418e9c832c0e250025a4ba519015299dfb29ec2350f263d7b5010e44"
+        },
+        "lung": {
+          "path": "patient_175/lung_masks/slice_34.npy",
+          "sha256": "10d39eff23dc1fe91d60b09169699a705df1ed9a2f9e6eeb456383ede820ccd5"
+        },
+        "roi": {
+          "path": "patient_175/roi_masks/slice_34.npy",
+          "sha256": "3223c41d523c564460d03d23b25bf5e22120f339dadfb6204617ee803b09017f"
+        }
+      }
+    },
+    {
+      "patient_id": "183",
+      "slice_id": "slice_12",
+      "labels": [
+        5
+      ],
+      "files": {
+        "image": {
+          "path": "patient_183/images/slice_12.npy",
+          "sha256": "1b8c3b3a604cb2f89c35be6af05cafb319d02a5039b7eb89387a3701dbb5cd7a"
+        },
+        "lung": {
+          "path": "patient_183/lung_masks/slice_12.npy",
+          "sha256": "0cc7d3dd796463e0c6f6c6097123efed411100368c7503c74de2cfe90c6397dd"
+        },
+        "roi": {
+          "path": "patient_183/roi_masks/slice_12.npy",
+          "sha256": "b6a2ac4a529f088885c6b98d614443ad71bc9acd17c46c5430249e2c4298e193"
+        }
+      }
+    },
+    {
+      "patient_id": "39",
+      "slice_id": "slice_10",
+      "labels": [
+        5
+      ],
+      "files": {
+        "image": {
+          "path": "patient_39/images/slice_10.npy",
+          "sha256": "e423b96f229cc623bca9ff3b2d1e55c8fa267ded50d03e3382c18ae038940c90"
+        },
+        "lung": {
+          "path": "patient_39/lung_masks/slice_10.npy",
+          "sha256": "7920d84b1c6d9679dcfe060ee1d308b3156ca222057da155f353e422f14d2f91"
+        },
+        "roi": {
+          "path": "patient_39/roi_masks/slice_10.npy",
+          "sha256": "d0366b11f0274f0da846be41484a066bdc3d60b7a9efd8b5c522da29ddcbd433"
+        }
+      }
+    },
+    {
+      "patient_id": "39",
+      "slice_id": "slice_11",
+      "labels": [
+        5
+      ],
+      "files": {
+        "image": {
+          "path": "patient_39/images/slice_11.npy",
+          "sha256": "15fddcf8da5c70bec4a5a53deb85776921b08d010dc814b05c9793cabe5c814d"
+        },
+        "lung": {
+          "path": "patient_39/lung_masks/slice_11.npy",
+          "sha256": "68c07ac2eeab2ff63ad66101f8a6a7d9c89b62a332759b76459289585ef53f76"
+        },
+        "roi": {
+          "path": "patient_39/roi_masks/slice_11.npy",
+          "sha256": "1855081ea916c63b084f9f7e3737c9029e73f5be6d489a601acbf6781c57b1e5"
+        }
+      }
+    },
+    {
+      "patient_id": "39",
+      "slice_id": "slice_12",
+      "labels": [
+        5
+      ],
+      "files": {
+        "image": {
+          "path": "patient_39/images/slice_12.npy",
+          "sha256": "d48f68a212372cdb3b758dd4cecba5d78f549d4a5da260047a56d908a5e36cd2"
+        },
+        "lung": {
+          "path": "patient_39/lung_masks/slice_12.npy",
+          "sha256": "fee0558d46b4482a8c3f62a2b93dab8e2c60f54e2b3ed60632afa725da08c847"
+        },
+        "roi": {
+          "path": "patient_39/roi_masks/slice_12.npy",
+          "sha256": "d79c18c54483d94cee5931109abaf5db27ee6d213c3b3e1bab51ccdd72470465"
+        }
+      }
+    },
+    {
+      "patient_id": "39",
+      "slice_id": "slice_8",
+      "labels": [
+        5
+      ],
+      "files": {
+        "image": {
+          "path": "patient_39/images/slice_8.npy",
+          "sha256": "ba15b22202d35ce20c871beef3a27f8531ef546859ae382ec6edc03640c5a806"
+        },
+        "lung": {
+          "path": "patient_39/lung_masks/slice_8.npy",
+          "sha256": "1e90e1f9c0a2d0cb5797c8953f8e81e74919ff86c216d2388ce9d388b978e9de"
+        },
+        "roi": {
+          "path": "patient_39/roi_masks/slice_8.npy",
+          "sha256": "04ad504bf444065757ff544c202925d8327d48eac1db387876868920a8899069"
+        }
+      }
+    },
+    {
+      "patient_id": "39",
+      "slice_id": "slice_9",
+      "labels": [
+        5
+      ],
+      "files": {
+        "image": {
+          "path": "patient_39/images/slice_9.npy",
+          "sha256": "fc2f3e90fbbd4f75f989208235fbcdc262b566dda261d40899cd9c2604d22562"
+        },
+        "lung": {
+          "path": "patient_39/lung_masks/slice_9.npy",
+          "sha256": "dfc2f2052edb4839aacf3e7dac8f427aef4e50792b1b5dd0d763154ed34f7f1f"
+        },
+        "roi": {
+          "path": "patient_39/roi_masks/slice_9.npy",
+          "sha256": "ffda89d52145fe9244e09e80336542b75364f5d0cb781bfbc68de84c4f22a502"
+        }
+      }
+    },
+    {
+      "patient_id": "48",
+      "slice_id": "slice_10",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_48/images/slice_10.npy",
+          "sha256": "61d4eb29d3f4737f205e457edd3be1763e2811a387b69f5accc075a0d01f25dc"
+        },
+        "lung": {
+          "path": "patient_48/lung_masks/slice_10.npy",
+          "sha256": "5b0facd89103e99c0e761d6f0e9ba3816ef6300b3e1a73d27dc391f94ab0575b"
+        },
+        "roi": {
+          "path": "patient_48/roi_masks/slice_10.npy",
+          "sha256": "ea87ddea21c4b1baace29930cd74c9b4f07a20bb94a5a1f0e65947cc938f8d1e"
+        }
+      }
+    },
+    {
+      "patient_id": "48",
+      "slice_id": "slice_11",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_48/images/slice_11.npy",
+          "sha256": "49afeef4a846dd2f7b5d3dbcb5b59918b8e4792f364847eff77a298e3279b9b3"
+        },
+        "lung": {
+          "path": "patient_48/lung_masks/slice_11.npy",
+          "sha256": "07efa4025bbee7c99af97ba758d74d63a4c16b47f81341d81ce1c962f5e9eed8"
+        },
+        "roi": {
+          "path": "patient_48/roi_masks/slice_11.npy",
+          "sha256": "641bf8bd85a38bd59502df7f4d18d509d3c06b11433b5449da12b7fca4cb5422"
+        }
+      }
+    },
+    {
+      "patient_id": "48",
+      "slice_id": "slice_12",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_48/images/slice_12.npy",
+          "sha256": "c334bab852f9aba31bbe80794cd0efb46192090bfa489a4b43e725cad5e804a9"
+        },
+        "lung": {
+          "path": "patient_48/lung_masks/slice_12.npy",
+          "sha256": "b75512efdb54ff8e4dd35476485fb3b1291853ede1081c1a481d3237459b9b12"
+        },
+        "roi": {
+          "path": "patient_48/roi_masks/slice_12.npy",
+          "sha256": "0f2f25a2dccde2ac891d160095be42cc6e19f323118a90519b08762e9d8b9926"
+        }
+      }
+    },
+    {
+      "patient_id": "48",
+      "slice_id": "slice_13",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_48/images/slice_13.npy",
+          "sha256": "927ff1b5e2bf061130f9ffedb4371748fae00779f740107653ab9666c021d031"
+        },
+        "lung": {
+          "path": "patient_48/lung_masks/slice_13.npy",
+          "sha256": "698e0c0506675431cb909b24fb0b15a9351733e77e56df1bf850a7dfafef5d34"
+        },
+        "roi": {
+          "path": "patient_48/roi_masks/slice_13.npy",
+          "sha256": "d4b01359aa68760e6bf989e96a82cb07d93503e0733832bc0e683da2a9cb8418"
+        }
+      }
+    },
+    {
+      "patient_id": "48",
+      "slice_id": "slice_14",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_48/images/slice_14.npy",
+          "sha256": "216a2491bf40d3ae46b4290b4f2490bf0cb77d5f6d4c2dd3613a9641b8633b39"
+        },
+        "lung": {
+          "path": "patient_48/lung_masks/slice_14.npy",
+          "sha256": "4c80e55243404b36c0407310e218c0f90af9025ea232aacebf13753afb5ec919"
+        },
+        "roi": {
+          "path": "patient_48/roi_masks/slice_14.npy",
+          "sha256": "afa5d7bcd44e27fd53feaab75f25f03a970735ff65c0119a2cd4163067c4764a"
+        }
+      }
+    },
+    {
+      "patient_id": "48",
+      "slice_id": "slice_16",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_48/images/slice_16.npy",
+          "sha256": "7e4279f6ff58f7b56b486712d2e0b0e089a948a232729551ebc444a985779062"
+        },
+        "lung": {
+          "path": "patient_48/lung_masks/slice_16.npy",
+          "sha256": "856fe07264795b6a4a6a027aae86a3a99f28e7151ff33a14ca4c3438160428ef"
+        },
+        "roi": {
+          "path": "patient_48/roi_masks/slice_16.npy",
+          "sha256": "e55d162caff6799377c1314f136df48efdc7b66a9995f273ae36988c09dce9e9"
+        }
+      }
+    },
+    {
+      "patient_id": "48",
+      "slice_id": "slice_17",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_48/images/slice_17.npy",
+          "sha256": "07f93c82725a3c48ff5d482de15f7c6a79c600b6fc2991fcb476810dab886572"
+        },
+        "lung": {
+          "path": "patient_48/lung_masks/slice_17.npy",
+          "sha256": "3229a8c3cba1ad14ae02cf6eef141be58cb037ced348323a838ce1cd29b17936"
+        },
+        "roi": {
+          "path": "patient_48/roi_masks/slice_17.npy",
+          "sha256": "efa73c2dc649da8a5dc2edcf618aae72ebd660434a711b1268e9035847fe7281"
+        }
+      }
+    },
+    {
+      "patient_id": "48",
+      "slice_id": "slice_18",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_48/images/slice_18.npy",
+          "sha256": "5ac5873b2092993a072ac564f523a4d8be443b0f1e840d59fab98de274587811"
+        },
+        "lung": {
+          "path": "patient_48/lung_masks/slice_18.npy",
+          "sha256": "dc5544518905c89e94aa516a6dd2f1b52270ecdbab219ea5bc9527ae05b9dfaa"
+        },
+        "roi": {
+          "path": "patient_48/roi_masks/slice_18.npy",
+          "sha256": "241d7f0341fb141a28caeaf4c22327168fbb7a9be059ff1473da4dd3399d7e8c"
+        }
+      }
+    },
+    {
+      "patient_id": "48",
+      "slice_id": "slice_19",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_48/images/slice_19.npy",
+          "sha256": "fa08023ee88e8847858ab5ac1ceb3a84377cac8ecdb51f9e6aec3fc04b26d221"
+        },
+        "lung": {
+          "path": "patient_48/lung_masks/slice_19.npy",
+          "sha256": "390e610bc42ee28dd6f13d0057f811fb40ee21827a6e745809d17112395b604c"
+        },
+        "roi": {
+          "path": "patient_48/roi_masks/slice_19.npy",
+          "sha256": "723c35c6e9ff073ca7cef2464b4836b47316d99a6e25be405db6aa4734f23e6c"
+        }
+      }
+    },
+    {
+      "patient_id": "48",
+      "slice_id": "slice_20",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_48/images/slice_20.npy",
+          "sha256": "6f37699a080505435a26cd074d423a7877f8870e5971d94a82fa1f7f37f558cd"
+        },
+        "lung": {
+          "path": "patient_48/lung_masks/slice_20.npy",
+          "sha256": "a0847b57bb99d6faffdbfd44a62d82db6aefd37bbc78906953e8b18e34057f43"
+        },
+        "roi": {
+          "path": "patient_48/roi_masks/slice_20.npy",
+          "sha256": "5e442eb799fc0d2a46729ee5785e515a9374e6d87cf49d30f65dfa8b69dfc729"
+        }
+      }
+    },
+    {
+      "patient_id": "48",
+      "slice_id": "slice_9",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_48/images/slice_9.npy",
+          "sha256": "4981fcae302f14f042c61d7b6bde25516eefa6fd2edc32ded22dbfb8400ee0d7"
+        },
+        "lung": {
+          "path": "patient_48/lung_masks/slice_9.npy",
+          "sha256": "b807e19164e9652fccf79b2d6b0b8aee50627346cb6f8bd971980398ecba02e3"
+        },
+        "roi": {
+          "path": "patient_48/roi_masks/slice_9.npy",
+          "sha256": "48f22d50ada2433fa6ef52edbed0ff09beedb4d71af231fbdb43291ce88f4d49"
+        }
+      }
+    },
+    {
+      "patient_id": "57",
+      "slice_id": "slice_4",
+      "labels": [
+        4
+      ],
+      "files": {
+        "image": {
+          "path": "patient_57__CT--0002/images/slice_4.npy",
+          "sha256": "0dbcb397e3af05c2aac391cbc76745b6dcfc7dd3ad31bc73408e7e2efadcdf15"
+        },
+        "lung": {
+          "path": "patient_57__CT--0002/lung_masks/slice_4.npy",
+          "sha256": "70cb1f6d267ef5293a8ea5e71efbb26ba62080f9a2c18dcf3e63469a8c5847dd"
+        },
+        "roi": {
+          "path": "patient_57__CT--0002/roi_masks/slice_4.npy",
+          "sha256": "7814579d2c21bf98a8de888e6d0c616e823ee2a11bc423a4c4a430412a5c20f6"
+        }
+      }
+    },
+    {
+      "patient_id": "57",
+      "slice_id": "slice_5",
+      "labels": [
+        4
+      ],
+      "files": {
+        "image": {
+          "path": "patient_57__CT--0002/images/slice_5.npy",
+          "sha256": "cdde066616681a0dece610606d008cfbbbbfcea1e9bb939e3bc2a12d10de29a6"
+        },
+        "lung": {
+          "path": "patient_57__CT--0002/lung_masks/slice_5.npy",
+          "sha256": "024e7da60ef5c14518063fbbdfe4c8ce91a65518bacc715b1b1598c390f3f8e3"
+        },
+        "roi": {
+          "path": "patient_57__CT--0002/roi_masks/slice_5.npy",
+          "sha256": "1bca76f50d7907b07e2bb910a732661bfebd32f131cbc77b6785cc6c62042262"
+        }
+      }
+    },
+    {
+      "patient_id": "57",
+      "slice_id": "slice_6",
+      "labels": [
+        4
+      ],
+      "files": {
+        "image": {
+          "path": "patient_57__CT--0002/images/slice_6.npy",
+          "sha256": "92917e746a38154eb08e996ff2396a870188619e7ac3fa05c70f094e432369a5"
+        },
+        "lung": {
+          "path": "patient_57__CT--0002/lung_masks/slice_6.npy",
+          "sha256": "37ac331831c4f6ddd31f417e26bad99073e7c61c995eef85e07087255e2f158c"
+        },
+        "roi": {
+          "path": "patient_57__CT--0002/roi_masks/slice_6.npy",
+          "sha256": "d073df8e472430fcdd832c43135ea9304c059ef6200111bdd40717ab441c034d"
+        }
+      }
+    },
+    {
+      "patient_id": "57",
+      "slice_id": "slice_7",
+      "labels": [
+        4
+      ],
+      "files": {
+        "image": {
+          "path": "patient_57__CT--0002/images/slice_7.npy",
+          "sha256": "46de869a240c812e4b6804d484b5b55ea5eb2dc05e28dc75368c6ce5dc2a2270"
+        },
+        "lung": {
+          "path": "patient_57__CT--0002/lung_masks/slice_7.npy",
+          "sha256": "f743e6b4aa37cd51178da55009b9e241b21145a04e6f5bf261b68b55f394ea08"
+        },
+        "roi": {
+          "path": "patient_57__CT--0002/roi_masks/slice_7.npy",
+          "sha256": "555985923b2e316a334af9c6913bc364a06d4f42c38ea50b6a5cb1f5be9d936b"
+        }
+      }
+    },
+    {
+      "patient_id": "57",
+      "slice_id": "slice_10",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_57__CT-series-5652/images/slice_10.npy",
+          "sha256": "3932059fe987e991ee99741093824433bb734024452cea089dd9107fc9cf7b81"
+        },
+        "lung": {
+          "path": "patient_57__CT-series-5652/lung_masks/slice_10.npy",
+          "sha256": "964e6dfe4ed28577c30a0ce4d4a27a82c81f57dd5b35a45574e147815ad99d8e"
+        },
+        "roi": {
+          "path": "patient_57__CT-series-5652/roi_masks/slice_10.npy",
+          "sha256": "073fe3751f27ad50180d65bcf9ebf2f60e77b43b348983a3fac90d5d6d7c19c8"
+        }
+      }
+    },
+    {
+      "patient_id": "57",
+      "slice_id": "slice_12",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_57__CT-series-5652/images/slice_12.npy",
+          "sha256": "f107b0fd7962b162b664b9f2969cb51abcad41a9ca6ebb84258e9bae45b38d43"
+        },
+        "lung": {
+          "path": "patient_57__CT-series-5652/lung_masks/slice_12.npy",
+          "sha256": "f7ab5480e63859429e2735af37c81fedb044437d31e550cec7ccae33ae244aa6"
+        },
+        "roi": {
+          "path": "patient_57__CT-series-5652/roi_masks/slice_12.npy",
+          "sha256": "795d2a154818c77b2afd9651aebc750d91caff71dc5b0ccaab9ebd4fe95fd38a"
+        }
+      }
+    },
+    {
+      "patient_id": "57",
+      "slice_id": "slice_13",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_57__CT-series-5652/images/slice_13.npy",
+          "sha256": "108b6a9e4b5bace844526aea0b4f9a60d4c8582f0e7b430373b62271f1e47fc4"
+        },
+        "lung": {
+          "path": "patient_57__CT-series-5652/lung_masks/slice_13.npy",
+          "sha256": "b9cae085b924361ded17ab4533a25990fefc0f3f5014de09d7f8271a62c86984"
+        },
+        "roi": {
+          "path": "patient_57__CT-series-5652/roi_masks/slice_13.npy",
+          "sha256": "84863a55325f9cb74f9a354541c67753aef23e4c1e366870e52f01deda96f4a5"
+        }
+      }
+    },
+    {
+      "patient_id": "57",
+      "slice_id": "slice_14",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_57__CT-series-5652/images/slice_14.npy",
+          "sha256": "ad1c5e1e8c60e8ecb8c470c4ad037f0f6ca6af0a5d171836216ca5df86a32498"
+        },
+        "lung": {
+          "path": "patient_57__CT-series-5652/lung_masks/slice_14.npy",
+          "sha256": "709df63afd39f1739134c2795dd2359251e44905f3d305f1b84a71d7040e3908"
+        },
+        "roi": {
+          "path": "patient_57__CT-series-5652/roi_masks/slice_14.npy",
+          "sha256": "c2f2e17a743d0dc9f863e4fb1be06f822129a8080cc32a2438fb25484f6be2b9"
+        }
+      }
+    },
+    {
+      "patient_id": "57",
+      "slice_id": "slice_15",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_57__CT-series-5652/images/slice_15.npy",
+          "sha256": "e402db1ae349665e1a8d425cdecdab65c480796a4d1c4bce59c2a70dc4c987d4"
+        },
+        "lung": {
+          "path": "patient_57__CT-series-5652/lung_masks/slice_15.npy",
+          "sha256": "007d7e56744d04a995777dd662d4484c4c9a3426f11202aa13b108d8560dc5a1"
+        },
+        "roi": {
+          "path": "patient_57__CT-series-5652/roi_masks/slice_15.npy",
+          "sha256": "d2ff955aaea7745dc19d3823b1d291f389ecc187b7bf3b84fbf62f4ae823e723"
+        }
+      }
+    },
+    {
+      "patient_id": "57",
+      "slice_id": "slice_16",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_57__CT-series-5652/images/slice_16.npy",
+          "sha256": "24b32740b1477161edb17aa705b5cc4f98e0c20853d8dbc1f6a38bb243b71a78"
+        },
+        "lung": {
+          "path": "patient_57__CT-series-5652/lung_masks/slice_16.npy",
+          "sha256": "9f3943f5ea42b438fef95edcc5332061f3acc009ec2b37aa8e3ca22f85ba7562"
+        },
+        "roi": {
+          "path": "patient_57__CT-series-5652/roi_masks/slice_16.npy",
+          "sha256": "a0d43a9d3d8c5ef4ae255d3a0125c2b939a07668defb53a8128450cfae55df35"
+        }
+      }
+    },
+    {
+      "patient_id": "57",
+      "slice_id": "slice_17",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_57__CT-series-5652/images/slice_17.npy",
+          "sha256": "d82f721e3ac5d5b7072e53c2548fcf942ac2e6ecc8fdbf13beaddbcf926ae85d"
+        },
+        "lung": {
+          "path": "patient_57__CT-series-5652/lung_masks/slice_17.npy",
+          "sha256": "65b27e436e0f2a8fc83d7dab94e88cd9b8a9af0272b2acc6d8153173da4f7c1d"
+        },
+        "roi": {
+          "path": "patient_57__CT-series-5652/roi_masks/slice_17.npy",
+          "sha256": "7eb7b3b995959422150e26f0c9897ed14b7d8db495ac69e748c43ff1e6078c8a"
+        }
+      }
+    },
+    {
+      "patient_id": "57",
+      "slice_id": "slice_2",
+      "labels": [
+        4
+      ],
+      "files": {
+        "image": {
+          "path": "patient_57__CT-series-5652/images/slice_2.npy",
+          "sha256": "0d4320354239291bc383f5313d48378e4df2737080d1ab958ba5b8711187dfca"
+        },
+        "lung": {
+          "path": "patient_57__CT-series-5652/lung_masks/slice_2.npy",
+          "sha256": "368ca92706e5649231f4f102623ad6ce9e81d5ec9028e63dbdc7795ec3dba604"
+        },
+        "roi": {
+          "path": "patient_57__CT-series-5652/roi_masks/slice_2.npy",
+          "sha256": "815187ed5e1ccee9e50b51bbee681de1b3c5184fc637d2be4d67f7a3240c17be"
+        }
+      }
+    },
+    {
+      "patient_id": "57",
+      "slice_id": "slice_3",
+      "labels": [
+        4
+      ],
+      "files": {
+        "image": {
+          "path": "patient_57__CT-series-5652/images/slice_3.npy",
+          "sha256": "250bb549f261a0ab5daa94fc3fd9c640236856baab2a3c2e52c1b576ce90c853"
+        },
+        "lung": {
+          "path": "patient_57__CT-series-5652/lung_masks/slice_3.npy",
+          "sha256": "484c7458e18959096a2d30695eb0870114a9c0e2940186704369d74451b73314"
+        },
+        "roi": {
+          "path": "patient_57__CT-series-5652/roi_masks/slice_3.npy",
+          "sha256": "c9262510367773c977f69f1e300ee014a62bb8a0519b79936c2b54ad3eb353bf"
+        }
+      }
+    },
+    {
+      "patient_id": "57",
+      "slice_id": "slice_4",
+      "labels": [
+        4
+      ],
+      "files": {
+        "image": {
+          "path": "patient_57__CT-series-5652/images/slice_4.npy",
+          "sha256": "80e0cdfb56f5a6eb6ff1908bc3c55fe1763ad9e80dd89d6f3457fcc0d7053e7a"
+        },
+        "lung": {
+          "path": "patient_57__CT-series-5652/lung_masks/slice_4.npy",
+          "sha256": "7ff5db60c4550b224cf56a4f42183ed3766c1921bec7f6259c04ee1a8c3374af"
+        },
+        "roi": {
+          "path": "patient_57__CT-series-5652/roi_masks/slice_4.npy",
+          "sha256": "f73ef23baa6ba65b6c0b60a7dd7a009615ac27c13f0e35507450c7399781f0a4"
+        }
+      }
+    },
+    {
+      "patient_id": "57",
+      "slice_id": "slice_5",
+      "labels": [
+        4
+      ],
+      "files": {
+        "image": {
+          "path": "patient_57__CT-series-5652/images/slice_5.npy",
+          "sha256": "1eb5bc0538aab734fde0b534d24670dd84a018164a080a6403c64bd61dce8417"
+        },
+        "lung": {
+          "path": "patient_57__CT-series-5652/lung_masks/slice_5.npy",
+          "sha256": "bc12f3dbac4f3bafa60b29862c2288244d95e6b98109ee87535bd0bb1e665c72"
+        },
+        "roi": {
+          "path": "patient_57__CT-series-5652/roi_masks/slice_5.npy",
+          "sha256": "1f27549a30da6ee9b0f0a596c3b45d16be83a76d490c5da15884bdaaa0c7aa44"
+        }
+      }
+    },
+    {
+      "patient_id": "57",
+      "slice_id": "slice_6",
+      "labels": [
+        4
+      ],
+      "files": {
+        "image": {
+          "path": "patient_57__CT-series-5652/images/slice_6.npy",
+          "sha256": "ccd3e00d0e54bc1b0622e6b9d04a2182b6fdf2ce7a2af89f98c67080f3b7f3a4"
+        },
+        "lung": {
+          "path": "patient_57__CT-series-5652/lung_masks/slice_6.npy",
+          "sha256": "e7a177c7741657d154c79b606d7fdd29945af2fbe82d2ca891c127cc79ba43e2"
+        },
+        "roi": {
+          "path": "patient_57__CT-series-5652/roi_masks/slice_6.npy",
+          "sha256": "576714d78192cd936b840017f44a2f8bc0f8eb31ddfe118257a6a955a5fe3df0"
+        }
+      }
+    },
+    {
+      "patient_id": "57",
+      "slice_id": "slice_8",
+      "labels": [
+        3,
+        4
+      ],
+      "files": {
+        "image": {
+          "path": "patient_57__CT-series-5652/images/slice_8.npy",
+          "sha256": "b833e3268de8541c75d943cf09af42f87deceded6013c8870982a7576b7cf208"
+        },
+        "lung": {
+          "path": "patient_57__CT-series-5652/lung_masks/slice_8.npy",
+          "sha256": "3150249054fd6ce2c9300ab8576e8bdef213341f5a8b5d3f90af45237185ee69"
+        },
+        "roi": {
+          "path": "patient_57__CT-series-5652/roi_masks/slice_8.npy",
+          "sha256": "37ea90f559795945096d7aa0f05905194dd44c559817ecf934437c5b9d3bd628"
+        }
+      }
+    },
+    {
+      "patient_id": "57",
+      "slice_id": "slice_9",
+      "labels": [
+        3
+      ],
+      "files": {
+        "image": {
+          "path": "patient_57__CT-series-5652/images/slice_9.npy",
+          "sha256": "c803ce895e84d839986d44ac46aeb9aea82d70d22d2e0f7616f9bee15c1338fd"
+        },
+        "lung": {
+          "path": "patient_57__CT-series-5652/lung_masks/slice_9.npy",
+          "sha256": "17ae59ac98c6c486bab1232382b8b310e9a80c3f619de1c33cb5beeda9a97f87"
+        },
+        "roi": {
+          "path": "patient_57__CT-series-5652/roi_masks/slice_9.npy",
+          "sha256": "305f080d1a3c55465b626321a01ffb61d0b6d0850549ffcfd0897c61f706026b"
+        }
+      }
+    },
+    {
+      "patient_id": "74",
+      "slice_id": "slice_11",
+      "labels": [
+        4
+      ],
+      "files": {
+        "image": {
+          "path": "patient_74/images/slice_11.npy",
+          "sha256": "b2e148ec23e86bd6158e3bfaf2ffbb1bd96842b9612a44d6568337b226a9de5f"
+        },
+        "lung": {
+          "path": "patient_74/lung_masks/slice_11.npy",
+          "sha256": "b63c8303df43ed39a00f5e115b2ff268b5353a547a6571564440a4ce2097c5b6"
+        },
+        "roi": {
+          "path": "patient_74/roi_masks/slice_11.npy",
+          "sha256": "0eab2b22ae1453c43bb11a90ef5c8dfa2d03daa9e2e7b20a4a887674e747fe8a"
+        }
+      }
+    },
+    {
+      "patient_id": "74",
+      "slice_id": "slice_12",
+      "labels": [
+        4
+      ],
+      "files": {
+        "image": {
+          "path": "patient_74/images/slice_12.npy",
+          "sha256": "b8701ad45a52e45f8f8384a0215bc5caf17f58d5372772cecd987b04218d5787"
+        },
+        "lung": {
+          "path": "patient_74/lung_masks/slice_12.npy",
+          "sha256": "feb4966079cff5f36641a3689615d22726b342e9bef8578f38aa074b1eaa0d7b"
+        },
+        "roi": {
+          "path": "patient_74/roi_masks/slice_12.npy",
+          "sha256": "2c0d413f0f54c77a2576dcc80575d5d8e47c4ffc43b227acc01cab9a956d96ce"
+        }
+      }
+    },
+    {
+      "patient_id": "74",
+      "slice_id": "slice_13",
+      "labels": [
+        4
+      ],
+      "files": {
+        "image": {
+          "path": "patient_74/images/slice_13.npy",
+          "sha256": "461145e4699508b00a23cebdeb102e69ed3416ec9a81536a4eb87729d28d4324"
+        },
+        "lung": {
+          "path": "patient_74/lung_masks/slice_13.npy",
+          "sha256": "58efa2f86bb7bf02658f1b00ab866af6186fec76b5c42f9bbf83a043a9dc43af"
+        },
+        "roi": {
+          "path": "patient_74/roi_masks/slice_13.npy",
+          "sha256": "6879c962e1a43b5498b81a5ea4cfa3eb13546bb714eb9e7cb2c690d11843049b"
+        }
+      }
+    },
+    {
+      "patient_id": "74",
+      "slice_id": "slice_14",
+      "labels": [
+        4
+      ],
+      "files": {
+        "image": {
+          "path": "patient_74/images/slice_14.npy",
+          "sha256": "911a6e914c12cdf09bd7171292590b5cab19644adcf0fa2c537b7dd39785f2ab"
+        },
+        "lung": {
+          "path": "patient_74/lung_masks/slice_14.npy",
+          "sha256": "d21412ae758738746997cdd140060209aca79d27c52a8fce4d0c64bb7cf61d5f"
+        },
+        "roi": {
+          "path": "patient_74/roi_masks/slice_14.npy",
+          "sha256": "75fd9e48b9c9328f629baa7d3a93a9896791b06b941a0e8030465bbed531ef95"
+        }
+      }
+    },
+    {
+      "patient_id": "74",
+      "slice_id": "slice_7",
+      "labels": [
+        4
+      ],
+      "files": {
+        "image": {
+          "path": "patient_74/images/slice_7.npy",
+          "sha256": "57933fa9dc0087d8d3b9ae5bd1b7ba3b28ab51c0a4965d7a64a33d638201d3d7"
+        },
+        "lung": {
+          "path": "patient_74/lung_masks/slice_7.npy",
+          "sha256": "4f1af1e1b43c2388f3d6df4e70566200226f2b8d37503f2ea372520e6a153875"
+        },
+        "roi": {
+          "path": "patient_74/roi_masks/slice_7.npy",
+          "sha256": "134c86985dcd972bd38bc9200f32721cfd6d1d80a53b968fc023d58a1cab0293"
+        }
+      }
+    },
+    {
+      "patient_id": "74",
+      "slice_id": "slice_8",
+      "labels": [
+        4
+      ],
+      "files": {
+        "image": {
+          "path": "patient_74/images/slice_8.npy",
+          "sha256": "cd877b62b8673c793472d3feab47299fc9d6d4855a605c8ad858101e762f622d"
+        },
+        "lung": {
+          "path": "patient_74/lung_masks/slice_8.npy",
+          "sha256": "e01cf45bcb551d4d2e848d4026c64b909c0ee6b3fa9a262b9e4e6d4b637552a5"
+        },
+        "roi": {
+          "path": "patient_74/roi_masks/slice_8.npy",
+          "sha256": "9211ac433677285d573ee9f41c6253a64f23922d992d0d8233ffe02dd3553ca7"
+        }
+      }
+    },
+    {
+      "patient_id": "74",
+      "slice_id": "slice_9",
+      "labels": [
+        4
+      ],
+      "files": {
+        "image": {
+          "path": "patient_74/images/slice_9.npy",
+          "sha256": "e17397896f249aaa90dc7b96db465ed444d41d82ea644a91b12976a7647b223c"
+        },
+        "lung": {
+          "path": "patient_74/lung_masks/slice_9.npy",
+          "sha256": "5bd71fb4af95e06d36ecad115a95ec63cd263a364f6aef860932430dad9a24a3"
+        },
+        "roi": {
+          "path": "patient_74/roi_masks/slice_9.npy",
+          "sha256": "03b0e75660d0222a56d124c910c571fc76bf7ac292201a49d39b9e97716aaf0e"
+        }
+      }
+    },
+    {
+      "patient_id": "HRCT_pilot__200",
+      "slice_id": "slice_12",
+      "labels": [
+        1
+      ],
+      "files": {
+        "image": {
+          "path": "patient_HRCT_pilot__200/images/slice_12.npy",
+          "sha256": "880e087c0208d77489c18f30c61a2fb4d0add8ef36955fb78b914c7b9ee2efdd"
+        },
+        "lung": {
+          "path": "patient_HRCT_pilot__200/lung_masks/slice_12.npy",
+          "sha256": "9b04ed9ab414886abd69a9462077022d96a023195e82585a9efb1a6584eed96a"
+        },
+        "roi": {
+          "path": "patient_HRCT_pilot__200/roi_masks/slice_12.npy",
+          "sha256": "c613a9dcb6644e5316df91aef99eb486164b4fdcc77724c41bf6fe845c6cee3c"
+        }
+      }
+    },
+    {
+      "patient_id": "HRCT_pilot__200",
+      "slice_id": "slice_15",
+      "labels": [
+        1
+      ],
+      "files": {
+        "image": {
+          "path": "patient_HRCT_pilot__200/images/slice_15.npy",
+          "sha256": "ded6571003313f3858fab6610ac4f13bec113b2c4af8e6ad9e8dda5c981fa8d8"
+        },
+        "lung": {
+          "path": "patient_HRCT_pilot__200/lung_masks/slice_15.npy",
+          "sha256": "f4029c705a91b7ae59328d9c3386fb533657a649086ed30f58c1e3144a5a6e3b"
+        },
+        "roi": {
+          "path": "patient_HRCT_pilot__200/roi_masks/slice_15.npy",
+          "sha256": "8a827b8b6ba0049cfeefea9e95b98f453228630f51be5768c4c8ce49aa3e6704"
+        }
+      }
+    },
+    {
+      "patient_id": "HRCT_pilot__200",
+      "slice_id": "slice_5",
+      "labels": [
+        1
+      ],
+      "files": {
+        "image": {
+          "path": "patient_HRCT_pilot__200/images/slice_5.npy",
+          "sha256": "f2575b1e135b4ab08816de4b529276ecc4247c471480f2c1433fcdbb43b53f02"
+        },
+        "lung": {
+          "path": "patient_HRCT_pilot__200/lung_masks/slice_5.npy",
+          "sha256": "0d26b09cb4cecfb5b4cb4571bf7119fe479afd1ad2def6598e68116cee604229"
+        },
+        "roi": {
+          "path": "patient_HRCT_pilot__200/roi_masks/slice_5.npy",
+          "sha256": "34b6d0fe135328db8c3ec9a10ad45aafa75abd21b62cd141b9b8f31d1c8b3977"
+        }
+      }
+    },
+    {
+      "patient_id": "HRCT_pilot__200",
+      "slice_id": "slice_9",
+      "labels": [
+        1
+      ],
+      "files": {
+        "image": {
+          "path": "patient_HRCT_pilot__200/images/slice_9.npy",
+          "sha256": "5a9d827d1698a454ae234a0544d3703dffaf6611e6ef99b24347cf5ebbaf03c0"
+        },
+        "lung": {
+          "path": "patient_HRCT_pilot__200/lung_masks/slice_9.npy",
+          "sha256": "06d7eed48afd54a3bf23216437918c53b177367e397302f9730ceadf869aac34"
+        },
+        "roi": {
+          "path": "patient_HRCT_pilot__200/roi_masks/slice_9.npy",
+          "sha256": "a428f3d483fa82d88f63d6a3be1430d86d969c708f57468d526c817262ad1ab1"
+        }
+      }
+    }
+  ]
+}

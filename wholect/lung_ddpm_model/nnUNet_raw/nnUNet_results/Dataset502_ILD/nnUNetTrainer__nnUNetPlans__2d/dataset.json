@@ -1,0 +1,20 @@
+{
+    "channel_names": {
+        "0": "rescale_to_0_1",
+        "1": "noNorm"
+    },
+    "labels": {
+        "background": 0,
+        "healthy_control": 1,
+        "emphysema": 2,
+        "ground_glass": 3,
+        "fibrosis": 4,
+        "micronodules": 5,
+        "consolidation": 6,
+        "ignore": 7
+    },
+    "numTraining": 2662,
+    "file_ending": ".png",
+    "name": "ILD dual-channel segmentation",
+    "description": "Channel 0: windowed CT image; channel 1: binary lung mask"
+}

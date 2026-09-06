@@ -9,6 +9,8 @@ Usage:
 
 import os
 import argparse
+
+PROJECT_ROOT = os.environ["PROJECT_ROOT"]
 import numpy as np
 import torch
 
@@ -76,7 +78,7 @@ if __name__ == "__main__":
                         help='Class index (0=healthy,1=emphysema,2=ground_glass,3=fibrosis,4=micronodules)')
     parser.add_argument('--weightfile', type=str,   required=True,
                         help='Path to checkpoint .pt file')
-    parser.add_argument('--output_dir', type=str,   default='/rds/general/user/eh1121/home/Final_Project/diffusion_model/outputs/synthetic')
+    parser.add_argument('--output_dir', type=str,   default=os.path.join(PROJECT_ROOT, "diffusion_model/outputs/synthetic"))
     parser.add_argument('--n_samples',  type=int,   default=500)
     parser.add_argument('--batch_size', type=int,   default=64)
     parser.add_argument('--timesteps',  type=int,   default=1000)

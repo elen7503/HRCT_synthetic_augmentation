@@ -1,0 +1,128 @@
+{
+  "step": 2000,
+  "split": "val",
+  "inpainting_strength": 0.35,
+  "metric_interpretation": "Paired reconstruction diagnostics only. A stochastic diffusion sample is not expected to match the real lesion pixel by pixel; these values must not be treated as standalone realism scores.",
+  "cases": [
+    {
+      "patient_id": "HRCT_pilot__200",
+      "slice_id": "slice_12",
+      "labels": [
+        1
+      ],
+      "roi_fraction": 0.0412445068359375,
+      "lung": {
+        "pixels": 11769,
+        "MAE": 18.266036987304688,
+        "PSNR": 20.28481741218301,
+        "SSIM": 0.4285529553890228
+      },
+      "roi": {
+        "pixels": 2703,
+        "MAE": 18.963003158569336,
+        "PSNR": 20.256864838479814,
+        "SSIM": 0.3489680886268616
+      }
+    },
+    {
+      "patient_id": "17",
+      "slice_id": "slice_12",
+      "labels": [
+        2
+      ],
+      "roi_fraction": 0.0074615478515625,
+      "lung": {
+        "pixels": 11308,
+        "MAE": 15.471878051757812,
+        "PSNR": 20.6237337198069,
+        "SSIM": 0.44565069675445557
+      },
+      "roi": {
+        "pixels": 489,
+        "MAE": 13.997955322265625,
+        "PSNR": 23.098747265007255,
+        "SSIM": 0.5606864094734192
+      }
+    },
+    {
+      "patient_id": "157",
+      "slice_id": "slice_12",
+      "labels": [
+        3
+      ],
+      "roi_fraction": 0.0019378662109375,
+      "lung": {
+        "pixels": 14987,
+        "MAE": 12.75331974029541,
+        "PSNR": 21.807820484848094,
+        "SSIM": 0.506730854511261
+      },
+      "roi": {
+        "pixels": 127,
+        "MAE": 10.464567184448242,
+        "PSNR": 25.729440370853787,
+        "SSIM": 0.3504396677017212
+      }
+    },
+    {
+      "patient_id": "175",
+      "slice_id": "slice_14",
+      "labels": [
+        4
+      ],
+      "roi_fraction": 0.0101776123046875,
+      "lung": {
+        "pixels": 12199,
+        "MAE": 18.779571533203125,
+        "PSNR": 19.59441293202666,
+        "SSIM": 0.468400239944458
+      },
+      "roi": {
+        "pixels": 667,
+        "MAE": 25.452774047851562,
+        "PSNR": 17.779904390484248,
+        "SSIM": 0.4898466467857361
+      }
+    },
+    {
+      "patient_id": "149",
+      "slice_id": "slice_11",
+      "labels": [
+        5
+      ],
+      "roi_fraction": 0.0075225830078125,
+      "lung": {
+        "pixels": 7282,
+        "MAE": 16.070859909057617,
+        "PSNR": 20.785130077246517,
+        "SSIM": 0.4844858944416046
+      },
+      "roi": {
+        "pixels": 493,
+        "MAE": 16.028398513793945,
+        "PSNR": 21.380274353078015,
+        "SSIM": 0.46898871660232544
+      }
+    },
+    {
+      "patient_id": "157",
+      "slice_id": "slice_7",
+      "labels": [
+        6
+      ],
+      "roi_fraction": 0.000213623046875,
+      "lung": {
+        "pixels": 11946,
+        "MAE": 12.17227554321289,
+        "PSNR": 22.053963232057527,
+        "SSIM": 0.47578758001327515
+      },
+      "roi": {
+        "pixels": 14,
+        "MAE": 14.785714149475098,
+        "PSNR": 20.58022603097143,
+        "SSIM": 0.9460474252700806
+      }
+    }
+  ]
+}

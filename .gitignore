@@ -1,8 +1,34 @@
 # Data
+# Option B: all binary data and checkpoints live on institutional OneDrive,
+# not in git. Packaged for upload in for_onedrive_upload/ (outside the repo):
+#   ILD_DB_data.tar.gz               <- ILD_DB_talismanTestSuite/ + ILD_DB_volumeROIs/
+#   wholect_lung_ddpm_dataset.tar.gz <- wholect/lung_ddpm_model/ILD_dataset/
+#   processed_npy_datasets.tar.gz    <- ALL .npy under patches/ and wholect/
+#                                        (overlaps with ILD_dataset/ on purpose --
+#                                        self-contained, not meant to dedupe)
+#   checkpoints.tar.gz               <- all *.pth (nnU-Net + Lung-DDPM 2D/3D)
+#   nnunet_raw_images.tar.gz         <- wholect/lung_ddpm_model/nnUNet_raw/Dataset502_ILD/
+#   generated_and_previews.tar.gz    <- Lung-DDPM/generated/ + Lung-DDPM/checkpoints/*/previews/
 ILD_DB/
 ILD_DB_antiguo/
+*.pth
 ILD_DB_npy/
 ILD_DB_npy_augmented/
+ILD_DB_npy_augmented_v2/
+ILD_DB_npy_augmented_v3_5k/
+ILD_DB_npy_augmented_v5/
+ILD_DB_npy_augmented_attention/
+ILD_DB_wholect_npy/
+ILD_DB_wholect_augmented/
+ILD_DB_wholect_uint8/
+wholect/lung_ddpm_model/ILD_dataset/
+wholect/lung_ddpm_model/Lung-DDPM/generated/
+wholect/lung_ddpm_model/Lung-DDPM/checkpoints/*/previews/
+wholect/lung_ddpm_model/nnUNet_raw/Dataset502_ILD/
+
+# nnU-Net preprocessing cache -- 100% regenerable via nnUNetv2_plan_and_preprocess
+# from wholect/lung_ddpm_model/nnUNet_raw/Dataset502_ILD (backed up on OneDrive above).
+wholect/lung_ddpm_model/nnUNet_raw/nnUNet_preprocessed/
 
 # Model outputs / checkpoints / experiment artifacts
 diffusion_model/*.pt

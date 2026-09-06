@@ -1,0 +1,88 @@
+=== Extraction run ===
+PATCH_SIZE=32, STRIDE=8, PURITY_THRESHOLD=0.9, MAX_OVERLAP_FRACTION=0.25, MAX_PATCHES_PER_PATIENT_CLASS=150
+n_new_candidate_patients found: 63
+[0/63] processing 101 (id=101) ...
+  101: extracted 4 patches ({'fibrosis': 4})
+  112: extracted 2 patches ({'ground_glass': 2})
+  116: extracted 17 patches ({'ground_glass': 17})
+  126: extracted 150 patches ({'micronodules': 150})
+  131: extracted 2 patches ({'micronodules': 2})
+  132: extracted 41 patches ({'micronodules': 41})
+  138: extracted 150 patches ({'healthy': 150})
+[10/63] processing 140 (id=140) ...
+  140: extracted 4 patches ({'micronodules': 4})
+  143: extracted 2 patches ({'ground_glass': 2})
+  144: extracted 4 patches ({'fibrosis': 4})
+  147: extracted 81 patches ({'healthy': 81})
+  149: extracted 7 patches ({'micronodules': 7})
+  153: extracted 6 patches ({'ground_glass': 6})
+[20/63] processing 155 (id=155) ...
+  155: extracted 2 patches ({'ground_glass': 2})
+  157: extracted 1 patches ({'ground_glass': 1})
+  158: extracted 26 patches ({'ground_glass': 26})
+  159: extracted 3 patches ({'micronodules': 3})
+  160: extracted 104 patches ({'fibrosis': 88, 'emphysema': 16})
+  163: extracted 5 patches ({'ground_glass': 5})
+  164: extracted 150 patches ({'healthy': 150})
+  166: extracted 135 patches ({'ground_glass': 135})
+[30/63] processing 167 (id=167) ...
+  167: extracted 19 patches ({'emphysema': 1, 'fibrosis': 18})
+  168: extracted 53 patches ({'emphysema': 53})
+  169: extracted 150 patches ({'healthy': 150})
+  17: extracted 10 patches ({'fibrosis': 4, 'emphysema': 6})
+  171: extracted 61 patches ({'ground_glass': 61})
+  172: extracted 21 patches ({'ground_glass': 21})
+  175: extracted 5 patches ({'fibrosis': 5})
+[40/63] processing 179 (id=179) ...
+  180: extracted 23 patches ({'ground_glass': 23})
+  182: extracted 18 patches ({'micronodules': 18})
+  183: extracted 5 patches ({'micronodules': 5})
+  185: extracted 52 patches ({'fibrosis': 52})
+  23: extracted 80 patches ({'ground_glass': 80})
+  3: extracted 11 patches ({'fibrosis': 11})
+[50/63] processing 35 (id=35) ...
+  35: extracted 150 patches ({'micronodules': 150})
+  36: extracted 105 patches ({'micronodules': 105})
+  56: extracted 17 patches ({'fibrosis': 17})
+  7: extracted 150 patches ({'micronodules': 150})
+  74: extracted 24 patches ({'fibrosis': 24})
+  76: extracted 25 patches ({'fibrosis': 25})
+  83: extracted 44 patches ({'ground_glass': 44})
+[60/63] processing 90 (id=90) ...
+  90: extracted 13 patches ({'fibrosis': 13})
+  92: extracted 40 patches ({'emphysema': 40})
+  94: extracted 75 patches ({'fibrosis': 75})
+
+=== EXTRACTION SUMMARY ===
+Total patches extracted: 2047
+  healthy      (internal label 0): 531 patches
+  emphysema    (internal label 1): 116 patches  <-- PRIORITY CLASS
+  ground_glass (internal label 2): 425 patches
+  fibrosis     (internal label 3): 340 patches
+  micronodules (internal label 4): 635 patches
+
+Patients contributing patches: 44 / 63
+Errors/warnings (9 total, showing first 30):
+  - 126: micronodules had 199 candidate patches, capped to 150
+  - 138: healthy had 162 candidate patches, capped to 150
+  - 142: no roi_mask dir — skipped
+  - 154: no roi_mask dir — skipped
+  - 164: healthy had 301 candidate patches, capped to 150
+  - 169: healthy had 571 candidate patches, capped to 150
+  - 184: no roi_mask dir — skipped
+  - 35: micronodules had 661 candidate patches, capped to 150
+  - 7: micronodules had 651 candidate patches, capped to 150
+
+Saved: /rds/general/user/eh1121/home/Final_Project/ILD_DB_npy_volumeROIs_extracted/new_images.npy  shape=(2047, 32, 32)
+Saved: /rds/general/user/eh1121/home/Final_Project/ILD_DB_npy_volumeROIs_extracted/new_labels.npy    shape=(2047,)
+Saved: /rds/general/user/eh1121/home/Final_Project/ILD_DB_npy_volumeROIs_extracted/new_patient_ids.npy  shape=(2047,)
+Saved: /rds/general/user/eh1121/home/Final_Project/ILD_DB_npy_volumeROIs_extracted/extraction_summary.json
+
+====================================
+CPU Time used: 00:00:04
+CPU Percent: 10%
+Memory usage: 59496kb
+Approx Power usage: 0.0
+Walltime usage: 00:01:35
+
+====================================

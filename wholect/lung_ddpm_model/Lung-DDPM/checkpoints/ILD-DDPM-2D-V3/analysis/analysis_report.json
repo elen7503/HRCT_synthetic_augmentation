@@ -1,0 +1,9 @@
+{
+  "experiment": "/media/NAS_R02/USER_PATH/liwei/github_depo/ILD-Segmentation-nnUNet/Lung-DDPM/checkpoints/ILD-DDPM-2D-V3",
+  "warning": "PSNR, SSIM and MAE compare stochastic samples with one real target. They are checkpoint diagnostics, not standalone realism or medical-validity scores.",
+  "num_checkpoints": 30,
+  "num_fixed_validation_cases": 6,
+  "best_mean_roi_ssim_step": 12000,
+  "best_mean_roi_psnr_step": 18000,
+  "best_mean_roi_mae_step": 18000
+}

@@ -1,7 +1,7 @@
 """
 ddpm.py
 -------
-Simple 2D DDPM with class-conditional U-Net for 32x32 HRCT patches.
+Simple 2D DDPM with U-Net for 32x32 HRCT patches.
 One model trained per tissue class.
 """
 
@@ -47,6 +47,26 @@ class ResBlock(nn.Module):
         h = self.block2(h)
         return h + self.residual(x)
 
+class SelfAttention(nn.Module):
+    """Self-attention block, applied at the bottleneck resolution where
+    spatial size is small enough that all-pairs attention is cheap."""
+    def __init__(self, channels):
+        super().__init__()
+        self.norm = nn.GroupNorm(8 if channels >= 8 else 1, channels)
+        self.qkv = nn.Conv2d(channels, channels * 3, 1)
+        self.proj = nn.Conv2d(channels, channels, 1)
+
+    def forward(self, x):
+        B, C, H, W = x.shape
+        h = self.norm(x)
+        qkv = self.qkv(h)
+        q, k, v = qkv.chunk(3, dim=1)
+        q = q.reshape(B, C, H * W).permute(0, 2, 1)   # B, HW, C
+        k = k.reshape(B, C, H * W)                     # B, C, HW
+        v = v.reshape(B, C, H * W).permute(0, 2, 1)     # B, HW, C
+        attn = torch.softmax(torch.bmm(q, k) / (C ** 0.5), dim=-1)  # B, HW, HW
+        out = torch.bmm(attn, v).permute(0, 2, 1).reshape(B, C, H, W)
+        return x + self.proj(out)
 
 class UNet(nn.Module):
     def __init__(self, channels=64, time_dim=256):
@@ -68,6 +88,7 @@ class UNet(nn.Module):
         self.down2 = nn.Conv2d(channels*2, channels*2, 4, 2, 1)
 
         self.mid = ResBlock(channels * 4, channels * 4, time_dim)
+        self.attn = SelfAttention(channels * 4)
 
         self.up1  = nn.ConvTranspose2d(channels*4, channels*2, 4, 2, 1)
         self.dec1 = ResBlock(channels*4, channels*2, time_dim)
@@ -87,6 +108,7 @@ class UNet(nn.Module):
         e2 = self.enc2(self.down1(e1), t_emb)
         e3 = self.enc3(self.down2(e2), t_emb)
         m  = self.mid(e3, t_emb)
+        m  = self.attn(m)
         d1 = self.dec1(torch.cat([self.up1(m), e2], dim=1), t_emb)
         d2 = self.dec2(torch.cat([self.up2(d1), e1], dim=1), t_emb)
         return self.out(d2)

@@ -2,8 +2,9 @@
 #PBS -l select=1:ncpus=4:mem=32gb:ngpus=1
 #PBS -l walltime=24:00:00
 #PBS -N ddpm_train
-#PBS -o /rds/general/user/eh1121/home/Final_Project/diffusion_model/logs/job_${CLASS_IDX}.out
-#PBS -e /rds/general/user/eh1121/home/Final_Project/diffusion_model/logs/job_${CLASS_IDX}.err
+#PBS -o $PBS_O_WORKDIR/diffusion_model/logs/job_${CLASS_IDX}.out
+#PBS -e $PBS_O_WORKDIR/diffusion_model/logs/job_${CLASS_IDX}.err
+: "${PROJECT_ROOT:?PROJECT_ROOT no está definida — exporta esta variable antes de lanzar el job}"
 
 # ── Load modules ──────────────────────────────────────────────────────────────
 module load CUDA/12.1.1
@@ -13,7 +14,7 @@ source /rds/general/user/eh1121/home/miniforge3/etc/profile.d/conda.sh
 conda activate ild
 
 # ── Move to working directory ─────────────────────────────────────────────────
-cd /rds/general/user/eh1121/home/Final_Project/diffusion_model
+cd ${PROJECT_ROOT}/diffusion_model
 
 # ── Class index passed via qsub -v CLASS_IDX=N ───────────────────────────────
 CLASS_IDX=${CLASS_IDX:-3}
